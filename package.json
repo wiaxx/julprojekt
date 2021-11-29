@@ -1,0 +1,22 @@
+{
+  "name": "julprojekt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiaxx/julprojekt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wiaxx/julprojekt/issues"
+  },
+  "homepage": "https://github.com/wiaxx/julprojekt#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
