@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node-sass sass/main.scss css/main.css"
   },
   "repository": {
     "type": "git",
