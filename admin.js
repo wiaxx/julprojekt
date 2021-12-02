@@ -12,8 +12,8 @@ function logIn(e) {
     // check if input username and password matches admin log in creds
     // if yes, change loginForm to display none and show welcome and "create product" btn
     if (username === adminCred.username && password === adminCred.password) {
-        const loginForm = document.querySelector(".loginForm");
-        loginForm.style.display = "none";
+        const adminPage = document.querySelector(".adminPage");
+        adminPage.style.display = "none";
 
         const h1 = document.createElement("h1");
         h1.innerText = "Welcome Admin!";
