@@ -28,6 +28,13 @@
             width: 400px;
             border: 1px solid black;
         }
+        .imgHold {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
     </style>
 </head>
@@ -71,15 +78,15 @@
                 <p>Add product</p>
                 <form class="prodInfo">
                     <label for="prodName">Product name:</label>
-                    <input type="text" class="prodName">
+                    <input type="text" class="prodName" required>
                     <label for="prodPrice">Sales price:</label>
-                    <input type="number" name="" id="prodPrice">
+                    <input type="number" name="" id="prodPrice" required>
                     <label for="prodDesc">Product description: </label>
                     <input type="text" class="prodDesc">
                     <label for="prodInv">Inventory: </label>
                     <input type="number" name="" id="prodInv">
                     <label for="prodImg">Image url: </label>
-                    <input type="text" name="" id="prodImg">
+                    <input type="text" name="" id="prodImg" required>
                     <button class="getImg">GET IMAGE</button>
                     <button class="saveProd">SAVE</button>
                     <button class="cancelProd">CANCEL</button>

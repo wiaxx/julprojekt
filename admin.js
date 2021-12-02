@@ -11,6 +11,7 @@ document.querySelector(".forget").addEventListener('click', showAdminCreds);
 document.querySelector(".close").addEventListener('click', closeAdminCreds);
 document.querySelector(".logOut").addEventListener('click', logOut);
 document.querySelector(".saveProd").addEventListener('click', saveProduct);
+document.querySelector(".getImg").addEventListener('click', getImg);
 document.querySelector(".cancelProd").addEventListener('click', () => {
     document.querySelector("form").reset();
 })
@@ -22,6 +23,7 @@ const adminCred = JSON.parse(localStorage.getItem("admin"));
 const passwordInfo = document.querySelector(".passwordInfo");
 const adminPage = document.querySelector(".adminPage");
 const create = document.querySelector(".create");
+const imgHolder = document.querySelector(".imgHold");
 
 //function to check if input value match admin cred saved in localStorage
 function logIn(e) {
@@ -79,6 +81,10 @@ function saveProduct(e) {
         id = JSON.parse(localStorage.getItem("prodID"));
     }
 
+    // if (prodName || prodPrice || prodInv || prodImg === "") {
+    //     alert("You forgot to put in some values");
+    // }
+
     // object with all productinformation
     const product = {
         id: id,
@@ -100,6 +106,22 @@ function saveProduct(e) {
     products.push(product)
     localStorage.setItem("products", JSON.stringify(products));
 
+    // increase productID and store in localStorage for next product created
     id++;
     localStorage.setItem("prodID", JSON.stringify(id));
+
+    document.querySelector(".prodInfo").reset();
+    imgHolder.style.backgroundImage = "none";
+};
+
+//function to fetch image and save url to inputfield
+async function getImg(e) {
+    e.preventDefault();
+    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528')
+    response.json()
+    .then ( res => {
+        imgHolder.style.backgroundImage = `url(${res.urls.small})`;
+        const imgUrl = document.querySelector("#prodImg");
+        imgUrl.value = `${res.urls.small}`;
+    });
 };
