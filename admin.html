@@ -8,12 +8,35 @@
     <!-- <link rel="stylesheet" href="./css/main.css"> -->
     <script src="./admin.js" defer></script>
     <title>Log in page</title>
+
+    <style>
+        .passwordInfo {
+            display: none;
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .create {
+            display: none;
+        }
+        .prodInfo {
+            display: flex;
+            flex-direction: column;
+        }
+        .img {
+            width: 400px;
+            border: 1px solid black;
+        }
+
+    </style>
 </head>
 
 <body>
     <main>
         <!-- flex this adminPage div -->
         <div class="adminPage">
+            <button class="backInx">BACK</button>
             <section class="checkIn">
                 <h1>ZOSA</h1>
                 <p>ADMIN</p>
@@ -24,19 +47,46 @@
                     <button class="login">LOGIN</button>
                     <button class="forget">forgot password?</button>
                 </form>
+
+                <div class="passwordInfo">
+                    <span class="close">&times;</span>
+                    <p class="adminInfo"></p>
+                </div>
+
             </section>
 
             <section>
                 <h1>ZOSA</h1>
             </section>
         </div>
+
+        <!-- flex this create div -->
+        <div class="create">
+            <section class="img">
+                <button class="logOut">LOG OUT</button>
+                <div class="imgHold"></div>
+            </section>
+
+            <section class="createProd">
+                <p>Add product</p>
+                <form class="prodInfo">
+                    <label for="prodName">Product name:</label>
+                    <input type="text" class="prodName">
+                    <label for="prodPrice">Sales price:</label>
+                    <input type="number" name="" id="prodPrice">
+                    <label for="prodDesc">Product description: </label>
+                    <input type="text" class="prodDesc">
+                    <label for="prodInv">Inventory: </label>
+                    <input type="number" name="" id="prodInv">
+                    <label for="prodImg">Image url: </label>
+                    <input type="text" name="" id="prodImg">
+                    <button class="getImg">GET IMAGE</button>
+                    <button class="saveProd">SAVE</button>
+                    <button class="cancelProd">CANCEL</button>
+                </form>
+            </section>
+        </div>
     </main>
-
-
-    <footer>
-
-    </footer>
-
 </body>
 
 </html>
