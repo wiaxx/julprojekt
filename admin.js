@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
     };
 });
 
+// all eventListeners
 document.querySelector(".login").addEventListener('click', logIn);
 document.querySelector(".forget").addEventListener('click', showAdminCreds);
 document.querySelector(".close").addEventListener('click', closeAdminCreds);
@@ -73,7 +74,7 @@ function saveProduct(e) {
     const prodInv = document.querySelector("#prodInv").value;
     const prodImg = document.querySelector("#prodImg").value;
     
-    // check already stored product IDs, do prevent duplicates
+    // check already stored product IDs, prevent duplicates
     let id;
     if (localStorage.getItem("prodID") === null) {
         id = 0;
