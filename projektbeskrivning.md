@@ -18,3 +18,16 @@ Basen för projektet sätts, html-filer och grundelementen i dessa. En skiss på
 
 Vi bestämmer även vad vi anser är definition of done samt hur vi ska arbete med olika brancher på github.
 </p>
+
+<h1>
+ Projektvecka 2 
+</h1>
+
+<p>
+AW:
+6 december.
+Vi la till några fler tickets i Trello då vi inte hade tagit med i planering/tickets för html-strukturen och scss-designen.
+Vi delade upp det efter hur vi hade delat upp JavaScript-features. Vi har en design att utgå ifrån som Zarha har tagit fram och en bas-struktur i scss som även Zarha har komponerat ihop.
+
+Vi har ännu inte stött på några problem som stoppar oss eller liknande utan det rullar på bra.
+</p>
