@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 
 // all eventListeners
 document.querySelector(".login").addEventListener('click', logIn);
-document.querySelector(".forget").addEventListener('click', showAdminCreds);
+document.querySelector("#forget").addEventListener('click', showAdminCreds);
 document.querySelector(".close").addEventListener('click', closeAdminCreds);
 document.querySelector(".logOut").addEventListener('click', logOut);
 document.querySelector(".saveProd").addEventListener('click', saveProduct);
@@ -23,7 +23,7 @@ const adminCred = JSON.parse(localStorage.getItem("admin"));
 //global variable used in different functions
 const passwordInfo = document.querySelector(".passwordInfo");
 const adminPage = document.querySelector(".adminPage");
-const create = document.querySelector(".create");
+const create = document.querySelector(".adminPage-2");
 const imgHolder = document.querySelector(".imgHold");
 
 //function to check if input value match admin cred saved in localStorage
@@ -61,7 +61,7 @@ function closeAdminCreds() {
 function logOut() {
     localStorage.setItem("logged", false);
     create.style.display = "none";
-    adminPage.style.display = "block";
+    adminPage.style.display = "flex";
 }
 
 //function to save created product in localStorage
@@ -118,7 +118,7 @@ function saveProduct(e) {
 //function to fetch image and save url to inputfield
 async function getImg(e) {
     e.preventDefault();
-    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528')
+    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528&orientation=portrait')
     response.json()
     .then ( res => {
         imgHolder.style.backgroundImage = `url(${res.urls.small})`;

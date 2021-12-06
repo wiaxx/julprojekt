@@ -9,7 +9,7 @@
     <script src="./admin.js" defer></script>
     <title>Log in page</title>
 
-    <style>
+    <!-- <style>
         .passwordInfo {
             display: none;
             width: 200px;
@@ -20,14 +20,17 @@
         .create {
             display: none;
         }
+
         .prodInfo {
             display: flex;
             flex-direction: column;
         }
+
         .img {
             width: 400px;
             border: 1px solid black;
         }
+
         .imgHold {
             width: 300px;
             height: 300px;
@@ -35,24 +38,22 @@
             background-position: center;
             background-repeat: no-repeat;
         }
-
-    </style>
+    </style> -->
 </head>
 
 <body>
     <main>
-        <!-- flex this adminPage div -->
+        <button class="backInx">BACK</button>
         <div class="adminPage">
-            <button class="backInx">BACK</button>
-            <section class="checkIn">
-                <h1>ZOSA</h1>
-                <p>ADMIN</p>
-                <!-- flex this loginForm -->
+            <div class="checkIn">
+                <h1 class="header-admin">ZOSA</h1>
+                <hr class="admin-line">
+                <p class="adminTxt">ADMIN</p>
                 <form class="loginForm">
                     <input type="text" class="username" placeholder="Username" onClick="this.select();">
                     <input type="password" id="password" placeholder="Password" onClick="this.select();">
                     <button class="login">LOGIN</button>
-                    <button class="forget">forgot password?</button>
+                    <button id="forget">forgot password?</button>
                 </form>
 
                 <div class="passwordInfo">
@@ -60,38 +61,44 @@
                     <p class="adminInfo"></p>
                 </div>
 
-            </section>
+            </div>
 
-            <section>
-                <h1>ZOSA</h1>
-            </section>
+            <div class="adminPic">
+                <div class="logo-admin"><img src="" alt="logo"></div>
+                <h1 class="header-admin2">ZOSA</h1>
+            </div>
         </div>
 
         <!-- flex this create div -->
-        <div class="create">
-            <section class="img">
-                <button class="logOut">LOG OUT</button>
-                <div class="imgHold"></div>
-            </section>
+        <div class="adminPage-2">
+            <div class="create-div">
 
-            <section class="createProd">
-                <p>Add product</p>
-                <form class="prodInfo">
-                    <label for="prodName">Product name:</label>
-                    <input type="text" class="prodName" required>
-                    <label for="prodPrice">Sales price:</label>
-                    <input type="number" name="" id="prodPrice" required>
-                    <label for="prodDesc">Product description: </label>
-                    <input type="text" class="prodDesc">
-                    <label for="prodInv">Inventory: </label>
-                    <input type="number" name="" id="prodInv">
-                    <label for="prodImg">Image url: </label>
-                    <input type="text" name="" id="prodImg" required>
-                    <button class="getImg">GET IMAGE</button>
-                    <button class="saveProd">SAVE</button>
-                    <button class="cancelProd">CANCEL</button>
-                </form>
-            </section>
+                <div class="img-div">
+                    <button class="logOut">LOG OUT</button>
+                    <div class="imgHold"></div>
+                </div>
+
+                <div class="createProd">
+                    <p class="addProd">Add product</p>
+                    <form class="prodInfo">
+                        <label for="prodName">Product name:</label>
+                        <input type="text" class="prodName" required>
+                        <label for="prodPrice">Sales price:</label>
+                        <input type="number" name="" id="prodPrice" required>
+                        <label for="prodDesc">Product description: </label>
+                        <input type="text" class="prodDesc">
+                        <label for="prodInv">Inventory: </label>
+                        <input type="number" name="" id="prodInv">
+                        <label for="prodImg">Image url: </label>
+                        <input type="text" name="" id="prodImg" required>
+                        <div class="admin-buttons">
+                            <button class="getImg">GET IMAGE</button>
+                            <button class="saveProd">SAVE</button>
+                            <button class="cancelProd">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 </body>
