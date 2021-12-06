@@ -1,8 +1,14 @@
 footer {
 	display: flex;
+	justify-content: center;
 	width: 100%;
-	height: 20%;
+	height: 25vh;
 	background-color: $footer-color;
+	text-transform: uppercase;
+}
+.footer-content {
+	width: 50%;
+	margin-top: 40px;
 }
 
 .footer-logo {
@@ -10,12 +16,28 @@ footer {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	color: red;
+	color: $primary-text-color;
+	h3 {
+		//Zosa
+		font-size: 2rem;
+	}
 }
 .socials {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	flex-direction: row;
 	list-style: none;
+	width: 100%;
+	margin-top: 40px;
+	li {
+		margin: 0 10px;
+	}
+}
+.socials li i:hover,
+i:active {
+	color: $icon-hover-color;
+}
+.socials li a:link,
+a:visited {
+	color: $icon-color;
 }
