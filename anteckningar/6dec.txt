@@ -1,0 +1,10 @@
+Agenda:
+
+* Daily standup
+- Vad har jag gjort
+- Vad ska jag göra
+- Har jag fastnat och varför
+
+1. Gå igenom förra veckans kort, review:a och flytta till done ifall det går
+2. Planera veckans kort
+3. Skriva mer utförliga steg/anteckning i tickets?
