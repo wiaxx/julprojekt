@@ -1,0 +1,43 @@
+header {
+	position: relative; /* establish nearest positioned ancestor for
+    absolute positioning */
+	text-transform: uppercase;
+	width: 100vw;
+	height: 100vh;
+}
+
+.bg-image {
+	background-image: url(https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 120%;
+	height: 95%;
+	margin-left: -20%;
+}
+
+.header-content {
+	position: absolute;
+	left: 50%; /* horizontal alignment */
+	top: 45%; /* vertical alignment */
+	transform: translate(-50%, -50%); /* precise centering */
+	text-align: center;
+	cursor: default;
+	h1 {
+		font-size: 7rem;
+		font-weight: $bold;
+	}
+	h2 {
+		font-size: 2rem;
+		font-weight: $regular;
+		color: $darkgrey;
+	}
+	hr {
+		border-bottom: 7px solid $line-color;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		width: 70px;
+		margin: auto;
+		margin-top: 10px;
+	}
+}
