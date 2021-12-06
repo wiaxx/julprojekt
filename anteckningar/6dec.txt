@@ -9,3 +9,7 @@ Agenda:
 2. Planera veckans kort - CHECK
 3. Skriva mer utförliga steg/anteckning i tickets? - Behövs nog ej
 4. Fixa scss grund-design? - planerad i sprint v49
+
+BRA ATT TÄNKA PÅ,
+
+Glöm ej att skriva kommentarer i er kod, html, scss och javascript!!
