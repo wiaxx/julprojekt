@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <script src="./admin.js" defer></script>
+    <title>Log in page</title>
+
+    <style>
+        .passwordInfo {
+            display: none;
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .create {
+            display: none;
+        }
+        .prodInfo {
+            display: flex;
+            flex-direction: column;
+        }
+        .img {
+            width: 400px;
+            border: 1px solid black;
+        }
+        .imgHold {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- flex this adminPage div -->
+        <div class="adminPage">
+            <button class="backInx">BACK</button>
+            <section class="checkIn">
+                <h1>ZOSA</h1>
+                <p>ADMIN</p>
+                <!-- flex this loginForm -->
+                <form class="loginForm">
+                    <input type="text" class="username" placeholder="Username" onClick="this.select();">
+                    <input type="password" id="password" placeholder="Password" onClick="this.select();">
+                    <button class="login">LOGIN</button>
+                    <button class="forget">forgot password?</button>
+                </form>
+
+                <div class="passwordInfo">
+                    <span class="close">&times;</span>
+                    <p class="adminInfo"></p>
+                </div>
+
+            </section>
+
+            <section>
+                <h1>ZOSA</h1>
+            </section>
+        </div>
+
+        <!-- flex this create div -->
+        <div class="create">
+            <section class="img">
+                <button class="logOut">LOG OUT</button>
+                <div class="imgHold"></div>
+            </section>
+
+            <section class="createProd">
+                <p>Add product</p>
+                <form class="prodInfo">
+                    <label for="prodName">Product name:</label>
+                    <input type="text" class="prodName" required>
+                    <label for="prodPrice">Sales price:</label>
+                    <input type="number" name="" id="prodPrice" required>
+                    <label for="prodDesc">Product description: </label>
+                    <input type="text" class="prodDesc">
+                    <label for="prodInv">Inventory: </label>
+                    <input type="number" name="" id="prodInv">
+                    <label for="prodImg">Image url: </label>
+                    <input type="text" name="" id="prodImg" required>
+                    <button class="getImg">GET IMAGE</button>
+                    <button class="saveProd">SAVE</button>
+                    <button class="cancelProd">CANCEL</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
