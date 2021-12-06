@@ -19,3 +19,7 @@ html {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+body {
+	background-color: $background-color;
+}

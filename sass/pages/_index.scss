@@ -1,3 +1,4 @@
+/************************** HEADER **************************/
 header {
 	position: relative; /* establish nearest positioned ancestor for
     absolute positioning */
@@ -41,3 +42,112 @@ header {
 		margin-top: 10px;
 	}
 }
+/************************* END HEADER **************************/
+
+/************************* MAIN ********************************/
+main {
+	text-align: center;
+}
+
+.newest {
+	width: 100%;
+	height: 18vh;
+	h2 {
+		text-transform: uppercase;
+		font-size: 2rem;
+		font-weight: $regular;
+	}
+	p {
+		margin-top: 20px;
+	}
+	hr {
+		border-bottom: 5px solid $line-color;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		width: 110px;
+		margin: auto;
+	}
+}
+/**Products**/
+.newest-products {
+	height: 100vh;
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	>div {
+		width: 50%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.product {
+		padding: 10px;
+		>div {
+			height: 70%;
+		}
+		.image {
+			background: $green; /*IMAGE*/
+		}
+		.content {
+			background: $white;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: 30%;
+			padding-top: 20px;
+			p {
+				line-height: 1.4rem;
+			}
+			.price {
+				color: $green;
+				font-weight: $bold;
+				font-size: 0.8rem;
+			}
+			.product-name {
+				font-weight: $bold;
+			}
+			.description {
+				color: $accent-text-color;
+				font-size: 0.8rem;
+			}
+		}
+	}
+	>div {
+		/*2x2 boxes*/
+		&:first-of-type .product {
+			width: 50%;
+		}
+		&:last-of-type .product {
+			width: 100%;
+			.content {
+				padding-top: 50px;
+				p {
+					line-height: 1.5rem;
+				}
+				.product-name {
+					font-weight: $bold;
+					font-size: 2.2vh;
+				}
+				.description {
+					color: $accent-text-color;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************* MAIN END ****************************/
