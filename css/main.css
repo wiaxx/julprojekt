@@ -453,20 +453,65 @@ main {
 .cart-main {
   background-image: url("https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
   background-size: cover;
-  height: 80vh;
-  margin-top: 10px; }
+  padding: 15px; }
 
 .shopCart {
   background-color: #ffffff;
   border-radius: 10px;
-  min-height: 400px;
+  min-height: 600px;
   width: 90vw;
   margin: 0 auto 0 auto;
   padding: 20px;
   text-align: left; }
+  .shopCart img {
+    width: 80px; }
 
 .cart-h1 {
   font-size: 1.5rem;
   font-family: "Montserrat", sans-serif;
   color: #3d3d3d;
   font-weight: 500; }
+
+.prodCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+  border-bottom: 1px solid #5a674d;
+  padding: 15px; }
+
+.totProd, .totSum {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px; }
+
+.rmBtn {
+  color: #5a674d;
+  border: none;
+  width: 50px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 10px; }
+  .rmBtn:hover {
+    background-color: #5a674d;
+    color: #ffffff; }
+
+.changeBtn {
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  background-color: #e1e4e1;
+  color: #5a674d;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem; }
+
+.orderBtn {
+  width: 100%;
+  background-color: #e1e4e1;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  color: #3d3d3d;
+  text-transform: uppercase; }
