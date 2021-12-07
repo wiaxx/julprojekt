@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <main>
-        <button class="backInx">BACK</button>
+    <main class="adminMain">
         <div class="adminPage">
+            <button class="backInd" onclick="window.location.href='./index.html'">BACK</button>
             <div class="checkIn">
                 <h1 class="header-admin">ZOSA</h1>
                 <hr class="admin-line">
@@ -33,7 +33,8 @@
             </div>
 
             <div class="adminPic">
-                <div class="logo-admin"><img src="" alt="logo"></div>
+                <div class="logo-admin">
+                </div>
                 <h1 class="header-admin2">ZOSA</h1>
             </div>
         </div>
@@ -51,15 +52,15 @@
                     <p class="addProd">Add product</p>
                     <form class="prodInfo">
                         <label for="prodName">Product name:</label>
-                        <input type="text" class="prodName" required>
+                        <input type="text" class="prodName">
                         <label for="prodPrice">Sales price:</label>
-                        <input type="number" name="" id="prodPrice" required>
+                        <input type="number" name="" id="prodPrice">
                         <label for="prodDesc">Product description: </label>
                         <input type="text" class="prodDesc">
                         <label for="prodInv">Inventory: </label>
                         <input type="number" name="" id="prodInv">
                         <label for="prodImg">Image url: </label>
-                        <input type="text" name="" id="prodImg" required>
+                        <input type="text" name="" id="prodImg">
                         <div class="admin-buttons">
                             <button class="getImg">GET IMAGE</button>
                             <button class="saveProd">SAVE</button>
