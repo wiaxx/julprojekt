@@ -71,12 +71,12 @@ main {
 }
 /**Products**/
 .newest-products {
-	height: 100vh;
+	height: 90vh;
 	width: 100%;
 	max-width: 1200px;
 	margin: auto;
 	display: flex;
-	>div {
+	> div {
 		width: 50%;
 		display: flex;
 		flex-wrap: wrap;
@@ -84,13 +84,15 @@ main {
 	}
 	.product {
 		padding: 10px;
-		>div {
+
+		> div {
 			height: 70%;
 		}
 		.image {
 			background: $green; /*IMAGE*/
 		}
 		.content {
+			box-shadow: $dropshadow;
 			background: $white;
 			display: flex;
 			flex-direction: column;
@@ -114,8 +116,8 @@ main {
 			}
 		}
 	}
-	>div {
-		/*2x2 boxes*/
+	> div {
+		//2x2 boxes//
 		&:first-of-type .product {
 			width: 50%;
 		}
@@ -137,17 +139,49 @@ main {
 		}
 	}
 }
+//ABOUT
+.about-container {
+	background-color: $white;
+	width: 100%;
+	height: 70vh;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	overflow: hidden;
+	.left {
+		background: url(https://images.unsplash.com/photo-1613375762302-670aee309a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+		background-repeat: no-repeat;
+		width: 50%;
+		height: 100%;
+		float: left;
+	}
+	.right {
+		width: 50%;
+		height: 100%;
+		margin-top: 40px;
+		float: right;
+		padding-right: 50px;
 
-
-
-
-
-
-
-
-
-
-
-
+		h3 {
+			text-transform: uppercase;
+			font-size: 2rem;
+		}
+		hr {
+			border-bottom: 5px solid $line-color;
+			border-top: 0;
+			border-right: 0;
+			border-left: 0;
+			width: 80px;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+		.txt-container {
+			width: 600px;
+			height: fit-content;
+			text-align: justify;
+			line-height: 2rem;
+			margin: auto;
+		}
+	}
+}
 
 /************************* MAIN END ****************************/
