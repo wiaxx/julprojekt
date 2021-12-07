@@ -71,7 +71,7 @@ main {
 }
 /**Products**/
 .newest-products {
-	height: 100vh;
+	height: 90vh;
 	width: 100%;
 	max-width: 1200px;
 	margin: auto;
@@ -84,6 +84,7 @@ main {
 	}
 	.product {
 		padding: 10px;
+
 		>div {
 			height: 70%;
 		}
@@ -91,6 +92,7 @@ main {
 			background: $green; /*IMAGE*/
 		}
 		.content {
+			box-shadow: $dropshadow;
 			background: $white;
 			display: flex;
 			flex-direction: column;
@@ -115,7 +117,7 @@ main {
 		}
 	}
 	>div {
-		/*2x2 boxes*/
+		//2x2 boxes//
 		&:first-of-type .product {
 			width: 50%;
 		}
@@ -137,6 +139,7 @@ main {
 		}
 	}
 }
+
 
 
 
