@@ -15,7 +15,7 @@ document.querySelector(".saveProd").addEventListener('click', saveProduct);
 document.querySelector(".getImg").addEventListener('click', getImg);
 document.querySelector(".cancelProd").addEventListener('click', () => {
     document.querySelector("form").reset();
-})
+});
 
 //get admin credentials from localStorage
 const adminCred = JSON.parse(localStorage.getItem("admin"));
@@ -73,7 +73,7 @@ function saveProduct(e) {
     const prodDesc = document.querySelector(".prodDesc").value;
     const prodInv = document.querySelector("#prodInv").value;
     const prodImg = document.querySelector("#prodImg").value;
-    
+
     // check already stored product IDs, prevent duplicates
     let id;
     if (localStorage.getItem("prodID") === null) {
@@ -82,37 +82,33 @@ function saveProduct(e) {
         id = JSON.parse(localStorage.getItem("prodID"));
     }
 
-    // if (prodName || prodPrice || prodInv || prodImg === "") {
-    //     alert("You forgot to put in some values");
-    // }
+        // object with all productinformation
+        const product = {
+            id: id,
+            name: prodName,
+            desc: prodDesc,
+            img: prodImg,
+            price: prodPrice,
+            inv: prodInv
+        };
+        console.log(product)
 
-    // object with all productinformation
-    const product = {
-        id: id,
-        name: prodName,
-        desc: prodDesc,
-        img: prodImg,
-        price: prodPrice,
-        inv: prodInv
-    };
-    console.log(product)
+        // check already stored products and push new product to existing
+        let products;
+        if (localStorage.getItem("products") === null) {
+            products = [];
+        } else {
+            products = JSON.parse(localStorage.getItem("products"));
+        }
+        products.push(product)
+        localStorage.setItem("products", JSON.stringify(products));
 
-    // check already stored products and push new product to existing
-    let products;
-    if (localStorage.getItem("products") === null) {
-        products = [];
-    } else {
-        products = JSON.parse(localStorage.getItem("products"));
-    }
-    products.push(product)
-    localStorage.setItem("products", JSON.stringify(products));
+        // increase productID and store in localStorage for next product created
+        id++;
+        localStorage.setItem("prodID", JSON.stringify(id));
 
-    // increase productID and store in localStorage for next product created
-    id++;
-    localStorage.setItem("prodID", JSON.stringify(id));
-
-    document.querySelector(".prodInfo").reset();
-    imgHolder.style.backgroundImage = "none";
+        document.querySelector(".prodInfo").reset();
+        imgHolder.style.backgroundImage = "none";
 };
 
 //function to fetch image and save url to inputfield
@@ -120,9 +116,9 @@ async function getImg(e) {
     e.preventDefault();
     const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528&orientation=portrait')
     response.json()
-    .then ( res => {
-        imgHolder.style.backgroundImage = `url(${res.urls.small})`;
-        const imgUrl = document.querySelector("#prodImg");
-        imgUrl.value = `${res.urls.small}`;
-    });
+        .then(res => {
+            imgHolder.style.backgroundImage = `url(${res.urls.small})`;
+            const imgUrl = document.querySelector("#prodImg");
+            imgUrl.value = `${res.urls.small}`;
+        });
 };
