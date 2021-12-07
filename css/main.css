@@ -22,6 +22,24 @@ html {
 body {
   background-color: #e1e4e1; }
 
+.all-products-btn {
+  margin-top: 20px;
+  background-color: #5a674d;
+  border-radius: 30px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600; }
+  .all-products-btn:hover {
+    background-color: #3d3d3d; }
+  .all-products-btn:active {
+    position: relative;
+    top: 1px; }
+
 nav {
   width: 100%;
   height: 50px;
@@ -76,7 +94,7 @@ footer {
   flex-direction: column;
   color: #3d3d3d; }
   .footer-logo h3 {
-    font-size: 2rem; }
+    font-size: 2.5rem; }
 
 .socials {
   display: flex;
@@ -344,7 +362,7 @@ main {
 
 /**Products**/
 .newest-products {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   max-width: 1200px;
   margin: auto;
@@ -362,6 +380,7 @@ main {
       background: #5a674d;
       /*IMAGE*/ }
     .newest-products .product .content {
+      box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
       background: #ffffff;
       display: flex;
       flex-direction: column;
@@ -379,20 +398,75 @@ main {
       .newest-products .product .content .description {
         color: #919191;
         font-size: 0.8rem; }
-  .newest-products > div {
-    /*2x2 boxes*/ }
-    .newest-products > div:first-of-type .product {
-      width: 50%; }
-    .newest-products > div:last-of-type .product {
-      width: 100%; }
-      .newest-products > div:last-of-type .product .content {
-        padding-top: 50px; }
-        .newest-products > div:last-of-type .product .content p {
-          line-height: 1.5rem; }
-        .newest-products > div:last-of-type .product .content .product-name {
-          font-weight: 600;
-          font-size: 2.2vh; }
-        .newest-products > div:last-of-type .product .content .description {
-          color: #919191; }
+  .newest-products > div:first-of-type .product {
+    width: 50%; }
+  .newest-products > div:last-of-type .product {
+    width: 100%; }
+    .newest-products > div:last-of-type .product .content {
+      padding-top: 50px; }
+      .newest-products > div:last-of-type .product .content p {
+        line-height: 1.5rem; }
+      .newest-products > div:last-of-type .product .content .product-name {
+        font-weight: 600;
+        font-size: 2.2vh; }
+      .newest-products > div:last-of-type .product .content .description {
+        color: #919191; }
+
+.about-container {
+  background-color: #ffffff;
+  width: 100%;
+  height: 70vh;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  overflow: hidden; }
+  .about-container .left {
+    background: url(https://images.unsplash.com/photo-1613375762302-670aee309a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100%;
+    float: left; }
+  .about-container .right {
+    width: 50%;
+    height: 100%;
+    margin-top: 40px;
+    float: right;
+    padding-right: 50px; }
+    .about-container .right h3 {
+      text-transform: uppercase;
+      font-size: 2rem; }
+    .about-container .right hr {
+      border-bottom: 5px solid #5a674d;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      width: 80px;
+      margin: auto;
+      margin-bottom: 20px; }
+    .about-container .right .txt-container {
+      width: 600px;
+      height: fit-content;
+      text-align: justify;
+      line-height: 2rem;
+      margin: auto; }
 
 /************************* MAIN END ****************************/
+.cart-main {
+  background-image: url("https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  background-size: cover;
+  height: 80vh;
+  margin-top: 10px; }
+
+.shopCart {
+  background-color: #ffffff;
+  border-radius: 10px;
+  min-height: 400px;
+  width: 90vw;
+  margin: 0 auto 0 auto;
+  padding: 20px;
+  text-align: left; }
+
+.cart-h1 {
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+  color: #3d3d3d;
+  font-weight: 500; }
