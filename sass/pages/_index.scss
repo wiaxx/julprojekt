@@ -100,14 +100,17 @@ main {
 	max-width: 1200px;
 	margin: auto;
 	display: flex;
+
 	> div {
 		width: 50%;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 	}
+
 	.product {
 		padding: 10px;
+		
 		&:hover{
 			transform: scale(1.02);
 		}
@@ -115,9 +118,11 @@ main {
 		> div {
 			height: 70%;
 		}
+
 		.image {
 			background: $green;
 		}
+
 		.content {
 			box-shadow: $dropshadow;
 			background: $white;
@@ -126,39 +131,48 @@ main {
 			align-items: center;
 			height: 30%;
 			padding-top: 20px;
+
 			p {
 				line-height: 1.4rem;
 			}
+
 			.price {
 				color: $green;
 				font-weight: $bold;
 				font-size: 0.8rem;
 			}
+
 			.product-name {
 				font-weight: $bold;
 			}
+
 			.description {
 				color: $accent-text-color;
 				font-size: 0.8rem;
 			}
 		}
 	}
+
 	> div {
-		//2x2 boxes//
 		&:first-of-type .product {
 			width: 50%;
 		}
+
 		&:last-of-type .product {
 			width: 100%;
+
 			.content {
 				padding-top: 50px;
+
 				p {
 					line-height: 1.5rem;
 				}
+
 				.product-name {
 					font-weight: $bold;
 					font-size: 2.2vh;
 				}
+
 				.description {
 					color: $accent-text-color;
 				}
@@ -166,7 +180,6 @@ main {
 		}
 	}
 }
-
 //ABOUT
 .about-container {
 	background-color: $white;
