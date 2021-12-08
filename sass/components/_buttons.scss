@@ -1,0 +1,20 @@
+.all-products-btn {
+	margin-top: 20px;
+	background-color: $button-color;
+	border-radius: 30px;
+	border: none;
+	display: inline-block;
+	cursor: pointer;
+	color: $white;
+	padding: 16px 31px;
+	text-decoration: none;
+    text-transform: uppercase;
+	font-weight: $bold;
+	&:hover {
+		background-color: $button-hover-color;
+	}
+	&:active {
+		position: relative;
+		top: 1px;
+	}
+}

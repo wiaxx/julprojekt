@@ -1,0 +1,39 @@
+//Google font
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap");
+
+//Font
+$montserrat: "Montserrat", sans-serif;
+
+//Font Weights
+$regular: 500;
+$bold: 600;
+
+//Colors
+$white: #ffffff;
+$green: #5a674d;
+$light-green: #e1e4e1;
+$medium-green: #c9cec3;
+$mediumgrey: #919191;
+$darkgrey: #3d3d3d;
+$red: #a23c3c;
+
+$button-color: $green;
+$line-color: $green;
+$background-color: $light-green;
+$navbar-color: $medium-green;
+$footer-color: $medium-green;
+$logo-color: $darkgrey;
+$icon-color: $darkgrey;
+$primary-text-color: $darkgrey;
+$accent-text-color: $mediumgrey;
+$product-card-color: $white;
+$heart-hover-color: $red;
+$icon-hover-color: $green;
+$button-hover-color: $darkgrey;
+
+//Drop shadow
+$dropshadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+
+//Opacity
+$white-opacity: rgba(255, 255, 255, 0.5); //for product cards info
+$admin-green-opacity: rgba(90, 103, 77, 0.7); //for admin login page img

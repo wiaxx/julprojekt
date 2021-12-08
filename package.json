@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node-sass sass/main.scss css/main.css"
+    "start": "node-sass sass/main.scss css/main.css -w"
   },
   "repository": {
     "type": "git",

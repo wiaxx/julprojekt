@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./admin.js" defer></script>
+    <title>Admin - Log in page</title>
+</head>
+
+<body>
+    <main class="adminMain">
+        <div class="adminPage">
+            <button class="backInd" onclick="window.location.href='./index.html'">BACK</button>
+            <div class="checkIn">
+                <h1 class="header-admin">ZOSA</h1>
+                <hr class="admin-line">
+                <p class="adminTxt">ADMIN</p>
+                <form class="loginForm">
+                    <input type="text" class="username" placeholder="Username" onClick="this.select();">
+                    <input type="password" id="password" placeholder="Password" onClick="this.select();">
+                    <button class="login">LOGIN</button>
+                    <button id="forget">forgot password?</button>
+                </form>
+
+                <div class="passwordInfo">
+                    <span class="close">&times;</span>
+                    <p class="adminInfo"></p>
+                </div>
+
+            </div>
+
+            <div class="adminPic">
+                <div class="logo-admin">
+                </div>
+                <h1 class="header-admin2">ZOSA</h1>
+            </div>
+        </div>
+
+        <!-- flex this create div -->
+        <div class="adminPage-2">
+            <div class="create-div">
+
+                <div class="img-div">
+                    <button class="logOut">LOG OUT</button>
+                    <div class="imgHold"></div>
+                </div>
+
+                <div class="createProd">
+                    <p class="addProd">Add product</p>
+                    <form class="prodInfo">
+                        <label for="prodName">Product name:</label>
+                        <input type="text" class="prodName">
+                        <label for="prodPrice">Sales price:</label>
+                        <input type="number" name="" id="prodPrice">
+                        <label for="prodDesc">Product description: </label>
+                        <input type="text" class="prodDesc">
+                        <label for="prodInv">Inventory: </label>
+                        <input type="number" name="" id="prodInv">
+                        <label for="prodImg">Image url: </label>
+                        <input type="text" name="" id="prodImg">
+                        <div class="admin-buttons">
+                            <button class="getImg">GET IMAGE</button>
+                            <button class="saveProd">SAVE</button>
+                            <button class="cancelProd">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

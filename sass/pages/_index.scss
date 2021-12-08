@@ -1,0 +1,212 @@
+/************************** HEADER **************************/
+header {
+	position: relative; /* establish nearest positioned ancestor for
+    absolute positioning */
+	text-transform: uppercase;
+	width: 100vw;
+	height: 100vh;
+}
+
+.bg-image {
+	background-image: url(https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 120%;
+	height: 95%;
+	margin-left: -20%;
+}
+
+.header-content {
+	position: absolute;
+	left: 50%; /* horizontal alignment */
+	top: 45%; /* vertical alignment */
+	transform: translate(-50%, -50%); /* precise centering */
+	text-align: center;
+	cursor: default;
+	h1 {
+		font-size: 7rem;
+		font-weight: $bold;
+	}
+	h2 {
+		font-size: 2rem;
+		font-weight: $regular;
+		color: $darkgrey;
+	}
+	hr {
+		border-bottom: 7px solid $line-color;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		width: 70px;
+		margin: auto;
+		margin-top: 10px;
+	}
+}
+/************************* END HEADER **************************/
+
+/************************* MAIN ********************************/
+main {
+	text-align: center;
+	.plant-bg-image-1{
+		position: absolute;
+		background-image: url(../../images/plant2.png);
+		background-repeat: no-repeat;
+		width: 100vw;
+		height: 100vh;
+		z-index: -1;
+		opacity: 0.7;
+		margin-top: 600px;
+		margin-left: -250px;
+	}
+	.plant-bg-image-2{
+		position: absolute;
+		background-image: url(../../images/plant2.png);
+		background-repeat: no-repeat;
+		width: 50vw;
+		height: 60vh;
+		z-index: -1;
+		opacity: 0.7;
+		margin-top: 1300px;
+		margin-left: 1000px;
+		-webkit-transform: scaleX(-1);
+  		transform: scaleX(-1);
+	}
+}
+
+.newest {
+	width: 100%;
+	height: 15vh;
+	h2 {
+		text-transform: uppercase;
+		font-size: 2rem;
+		font-weight: $regular;
+	}
+	p {
+		margin-top: 20px;
+	}
+	hr {
+		border-bottom: 5px solid $line-color;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		width: 110px;
+		margin: auto;
+	}
+}
+/**Products**/
+.newest-products {
+	height: 90vh;
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	> div {
+		width: 50%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.product {
+		padding: 10px;
+
+		> div {
+			height: 70%;
+		}
+		.image {
+			background: $green; 
+		}
+		.content {
+			box-shadow: $dropshadow;
+			background: $white;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: 30%;
+			padding-top: 20px;
+			p {
+				line-height: 1.4rem;
+			}
+			.price {
+				color: $green;
+				font-weight: $bold;
+				font-size: 0.8rem;
+			}
+			.product-name {
+				font-weight: $bold;
+			}
+			.description {
+				color: $accent-text-color;
+				font-size: 0.8rem;
+			}
+		}
+	}
+	> div {
+		//2x2 boxes//
+		&:first-of-type .product {
+			width: 50%;
+		}
+		&:last-of-type .product {
+			width: 100%;
+			.content {
+				padding-top: 50px;
+				p {
+					line-height: 1.5rem;
+				}
+				.product-name {
+					font-weight: $bold;
+					font-size: 2.2vh;
+				}
+				.description {
+					color: $accent-text-color;
+				}
+			}
+		}
+	}
+}
+
+//ABOUT
+.about-container {
+	background-color: $white;
+	width: 100%;
+	height: 70vh;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	overflow: hidden;
+	.left {
+		background: url(https://images.unsplash.com/photo-1613375762302-670aee309a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
+		background-repeat: no-repeat;
+		width: 50%;
+		height: 100%;
+		float: left;
+	}
+	.right {
+		width: 50%;
+		height: 100%;
+		margin-top: 40px;
+		float: right;
+		padding-right: 50px;
+
+		h3 {
+			text-transform: uppercase;
+			font-size: 2rem;
+		}
+		hr {
+			border-bottom: 5px solid $line-color;
+			border-top: 0;
+			border-right: 0;
+			border-left: 0;
+			width: 80px;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+		.txt-container {
+			width: 600px;
+			height: fit-content;
+			text-align: justify;
+			line-height: 2rem;
+			margin: auto;
+		}
+	}
+}
+
+/************************* MAIN END ****************************/

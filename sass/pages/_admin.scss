@@ -1,0 +1,274 @@
+// styling for overwrite general styling main, text to left instead of center
+.adminMain {
+    text-align: left;
+}
+
+// general styling for landing page for log in as admin
+.adminPage {
+    display: flex;
+    // flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+    background-color: $background-color;
+}
+
+.backInd {
+    align-self: baseline;
+    background-color: $background-color;
+    border: none;
+    border-bottom: 1px solid $darkgrey;
+    color: $darkgrey;
+    margin: 5px;
+}
+
+// styling for log in form-div
+.checkIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.header-admin {
+    color: $darkgrey;
+    font-size: 2.5rem;
+    font-family: $montserrat;
+}
+
+.admin-line {
+    color: $line-color;
+    border: 1px solid $darkgrey;
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.adminTxt {
+    color: $darkgrey;
+    font-weight: $bold;
+    margin-bottom: 50px;
+}
+
+// styling for login form
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    button, input {
+        margin-top: 20px;
+        width: 60%;
+        font-size: 1.2rem;
+        border-radius: 20px;
+        border: 1px solid $light-green;
+        padding: 7px 7px 7px 15px;
+    }
+}
+
+// styling for login button
+.login {
+    background-color: $button-color;
+    color: $white;
+    &:hover {
+        background-color: $button-hover-color;
+    }
+}
+
+// styling for forgot password button
+#forget {
+    border: none;
+    font-size: 0.7rem;
+    background-color: $background-color;
+    text-align: right;
+    margin-top: 5px;
+    color: $darkgrey;
+
+    &:hover {
+        color: $green;
+    }
+}
+
+// styling for modal show admin creds
+.passwordInfo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: $medium-green;
+    width: 250px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: $dropshadow;
+}
+
+// styling for textcontent forget password
+.adminInfo {
+    padding: 20px 10px 10px 10px;
+    color: $primary-text-color;
+}
+
+// styling close button modal, forgot password
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5rem;
+    color: $green;
+}
+
+// styling for div with picture on landing page admin
+.adminPic {
+    background: linear-gradient(rgba(90, 103, 77, 0.85), rgba(90, 103, 77, 0.85)),
+    url("https://images.unsplash.com/photo-1493020258366-be3ead1b3027?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2680&q=80") center center no-repeat;
+    background-size: cover;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// styling admin logo
+.logo-admin {
+    width: 150px;
+    height: 80px;
+    background-image: url('./img/Lotus-logo.png');
+    background-position: top;
+    background-size: cover;
+}
+
+.header-admin2 {
+    color: $white;
+    font-size: 2.5rem;
+    font-family: $montserrat;
+}
+
+// gerenal styling for landing page when logged in as admin, create product
+.adminPage-2 {
+    background-image: url('https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+// styling for grey "hold"-div
+.create-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-color;
+    height: 90%;
+    width: 90%;
+    padding: 10px;
+}
+
+// styling for div with img and log out button
+.img-div {
+    width: 50%;
+    height: 100%;
+}
+
+// styling for div with fetch image
+.imgHold {
+    width: 60%;
+    height: 60%;
+    border: 1px solid $darkgrey;
+    margin: 50px auto 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+// styling log out button
+.logOut {
+    margin-bottom: 50px;
+    background-color: $background-color;
+    border: none;
+    border-bottom: 1px solid $darkgrey;
+    color: $darkgrey;
+}
+
+// styling for create product div
+.createProd {
+    width: 45%;
+    min-height: 50%;
+    background-color: $white;
+    padding: 20px;
+}
+
+// styling for create product text
+.addProd {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+// styling for create product form
+.prodInfo {
+    display: flex;
+    flex-direction: column;
+    color: $primary-text-color;
+    border-left: 1px solid $darkgrey;
+    padding-left: 15px;
+    text-align: left;
+
+    input {
+        border: none;
+        border-bottom: 1px solid $darkgrey;
+        margin-bottom: 5px;
+        color: $primary-text-color;
+        padding: 5px;
+    }
+
+}
+
+// styling for create product button
+.admin-buttons {
+    display: flex;
+    margin-top: 10px;
+
+    button {
+        border-radius: 10px;
+        padding: 7px;
+        margin: 3px;
+        border: none;
+        background-color: $white;
+    }
+
+    button:hover {
+        background-color: $button-color;
+        color: $white;
+    }
+}
+
+// styling for mediaquery to use later togheter with everybodys
+@media (max-width: 420px) {
+    .adminPage {
+        flex-wrap: wrap;
+    }
+    
+    .checkIn {
+        width: 100%;
+    }
+
+    .adminPic {
+        width: 100%;
+    }
+
+    .create-div {
+        flex-wrap: wrap;
+        min-height: 600px;
+        overflow: scroll;
+    }
+
+    .img-div {
+        width: 100vw;
+        height: 400px;
+    }
+
+    .createProd {
+        width: 100vw;
+    }
+}
