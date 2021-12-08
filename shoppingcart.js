@@ -60,9 +60,13 @@ function showShopCart() {
         plusBtn.innerText = "+";
         plusBtn.classList.add("changeBtn");
 
-        const qaSpan = document.createElement("span");
-        qaSpan.innerText = "1";
-        qaSpan.classList.add("quatity");
+        // const qaSpan = document.createElement("span");
+        // qaSpan.innerText = "1";
+        // qaSpan.classList.add("quantity");
+
+        const qaInput = document.createElement("input");
+        qaInput.value = 1;
+        qaInput.classList.add("quantity");
 
         const subBtn = document.createElement("button");
         subBtn.innerText = "-";
@@ -71,7 +75,7 @@ function showShopCart() {
         const priceSpan = document.createElement("span");
         priceSpan.innerText = `${element.price}:-`;
 
-        qaDiv.append(subBtn, qaSpan, plusBtn);
+        qaDiv.append(subBtn, qaInput, plusBtn);
         div.append(rmBtn, img, prodName, qaDiv, priceSpan);
         document.querySelector(".product-holder").appendChild(div);
 
@@ -80,41 +84,55 @@ function showShopCart() {
     });
 
     document.querySelector(".inputTotProd").innerText = `${shoppingCart.length} PCS`
+    document.querySelector(".product-holder").addEventListener('click', removeOrChange);
+};
 
-    // eventListener to remove item
-    document.querySelector(".product-holder").addEventListener('click', removeItem);
+// function to check which button is clicked and send to function
+function removeOrChange(e) {
+    if (e.target.className === 'rmBtn') {
+        removeItem(e);
+    };
+    if (e.target.className === 'changeBtn') {
+        changeQuantity(e);
+    };
 };
 
 // function to remove item from shopping cart/localStorage
-function removeItem(e){
+function removeItem(e) {
 
     // element to remove
     const element = e.target.parentElement;
-
     // targetItem id for seach index in localStorage array
     const targetItem = e.target.parentElement.id;
-    // console.log(targetItem);
-
     // get localStorage to search for item to remove
     const shopCartItems = JSON.parse(localStorage.getItem("shopCart"));
-    // console.log(shopCartItems)
-
     // find index in array for item to remove
     const indexOfTarget = shopCartItems.findIndex(x => x.id == targetItem);
-    // console.log(indexOfTarget)
-
     // remove target item from localStorage array
     const removedItem = shopCartItems.splice(indexOfTarget, 1);
-    console.log(removedItem);
-    // console.log(shopCartItems);
-
     // push updated array to localStorage
     localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
     element.remove();
 
     // update total products in cart
     document.querySelector(".inputTotProd").innerText = `${shopCartItems.length} PCS`
-
     // update total sum in cart
     document.querySelector(".inputTotSum").innerHTML = `${totSum -= Number(removedItem[0].price)}:-`
+};
+
+const shopCart = JSON.parse(localStorage.getItem('shopCart'));
+
+// function to change quantity in shopping vart
+function changeQuantity(e) {
+    console.log(e);
+
+    let quantity = document.querySelector(".quantity").value;
+    console.log(quantity)
+
+    if (e.target.innerText === '+') {
+
+    } else if (e.target.innerText === '-') {
+        console.log("minus")
+    }
+
 };
