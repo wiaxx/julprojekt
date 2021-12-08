@@ -5,12 +5,10 @@ Agenda:
 - Vad ska jag göra
 - Har jag fastnat och varför
 
-<<<<<<< HEAD
 1. Gå igenom förra veckans kort, review:a och flytta till done ifall det går
 2. Planera veckans kort
 3. Skriva mer utförliga steg/anteckning i tickets?
 4. Fixa scss grund-design?
-=======
 1. Gå igenom förra veckans kort, review:a och flytta till done ifall det går - CHECK
 2. Planera veckans kort - CHECK
 3. Skriva mer utförliga steg/anteckning i tickets? - Behövs nog ej
@@ -19,4 +17,3 @@ Agenda:
 BRA ATT TÄNKA PÅ,
 
 Glöm ej att skriva kommentarer i er kod, html, scss och javascript!!
->>>>>>> 8735ad9435bd2bc9b671a08bf89fdc262be2d53a

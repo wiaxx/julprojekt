@@ -60,13 +60,13 @@ function showShopCart() {
         plusBtn.innerText = "+";
         plusBtn.classList.add("changeBtn");
 
-        // const qaSpan = document.createElement("span");
-        // qaSpan.innerText = "1";
-        // qaSpan.classList.add("quantity");
-
         const qaInput = document.createElement("input");
         qaInput.value = 1;
         qaInput.classList.add("quantity");
+        qaInput.setAttribute("id", `qa${element.id}`);
+        qaInput.setAttribute("type", "number");
+        qaInput.setAttribute("min", "0");
+        qaInput.readOnly = true;
 
         const subBtn = document.createElement("button");
         subBtn.innerText = "-";
@@ -122,17 +122,28 @@ function removeItem(e) {
 
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 
-// function to change quantity in shopping vart
+// function to change quantity in shopping cart
 function changeQuantity(e) {
-    console.log(e);
 
-    let quantity = document.querySelector(".quantity").value;
-    console.log(quantity)
+    // variable to find id on element to change right quantity input
+    const changeProd = e.target.parentElement.childNodes[1];
+    // variable to hold current quantity from target element
+    const currentQuant = e.target.parentElement.childNodes[1].value;
+    // variable to convert current quantity to number
+    let quantity = Number(currentQuant);
 
+    let changedEl = document.querySelector(`#${changeProd.id}`);
+
+    // change quantity on site based on choice, validator on 0 to prevent - value
     if (e.target.innerText === '+') {
-
+        changedEl.value = quantity += 1;
     } else if (e.target.innerText === '-') {
-        console.log("minus")
-    }
+        if (changedEl.value == 0) {
+            return;
+        } else {
+            changedEl.value = quantity -= 1;
+        };
+    };
 
+    // todo - update total sum and total products. get localstorage and use price on products
 };

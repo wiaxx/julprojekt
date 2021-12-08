@@ -1,0 +1,9 @@
+Daily standup
+
+- Vad har jag gjort
+- Vad ska jag göra
+- Har jag fastnat och varför
+
+Agenda för nästa daily/möte 8 december:
+
+Se över "in review"-kort och sitt med javascript hjälp/koll
