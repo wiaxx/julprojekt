@@ -551,6 +551,11 @@ main {
   border-radius: 10px;
   font-size: 1.5rem; }
 
+.quantity {
+  border: none;
+  width: 20px;
+  text-align: center; }
+
 .orderBtn {
   width: 100%;
   background-color: #e1e4e1;
