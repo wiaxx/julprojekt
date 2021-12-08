@@ -67,6 +67,8 @@ function showShopCart() {
         const qaInput = document.createElement("input");
         qaInput.value = 1;
         qaInput.classList.add("quantity");
+        qaInput.setAttribute("id", `qa${element.id}`);
+        qaInput.readOnly = true;
 
         const subBtn = document.createElement("button");
         subBtn.innerText = "-";
@@ -121,18 +123,27 @@ function removeItem(e) {
 };
 
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
+// let quantity = 1;
 
-// function to change quantity in shopping vart
+// function to change quantity in shopping cart
 function changeQuantity(e) {
     console.log(e);
+    // variable to find id on element to change right quantity input
+    const changeProd = e.target.parentElement.childNodes[1];
+    console.log("element id to target input: ", changeProd);
 
-    let quantity = document.querySelector(".quantity").value;
-    console.log(quantity)
+    // variable to hold current quantity from target element
+    const currentQuant = e.target.parentElement.childNodes[1].value;
+    console.log("current quantity in target element: ", currentQuant);
+
+    // variable to convert current quantity to number
+    let quantity = Number(currentQuant);
+    console.log("current quantity convert to number: ", quantity);
 
     if (e.target.innerText === '+') {
+        document.querySelector(`#${changeProd.id}`).value = quantity += 1;
 
     } else if (e.target.innerText === '-') {
-        console.log("minus")
-    }
-
+        document.querySelector(`#${changeProd.id}`).value = quantity -= 1;
+    };
 };
