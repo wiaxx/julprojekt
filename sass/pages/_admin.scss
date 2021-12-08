@@ -70,6 +70,9 @@
 .login {
     background-color: $button-color;
     color: $white;
+    &:hover {
+        background-color: $button-hover-color;
+    }
 }
 
 // styling for forgot password button
@@ -80,10 +83,37 @@
     text-align: right;
     margin-top: 5px;
     color: $darkgrey;
+
+    &:hover {
+        color: $green;
+    }
 }
 
+// styling for modal show admin creds
 .passwordInfo {
     display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: $medium-green;
+    width: 250px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: $dropshadow;
+}
+
+// styling for textcontent forget password
+.adminInfo {
+    padding: 20px 10px 10px 10px;
+    color: $primary-text-color;
+}
+
+// styling close button modal, forgot password
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5rem;
+    color: $green;
 }
 
 // styling for div with picture on landing page admin
@@ -115,7 +145,7 @@
 
 // gerenal styling for landing page when logged in as admin, create product
 .adminPage-2 {
-    background-image: url(https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+    background-image: url('https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
     background-size: cover;
     background-repeat: no-repeat;
     display: none;

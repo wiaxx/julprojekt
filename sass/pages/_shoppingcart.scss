@@ -2,19 +2,23 @@
 .cart-main {
     background-image: url('https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
     background-size: cover;
-    height: 80vh;
-    margin-top: 10px;
+    padding: 15px;
 }
 
 // styling for list of products in shop cart
 .shopCart {
     background-color: $white;
     border-radius: 10px;
-    min-height: 400px;
+    min-height: 600px;
     width: 90vw;
     margin: 0 auto 0 auto;
     padding: 20px;
     text-align: left;
+
+    img {
+        width: 80px;
+
+    }
 }
 
 // styling h1 in shop cart
@@ -23,4 +27,60 @@
     font-family: $montserrat;
     color: $darkgrey;
     font-weight: $regular;
+}
+
+// styling for productcard
+.prodCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    border-bottom: 1px solid $line-color;
+    padding: 15px;
+}
+
+// styling for total products and sum
+.totProd, .totSum {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+// styling for remove button
+.rmBtn {
+    color: $green;
+    border: none;
+    width: 50px;
+    height: 30px;
+    background-color: $white;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: $button-color;
+        color: $white;
+    }
+}
+
+// styling for change quantity buttons
+.changeBtn {
+    width: 30px;
+    height: 30px;
+    margin: 15px;
+    background-color: $light-green;
+    color: $green;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+// styling for order button
+.orderBtn {
+    width: 100%;
+    background-color: $light-green;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: $primary-text-color;
+    text-transform: uppercase;
 }
