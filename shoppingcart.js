@@ -60,15 +60,6 @@ function showShopCart() {
         plusBtn.innerText = "+";
         plusBtn.classList.add("changeBtn");
 
-<<<<<<< HEAD
-        // const qaSpan = document.createElement("span");
-        // qaSpan.innerText = "1";
-        // qaSpan.classList.add("quantity");
-
-        const qaInput = document.createElement("input");
-        qaInput.value = 1;
-        qaInput.classList.add("quantity");
-=======
         const qaInput = document.createElement("input");
         qaInput.value = 1;
         qaInput.classList.add("quantity");
@@ -76,7 +67,6 @@ function showShopCart() {
         qaInput.setAttribute("type", "number");
         qaInput.setAttribute("min", "0");
         qaInput.readOnly = true;
->>>>>>> e238de8f046354a67c15be6186ddd95f6b7d2919
 
         const subBtn = document.createElement("button");
         subBtn.innerText = "-";
@@ -132,21 +122,6 @@ function removeItem(e) {
 
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 
-<<<<<<< HEAD
-// function to change quantity in shopping vart
-function changeQuantity(e) {
-    console.log(e);
-
-    let quantity = document.querySelector(".quantity").value;
-    console.log(quantity)
-
-    if (e.target.innerText === '+') {
-
-    } else if (e.target.innerText === '-') {
-        console.log("minus")
-    }
-
-=======
 // function to change quantity in shopping cart
 function changeQuantity(e) {
 
@@ -171,5 +146,4 @@ function changeQuantity(e) {
     };
 
     // todo - update total sum and total products. get localstorage and use price on products
->>>>>>> e238de8f046354a67c15be6186ddd95f6b7d2919
 };
