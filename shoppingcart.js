@@ -1,27 +1,27 @@
 // put "dummy"-product data in localStorage to fix feature and design
 const dummyProd = [{
-    id: 1,
+    id: 100,
     name: "Monstera",
     desc: "Green big plant",
     img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
     price: 499,
     inv: 5
 }, {
-    id: 2,
+    id: 101,
     name: "Palm Tree",
     desc: "Exotic tree",
     img: "https://images.unsplash.com/photo-1574173011032-7b713139ea86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=442&q=80",
     price: 4499,
     inv: 3
 }, {
-    id: 3,
+    id: 102,
     name: "Cactus",
     desc: "Sticky bush",
     img: "https://images.unsplash.com/photo-1589944908960-f6c10e05e4b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
     price: 259,
     inv: 12
 }
-]
+];
 
 // set dummy-products in localStorage after page load, call function to show products on page
 window.addEventListener('load', () => {
@@ -32,9 +32,24 @@ window.addEventListener('load', () => {
 // variable to store total amount of shop cart
 let totSum = 0;
 
+// global variables used in multiple function
+const totProdsDiv = document.querySelector(".inputTotProd");
+const totSumDiv = document.querySelector(".inputTotSum");
+const shopCart = JSON.parse(localStorage.getItem('shopCart'));
+const orderBtn = document.querySelector(".orderBtn");
+
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
+
+    // if shopping cart is empty, dont show order button and totals
+    if (shoppingCart === null) {
+        document.querySelector(".cart-h1").textContent = "Your shopping cart is empty :("
+        orderBtn.style.display = "none";
+        document.querySelector(".total").style.display = "none";
+    } else {
+        orderBtn.style.display = "block";
+    };
 
     // loop through saved products/array to create seperate html for each product
     shoppingCart.forEach(element => {
@@ -48,6 +63,7 @@ function showShopCart() {
 
         const img = document.createElement("img");
         img.setAttribute("src", `${element.img}`);
+        img.setAttribute("id", "shopImg");
 
         const prodName = document.createElement("p");
         prodName.innerText = `${element.name}`
@@ -80,10 +96,10 @@ function showShopCart() {
         document.querySelector(".product-holder").appendChild(div);
 
         totSum += Number(element.price)
-        document.querySelector(".inputTotSum").innerHTML = `${totSum}:-`;
+        totSumDiv.innerHTML = `${totSum}:-`;
     });
 
-    document.querySelector(".inputTotProd").innerText = `${shoppingCart.length} PCS`
+    totProdsDiv.innerText = `${shoppingCart.length} PCS`
     document.querySelector(".product-holder").addEventListener('click', removeOrChange);
 };
 
@@ -115,12 +131,10 @@ function removeItem(e) {
     element.remove();
 
     // update total products in cart
-    document.querySelector(".inputTotProd").innerText = `${shopCartItems.length} PCS`
+    totProdsDiv.innerText = `${shopCartItems.length} PCS`
     // update total sum in cart
-    document.querySelector(".inputTotSum").innerHTML = `${totSum -= Number(removedItem[0].price)}:-`
+    totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`
 };
-
-const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 
 // function to change quantity in shopping cart
 function changeQuantity(e) {
@@ -128,22 +142,31 @@ function changeQuantity(e) {
     // variable to find id on element to change right quantity input
     const changeProd = e.target.parentElement.childNodes[1];
     // variable to hold current quantity from target element
-    const currentQuant = e.target.parentElement.childNodes[1].value;
+    const currentQuant = changeProd.value;
     // variable to convert current quantity to number
     let quantity = Number(currentQuant);
+    // variable to find id on parent div element for seach of index of product
+    const divId = e.path[2].id
+    // variable to find index of products for update total sum
+    const indexOfTarget = shopCart.findIndex(x => x.id == divId);
+    const priceToUse = shopCart[indexOfTarget].price
+    console.log(priceToUse);
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
     // change quantity on site based on choice, validator on 0 to prevent - value
+    // change total products and total sum
     if (e.target.innerText === '+') {
         changedEl.value = quantity += 1;
+        totProdsDiv.innerText = `${shopCart.length += 1} PCS`;
+        totSumDiv.innerHTML = `${totSum += Number(priceToUse)}:-`;
     } else if (e.target.innerText === '-') {
         if (changedEl.value == 0) {
             return;
         } else {
             changedEl.value = quantity -= 1;
+            totProdsDiv.innerText = `${shopCart.length -= 1} PCS`
+            totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
         };
     };
-
-    // todo - update total sum and total products. get localstorage and use price on products
 };

@@ -15,9 +15,9 @@
     padding: 20px;
     text-align: left;
 
-    img {
+    #shopImg {
         width: 80px;
-
+        margin-left: 0;
     }
 }
 
@@ -84,10 +84,14 @@
 // styling for order button
 .orderBtn {
     width: 100%;
-    background-color: $light-green;
+    background-color: $button-color;
     border: none;
     border-radius: 10px;
     padding: 5px;
-    color: $primary-text-color;
+    color: $white;
     text-transform: uppercase;
+
+    &:hover {
+        background-color: $button-hover-color;
+    }
 }
