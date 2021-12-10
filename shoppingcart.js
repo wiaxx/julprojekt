@@ -115,7 +115,7 @@ function removeOrChange(e) {
 
 // function to remove item from shopping cart/localStorage
 function removeItem(e) {
-
+    console.log(e);
     // element to remove
     const element = e.target.parentElement;
     // targetItem id for seach index in localStorage array
@@ -130,10 +130,19 @@ function removeItem(e) {
     localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
     element.remove();
 
+    const quantOfProd = e.target.parentElement.children[3].children[1].value
+    const numberOfProd = Number(quantOfProd);
+    console.log(quantOfProd, numberOfProd);
+
     // update total products in cart
     totProdsDiv.innerText = `${shopCartItems.length} PCS`
-    // update total sum in cart
-    totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`
+    // update total sum in cart when removing product
+    if (numberOfProd > 1) {
+        let minusPrice = removedItem[0].price * numberOfProd;
+        totSumDiv.innerHTML = `${totSum -= Number(minusPrice)}:-`;
+    } else {
+        totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`;
+    };
 };
 
 // function to change quantity in shopping cart
