@@ -115,7 +115,7 @@ function removeOrChange(e) {
 
 // function to remove item from shopping cart/localStorage
 function removeItem(e) {
-    console.log(e);
+
     // element to remove
     const element = e.target.parentElement;
     // targetItem id for seach index in localStorage array
@@ -132,7 +132,6 @@ function removeItem(e) {
 
     const quantOfProd = e.target.parentElement.children[3].children[1].value
     const numberOfProd = Number(quantOfProd);
-    console.log(quantOfProd, numberOfProd);
 
     // update total products in cart
     totProdsDiv.innerText = `${shopCartItems.length} PCS`
@@ -159,7 +158,6 @@ function changeQuantity(e) {
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
     const priceToUse = shopCart[indexOfTarget].price
-    console.log(priceToUse);
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
