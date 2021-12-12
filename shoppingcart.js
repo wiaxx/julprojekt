@@ -1,3 +1,6 @@
+// create a stripe client, use to show card payment
+const stripe = Stripe('pk_test_51K2zTpD3GBWLS7iLLPtd48ZhQIIr0mPsszx3VB6ALeTAmY3ROomN4C1feYx1xXntPj0BQ58rjC6OKdjDLTaz8bLo00x7Wim6Ff');
+
 // put "dummy"-product data in localStorage to fix feature and design
 const dummyProd = [{
     id: 100,
@@ -28,6 +31,8 @@ window.addEventListener('load', () => {
     localStorage.setItem("shopCart", JSON.stringify(dummyProd));
     showShopCart();
 });
+
+document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 
 // variable to store total amount of shop cart
 let totSum = 0;
@@ -177,3 +182,28 @@ function changeQuantity(e) {
         };
     };
 };
+
+// create a stripe (payment) element
+const element = stripe.elements();
+// create custom styling for stripe element
+let style = {
+    base: {
+        color: '#3d3d3d',
+        fontFamily: '"Montserrat", sans-serif',
+        fontSize: '22px'
+    },
+    invalid: {
+        color: 'red',
+        iconColor: '#a23c3c'
+    }
+};
+// create a card payment element
+let card = element.create('card', { style: style });
+console.log(card)
+// add the card payment element to html element
+card.mount('#card');
+
+// function to place order, show card payment as method and send to order conf
+function placeOrder() {
+
+}

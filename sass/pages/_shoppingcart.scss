@@ -95,3 +95,19 @@
         background-color: $button-hover-color;
     }
 }
+
+// styling for payment form
+#payment-form {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    background-color: $medium-green;
+    width: 80vw;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: $dropshadow;
+    margin: 0 auto 0 auto;
+    text-align: left;
+}
