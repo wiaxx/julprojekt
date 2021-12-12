@@ -1,6 +1,18 @@
 // Add To Cart Button //
 
-$(document).ready(function(){
+window.onload = function(){
+    // cartbox
+    const cart = document.querySelector('.cart');
+    const cartBox = querySelector('.cartBox');
+    cart.addEventListener("click", function(){
+        alert('shopping cart is working');
+    });
+
+
+}
+
+
+/*  $(document).ready(function(){
     var cartCountValue = 0;
     var cartCount = $('.cart .count');
     $(cartCount).text(cartCountValue);
@@ -37,4 +49,4 @@ $(document).ready(function(){
         });
     });
 
-});
+}); */
