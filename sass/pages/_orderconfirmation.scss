@@ -31,7 +31,7 @@
 .branner-item {
   display: flex;
   justify-items: center;
-  padding-bottom: 10%;
+  padding-bottom: 20px;
   border: none;
 }
 .block-image {
@@ -39,7 +39,7 @@
   display: block;
   align-content: center;
 }
-.adapt-img{
+.adapt-img {
   display: block;
   width: 125px;
 }
@@ -55,4 +55,13 @@
 .text {
   padding-top: 15%;
   padding-bottom: 10%;
+}
+.item-order-area {
+  display: block;
+}
+.table-container {
+  display: contents;
+}
+.tr-container{
+  display: ;
 }
