@@ -6,6 +6,7 @@
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<link href="./css/main.css" rel="stylesheet">
+	<script src="https://js.stripe.com/v3/" defer></script>
 	<script defer src="./shoppingcart.js"></script>
 	<script src="https://kit.fontawesome.com/8b57bcf31f.js"></script>
 	<title>Shopping cart</title>
@@ -32,6 +33,22 @@
 	</nav>
 
 	<main class="cart-main">
+
+		<!-- payment form, after pressing place order -->
+		<form id="payment-form">
+			<label for="name">Name</label>
+			<input type="text" id="name" placeholder="Name">
+			<label for="email">Email</label>
+			<input type="email" id="email" placeholder="Email">
+			<label for="card">Card</label>
+			<div id="card"></div>
+			<label for="payment">Confirm payment</label>
+			<div id="payment"></div>
+			<button id="pay">Pay</button>
+		</form>
+		<div id="messages" role="alert"></div>
+		<div id="error"></div>
+
 		<div class="shopCart">
 			<h1 class="cart-h1">Shopping cart</h1>
 			<div class="product-holder">
@@ -48,6 +65,9 @@
 				</div>
 				<button class="orderBtn">Place order</button>
 			</div>
+
+
+
 		</div>
 	</main>
 
