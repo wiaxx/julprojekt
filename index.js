@@ -79,11 +79,11 @@ function showIndexProd() {
         prodPrice.classList.add("productPrice");;
 
         const wishBtn = document.createElement("button");
-        wishBtn.innerText = "Wish";
+        wishBtn.innerHTML = '<i class="far fa-heart fa-lg">';
         wishBtn.classList.add("productWishBtn");
 
         const cartBtn = document.createElement("button");
-        cartBtn.innerHTML = 'Add';
+        cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("productCartBtn");
 
         div.append(divImage, divContent);
