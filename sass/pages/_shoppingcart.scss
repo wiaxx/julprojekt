@@ -1,95 +1,97 @@
 // styling for background shopping cart
 .cart-main {
-    background-image: url('https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
-    background-size: cover;
-    padding: 15px;
+  background-image: url("https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  background-size: cover;
+  padding: 15px;
 }
 
 // styling for list of products in shop cart
 .shopCart {
-    background-color: $white;
-    border-radius: 10px;
-    min-height: 600px;
-    width: 90vw;
-    margin: 0 auto 0 auto;
-    padding: 20px;
-    text-align: left;
+  background-color: $white;
+  border-radius: 10px;
+  min-height: 600px;
+  width: 90vw;
+  margin: 0 auto 0 auto;
+  padding: 20px;
+  text-align: left;
 
-    #shopImg {
-        width: 80px;
-        margin-left: 0;
-    }
+  #shopImg {
+    width: 80px;
+    margin-left: 0;
+  }
 }
 
 // styling h1 in shop cart
 .cart-h1 {
-    font-size: 1.5rem;
-    font-family: $montserrat;
-    color: $darkgrey;
-    font-weight: $regular;
+  font-size: 1.5rem;
+  font-family: $montserrat;
+  color: $darkgrey;
+  font-weight: $regular;
 }
 
 // styling for productcard
 .prodCard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px;
-    border-bottom: 1px solid $line-color;
-    padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+  border-bottom: 1px solid $line-color;
+  padding: 15px;
 }
 
 // styling for total products and sum
-.totProd, .totSum {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
+.totProd,
+.totSum {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 // styling for remove button
 .rmBtn {
-    color: $green;
-    border: none;
-    width: 50px;
-    height: 30px;
-    background-color: $white;
-    border-radius: 10px;
+  color: $green;
+  border: none;
+  width: 50px;
+  height: 30px;
+  background-color: $white;
+  border-radius: 10px;
 
-    &:hover {
-        background-color: $button-color;
-        color: $white;
-    }
+  &:hover {
+    background-color: $button-color;
+    color: $white;
+  }
 }
 
 // styling for change quantity buttons
 .changeBtn {
-    width: 30px;
-    height: 30px;
-    margin: 15px;
-    background-color: $light-green;
-    color: $green;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.5rem;
+  width: 30px;
+  height: 30px;
+  margin: 15px;
+  background-color: $light-green;
+  color: $green;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
 }
 
 // styling input field with quantity
+
 .quantity {
-    border: none;
-    width: 35px;
-    text-align: center;
+  border: none;
+  width: 35px;
+  text-align: center;
 }
 
 // styling for order button
 .orderBtn {
-    width: 100%;
-    background-color: $button-color;
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    color: $white;
-    text-transform: uppercase;
+  width: 100%;
+  background-color: $button-color;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  color: $white;
+  text-transform: uppercase;
 
     &:hover {
         background-color: $button-hover-color;
