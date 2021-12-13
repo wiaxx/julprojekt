@@ -32,15 +32,6 @@ window.addEventListener('load', () => {
     showShopCart();
 });
 
-document.querySelector(".orderBtn").addEventListener('click', placeOrder);
-// pay button send to order conf page and reset shoppingcart
-document.querySelector("#pay").onclick = (e) => {
-    e.preventDefault();
-    window.location.href="./orderconf.html";
-    localStorage.setItem("shopCart", []);
-    // change localStorage to cart-item
-};
-
 // variable to store total amount of shop cart
 let totSum = 0;
 
@@ -50,12 +41,16 @@ const totSumDiv = document.querySelector(".inputTotSum");
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 const orderBtn = document.querySelector(".orderBtn");
 const paymentBg = document.querySelector(".payment");
+const payBtn = document.querySelector("#pay");
+const paymentForm = document.querySelector("#payment-form");
+
+// global eventListener
+document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
     //const shoppingCart = JSON.parse(localStorage.getItem('cart-item'));
-    console.log(shoppingCart)
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -145,7 +140,7 @@ function removeItem(e) {
     localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
     element.remove();
 
-    const quantOfProd = e.target.parentElement.children[3].children[1].value
+    const quantOfProd = e.target.parentElement.children[3].children[1].value;
     const numberOfProd = Number(quantOfProd);
 
     // update total products in cart
@@ -209,15 +204,79 @@ let style = {
 };
 // create a card payment element
 let card = element.create('card', { style: style });
-console.log(card)
 // add the card payment element to html element
 card.mount('#card');
 
+// check if card info is correct
+card.on('change', (event) => {
+    let message = document.querySelector("#messages");
+    if (event.error) {
+        message.textContent = event.error.message;
+    } else {
+        message.textContent = "";
+    };
+
+    if (event.complete) {
+        // payBtn.disabled = false;
+    };
+});
+
+// handle submit payment and get token
+paymentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const customName = document.querySelector("#name").value;
+    const customEmail = document.querySelector("#email").value;
+    const customAddress = document.querySelector("#address").value;
+    
+    if (customName == "" || customEmail == "" || customAddress == "") {
+        alert("please fill in your info")
+        return
+    };
+
+    // customer info for display on order confirmation
+    const customInfo = {
+        name: customName,
+        email: customEmail,
+        address: customAddress
+    };
+    // save cutomer info to localStorage
+    localStorage.setItem("customInfo", JSON.stringify(customInfo));
+
+    // get products in shopCart to save to order confirmation page
+    let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
+    localStorage.setItem("ordered", JSON.stringify(orderedProducts));
+    localStorage.setItem("shopCart", []); // change this to cart-item later
+    
+    stripe.createToken(card).then( (result) => {
+        if (result.error) {
+            let errorElement = document.querySelector("#error")
+            errorElement.textContent = result.error.message;
+            return;
+        } else {
+            console.log(result.token);
+            stripeTokenHandler(result.token);
+        };
+    });
+
+});
+
+// handle token and submit form, send to order confirmation page
+const stripeTokenHandler = function(token) {
+    let hiddenInput = document.createElement("input");
+    hiddenInput.setAttribute("type", "hidden");
+    hiddenInput.setAttribute("name", "stripeToken");
+    hiddenInput.setAttribute("value", token.id);
+    paymentForm.appendChild(hiddenInput);
+  
+    paymentForm.submit();
+    window.location.href="./orderconf.html";
+};
+
 // function place order, show payment form for card
 function placeOrder() {
-    document.querySelector("#payment-form").style.display = "flex";
+    paymentForm.style.display = "flex";
     paymentBg.style.display = "flex";
-
     // value in pay btn
 };
 
