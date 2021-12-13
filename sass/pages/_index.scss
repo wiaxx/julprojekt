@@ -42,22 +42,22 @@
 		width: 100vw;
 		font-size: 6rem;
 		font-weight: $bold;
-		@include phoneS {
-			color: red;
-		}
-		@include phoneL {
-			font-size: 7rem;
-			color: blue;
-		}
-		@include tablet {
-			color: pink;
-		}
-		@include laptop {
-			color: green;
-		}
-		@include desktop {
-			color: brown;
-		}
+		// @include phoneS {
+		// 	color: red;
+		// }
+		// @include phoneL {
+		// 	font-size: 7rem;
+		// 	color: blue;
+		// }
+		// @include tablet {
+		// 	color: pink;
+		// }
+		// @include laptop {
+		// 	color: green;
+		// }
+		// @include desktop {
+		// 	color: brown;
+		// }
 	}
 
 	h2 {
@@ -139,7 +139,7 @@
 		margin-left: 80px;
 	}
 }
-.indexProduct {
+.product {
 	position: relative;
 	color: $white;
 	width: 100%;
@@ -161,22 +161,22 @@
 		height: 40%;
 		box-shadow: $dropshadow;
 		padding-top: 20px;
-		.indexProductName,
-		.indexProductDescription,
-		.indexProductPrice {
+		.productName,
+		.productDescription,
+		.productPrice {
 			margin: 5px;
 		}
-		.indexProductName {
+		.productName {
 			font-size: 1.2rem;
 			font-weight: $bold;
 			color: $darkgrey;
 		}
-		.indexProductDescription {
+		.productDescription {
 			font-size: 1rem;
 			color: $accent-text-color;
 		}
 
-		.indexProductPrice {
+		.productPrice {
 			font-size: 1rem;
 			color: $green;
 			font-weight: $bold;
@@ -229,7 +229,7 @@ div#\33 {
 			padding-top: 50px;
 			justify-content: flex-start;
 		}
-		.indexProductPrice {
+		.productPrice {
 			display: none;
 		}
 	}
@@ -253,7 +253,7 @@ div#\35 {
 	}
 }
 
-.indexProductWishBtn {
+.productWishBtn {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -268,7 +268,7 @@ div#\35 {
 	
 }
 
-.indexProductCartBtn {
+.productCartBtn {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -283,12 +283,12 @@ div#\35 {
 
 //ABOUT
 .about-container {
+	display: flex;
 	background-color: $white;
 	width: 100%;
-	height: fit-content;
+	height: 100%;
 	margin-top: 100px;
 	margin-bottom: 100px;
-	padding-bottom: 20px;
 	overflow: hidden;
 
 	.left {
@@ -326,8 +326,7 @@ div#\35 {
 			margin-bottom: 20px;
 		}
 		.txt-container {
-			width: fit-content;
-			height: fit-content;
+			height: 100%;
 			text-align: justify;
 			line-height: 2rem;
 			margin: auto;

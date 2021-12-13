@@ -27,7 +27,7 @@ const dummyProd = [{
     name: "Lorem ipsum",
     desc: "Dolor sit amet",
     img: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    price: 0, 
+    price: 259,
 },
 {
     id: 4,
@@ -60,9 +60,9 @@ function showIndexProd() {
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
-        div.classList.add("indexProduct");
-        div.classList.add("indexProduct-" + (i+1));
-        
+        div.classList.add("product");
+        div.classList.add("product-" + (i + 1));
+
         const divImage = document.createElement("div");
         divImage.classList.add("image");
 
@@ -74,23 +74,23 @@ function showIndexProd() {
 
         const prodTitle = document.createElement("h3");
         prodTitle.innerText = `${element.name}`
-        prodTitle.classList.add("indexProductName");
+        prodTitle.classList.add("productName");
 
         const prodDesc = document.createElement("p");
         prodDesc.innerText = `${element.desc}`
-        prodDesc.classList.add("indexProductDescription");
+        prodDesc.classList.add("productDescription");
 
         const prodPrice = document.createElement("span");
         prodPrice.innerText = `${element.price}:-`
-        prodPrice.classList.add("indexProductPrice");;
+        prodPrice.classList.add("productPrice");;
 
         const wishBtn = document.createElement("button");
         wishBtn.innerHTML = '<i class="far fa-heart fa-lg">';
-        wishBtn.classList.add("indexProductWishBtn");
+        wishBtn.classList.add("productWishBtn");
 
         const cartBtn = document.createElement("button");
         cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
-        cartBtn.classList.add("indexProductCartBtn");
+        cartBtn.classList.add("productCartBtn");
 
         // only append allPlantsBtn to product 3
         if (i + 1 === 3) {
