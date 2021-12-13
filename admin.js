@@ -77,7 +77,7 @@ function saveProduct(e) {
     // check already stored product IDs, prevent duplicates
     let id;
     if (localStorage.getItem("prodID") === null) {
-        id = 0;
+        id = 6;
     } else {
         id = JSON.parse(localStorage.getItem("prodID"));
     }
