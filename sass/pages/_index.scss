@@ -5,6 +5,10 @@ header {
 	text-transform: uppercase;
 	width: 100vw;
 	height: 100vh;
+	@include phone {
+		height: 50vh;
+		margin-bottom: 20px;
+	}
 }
 
 .bg-image {
@@ -14,6 +18,11 @@ header {
 	width: 120%;
 	height: 95%;
 	margin-left: -20%;
+	@include phone {
+		width: 100vw;
+		height: 50vh;
+		margin-left: 0;
+	}
 }
 
 .header-content {
@@ -26,11 +35,22 @@ header {
 	h1 {
 		font-size: 7rem;
 		font-weight: $bold;
+		@include phone {
+			width: 100vw;
+			font-size: 5rem;
+		}
 	}
 	h2 {
 		font-size: 2rem;
 		font-weight: $regular;
 		color: $darkgrey;
+		@include phone {
+			color: $white;
+			font-size: 1.8rem;
+		}
+		@include tablet {
+			color: $white;
+		}
 	}
 	hr {
 		border-bottom: 7px solid $line-color;
@@ -41,36 +61,41 @@ header {
 		margin: auto;
 		margin-top: 10px;
 	}
+	@include phone {
+		left: 50%; /* horizontal alignment */
+		top: 50%; /* vertical alignment */
+		transform: translate(-50%, -50%); /* precise centering */
+	}
 }
 /************************* END HEADER **************************/
 
 /************************* MAIN ********************************/
 main {
 	text-align: center;
-	.plant-bg-image-1 {
-		position: absolute;
-		background-image: url(../../images/plant2.png);
-		background-repeat: no-repeat;
-		width: 100vw;
-		height: 100vh;
-		z-index: -1;
-		opacity: 0.7;
-		margin-top: 600px;
-		margin-left: -250px;
-	}
-	.plant-bg-image-2 {
-		position: absolute;
-		background-image: url(../../images/plant2.png);
-		background-repeat: no-repeat;
-		width: 50vw;
-		height: 60vh;
-		z-index: -1;
-		opacity: 0.7;
-		margin-top: 1300px;
-		margin-left: 1000px;
-		-webkit-transform: scaleX(-1);
-		transform: scaleX(-1);
-	}
+	// .plant-bg-image-1 {
+	// 	position: absolute;
+	// 	background-image: url(../../images/plant2.png);
+	// 	background-repeat: no-repeat;
+	// 	width: 100vw;
+	// 	height: 100vh;
+	// 	z-index: -1;
+	// 	opacity: 0.7;
+	// 	margin-top: 600px;
+	// 	margin-left: -250px;
+	// }
+	// .plant-bg-image-2 {
+	// 	position: absolute;
+	// 	background-image: url(../../images/plant2.png);
+	// 	background-repeat: no-repeat;
+	// 	width: 50vw;
+	// 	height: 60vh;
+	// 	z-index: -1;
+	// 	opacity: 0.7;
+	// 	margin-top: 1300px;
+	// 	margin-left: 1000px;
+	// 	-webkit-transform: scaleX(-1);
+	// 	transform: scaleX(-1);
+	// }
 }
 
 .newest {
@@ -95,22 +120,47 @@ main {
 }
 /**Products**/
 .newestProducts {
+	// display: grid;
+	// row-gap: 20px;
+	// column-gap: 20px;
+	// grid-template-columns: 30% 30% 40%;
+	// height: 80vh;
+	width: 40vh;
+	margin: auto;
+
+	// margin-bottom: 10%;
+	// margin-top: 50px;
+	@include tablet{
 	display: grid;
+	width: 90vh;
 	row-gap: 20px;
 	column-gap: 20px;
-	grid-template-columns: 30% 30% 40%;
-	height: 80vh;
-	width: 60%;
-	margin: auto;
+	grid-template-columns: 50% 50%;
+	height: fit-content;
 	margin-bottom: 10%;
 	margin-top: 50px;
+	}
+	@include desktop{
+		display: grid;
+		row-gap: 20px;
+		column-gap: 20px;
+		grid-template-columns: 30% 30% 40%;
+		height: 100vh;
+		width: 100vh;
+		margin: auto;
+	}
+	@include LGdesktop{
+		
+	}
 }
 
 .product {
 	position: relative;
 	color: $white;
 	width: 100%;
+	height: 50vh;
 	overflow: hidden;
+	margin-bottom: 20px;
 
 	.image {
 		height: 60%;
@@ -148,14 +198,14 @@ main {
 		}
 	}
 	button {
-		display: none;
+		// display: none;
 	}
-	&:hover {
-		transform: scale(1.02);
-		button {
-			display: block;
-		}
-	}
+	// &:hover {
+	// 	transform: scale(1.02);
+	// 	button {
+	// 		display: block;
+	// 	}
+	// }
 }
 
 div#\31 {
@@ -177,6 +227,7 @@ div#\32 {
 }
 
 div#\33 {
+	display: none;
 	grid-column: 3;
 	grid-row: 1 / 3;
 	img {
@@ -232,12 +283,24 @@ div#\35 {
 	margin-top: 100px;
 	margin-bottom: 100px;
 	overflow: hidden;
+	@include phone {
+		height: fit-content;
+		padding-bottom: 20px;
+	}
+	@include tablet {
+		height: fit-content;
+		padding-bottom: 20px;
+	}
 	.left {
 		background: url(https://images.unsplash.com/photo-1613375762302-670aee309a25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
 		background-repeat: no-repeat;
+		background-position: center;
 		width: 50%;
 		height: 100%;
 		float: left;
+		@include tablet {
+			display: none;
+		}
 	}
 	.right {
 		width: 50%;
@@ -245,7 +308,11 @@ div#\35 {
 		margin-top: 40px;
 		float: right;
 		padding-right: 50px;
-
+		@include tablet {
+			padding-top: 20px;
+			width: 90%;
+			margin: 0;
+		}
 		h3 {
 			text-transform: uppercase;
 			font-size: 2rem;
@@ -265,6 +332,13 @@ div#\35 {
 			text-align: justify;
 			line-height: 2rem;
 			margin: auto;
+			@include tablet {
+				width: fit-content;
+				padding: 0 10px;
+			}
+			@include phone {
+				text-align: center;
+			}
 		}
 	}
 }
