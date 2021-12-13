@@ -22,21 +22,15 @@ const dummyProd = [{
     desc: "Broadleaf evergreen tree",
     img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
     price: 799,
-}, {
-    id: 3,
-    name: "Lorem ipsum",
-    desc: "Dolor sit amet",
-    img: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    price: 259,
 },
 {
-    id: 4,
+    id: 3,
     name: "Eucalyptus Globulus",
     desc: "Aromatic tree",
     img: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
     price: 299,
 }, {
-    id: 5,
+    id: 4,
     name: "Ficus Lyrata",
     desc: "Fiddle Leaf Fig Tree ",
     img: "https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHBsYW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
@@ -50,24 +44,23 @@ window.addEventListener('load', () => {
 });
 
 function showIndexProd() {
-    const shoppingCart = JSON.parse(localStorage.getItem("indexProd"))
 
-    // create allPlantsBtn, append one product only
-    let allPlantsBtn = document.createElement("button");
-    allPlantsBtn.classList.add("allPlantsBtn");
-    allPlantsBtn.textContent = "See all plants";
+    const shoppingCart = JSON.parse(localStorage.getItem("indexProd"));
+
+    let indexGrid = document.createElement("div");
+    indexGrid.className = 'indexGrid';
+
+    document.querySelector(".newestProducts").prepend(indexGrid);
 
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("product");
-        div.classList.add("product-" + (i + 1));
-
+        div.classList.add("product-" + (i+1));
+        
         const divImage = document.createElement("div");
         divImage.classList.add("image");
-
-        const img = document.createElement("img");
-        img.setAttribute("src", `${element.img}`);
+        divImage.style.backgroundImage = `url(${element.img})`;
 
         const divContent = document.createElement("div");
         divContent.classList.add("content");
@@ -92,16 +85,9 @@ function showIndexProd() {
         cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("productCartBtn");
 
-        // only append allPlantsBtn to product 3
-        if (i + 1 === 3) {
-            div.append(divImage, divContent);
-            divImage.append(img);
-            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn, allPlantsBtn);
-        } else {
-            div.append(divImage, divContent);
-            divImage.append(img);
-            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
-        };
-        document.querySelector(".newestProducts").appendChild(div);
+        div.append(divImage, divContent);
+        divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
+
+        indexGrid.appendChild(div);
     });
 };
