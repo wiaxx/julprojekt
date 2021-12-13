@@ -182,15 +182,15 @@
 			font-weight: $bold;
 		}
 	}
-	button {
-		display: none;
-	}
-	&:hover {
-		transform: scale(1.02);
-		button {
-			display: block;
-		}
-	}
+	// button far, fas {
+	// 	display: none;
+	// }
+	// &:hover {
+	// 	transform: scale(1.02);
+	// 	button {
+	// 		display: block;
+	// 	}
+	// }
 }
 
 div#\31 {
@@ -258,6 +258,14 @@ div#\35 {
 	top: 0;
 	right: 0;
 	margin: 10px;
+	background: none;
+	border: none;
+	color: $heart-hover-color;
+	&:hover{
+		color: $brightred;
+		cursor: pointer;
+	}
+	
 }
 
 .indexProductCartBtn {
@@ -265,6 +273,12 @@ div#\35 {
 	bottom: 0;
 	right: 0;
 	margin: 20px;
+	background: none;
+	border: none;
+	&:hover{
+		color: $green;
+		cursor: pointer;
+	}
 }
 
 //ABOUT
