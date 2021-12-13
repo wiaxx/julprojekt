@@ -1,5 +1,5 @@
 /************************** HEADER **************************/
-header {
+.indexHeader {
 	position: relative;
 	text-transform: uppercase;
 	width: 100vw;
@@ -42,22 +42,22 @@ header {
 		width: 100vw;
 		font-size: 6rem;
 		font-weight: $bold;
-		// @include phoneS {
-		// 	color: red;
-		// }
-		// @include phoneL {
-		// 	font-size: 7rem;
-		// 	color: blue;
-		// }
-		// @include tablet {
-		// 	color: pink;
-		// }
-		// @include laptop {
-		// 	color: green;
-		// }
-		// @include desktop {
-		// 	color: brown;
-		// }
+		@include phoneS {
+			color: red;
+		}
+		@include phoneL {
+			font-size: 7rem;
+			color: blue;
+		}
+		@include tablet {
+			color: pink;
+		}
+		@include laptop {
+			color: green;
+		}
+		@include desktop {
+			color: brown;
+		}
 	}
 
 	h2 {
@@ -86,7 +86,7 @@ header {
 /************************* END HEADER **************************/
 
 /************************* MAIN ********************************/
-main {
+.indexMain {
 	text-align: center;
 	@include laptop {
 		.plant-bg-image-1 {
@@ -139,7 +139,7 @@ main {
 		margin-left: 80px;
 	}
 }
-.product {
+.indexProduct {
 	position: relative;
 	color: $white;
 	width: 100%;
@@ -161,22 +161,22 @@ main {
 		height: 40%;
 		box-shadow: $dropshadow;
 		padding-top: 20px;
-		.productName,
-		.productDescription,
-		.productPrice {
+		.indexProductName,
+		.indexProductDescription,
+		.indexProductPrice {
 			margin: 5px;
 		}
-		.productName {
+		.indexProductName {
 			font-size: 1.2rem;
 			font-weight: $bold;
 			color: $darkgrey;
 		}
-		.productDescription {
+		.indexProductDescription {
 			font-size: 1rem;
 			color: $accent-text-color;
 		}
 
-		.productPrice {
+		.indexProductPrice {
 			font-size: 1rem;
 			color: $green;
 			font-weight: $bold;
@@ -229,7 +229,7 @@ div#\33 {
 			padding-top: 50px;
 			justify-content: flex-start;
 		}
-		.productPrice {
+		.indexProductPrice {
 			display: none;
 		}
 	}
@@ -253,14 +253,14 @@ div#\35 {
 	}
 }
 
-.productWishBtn {
+.indexProductWishBtn {
 	position: absolute;
 	top: 0;
 	right: 0;
 	margin: 10px;
 }
 
-.productCartBtn {
+.indexProductCartBtn {
 	position: absolute;
 	bottom: 0;
 	right: 0;

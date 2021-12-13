@@ -1,0 +1,70 @@
+.productPageHeader {
+	position: relative;
+	width: 100vw;
+	height: 40vh;
+	background-color: $darkgrey;
+	overflow: hidden; //crops out the blury sides of header image
+	margin-bottom: 50px;
+	.headerImage {
+		background-image: url(https://images.unsplash.com/photo-1530049478161-0780526964f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0.8;
+		width: 100vw;
+		height: 40vh;
+		filter: blur(2px);
+		transform: scale(1.1);
+	}
+	h1 {
+		/*All products*/
+		position: absolute;
+		left: 50%; /* horizontal alignment */
+		top: 50%; /* vertical alignment */
+		transform: translate(-50%, -50%); /* precise centering */
+		text-transform: uppercase;
+		text-align: center;
+		color: $white;
+		font-size: 1.9rem;
+		letter-spacing: 3px;
+        @include tablet{
+            font-size: 2.5rem;
+        }
+        @include desktop{
+            font-size: 4rem;
+        }
+	}
+}
+
+.productPageMain {
+	margin: auto; // centers container
+	background-color: blanchedalmond; //delete
+	width: 90vw;
+	height: fit-content;
+	padding-bottom: 20px;
+	.miniNav {
+        margin: auto;
+        width: 80vw;
+        font-weight: $bold;
+        padding-bottom: 40px;
+
+		a {
+			text-decoration: none;
+			&:hover {
+				color: $darkgrey;
+			}
+		}
+		.allProducts {
+			color: $green;
+			text-decoration: underline;
+		}
+	}
+    .info{
+        width: 80vw;
+        text-align: justify;
+        margin: auto;
+        h2{
+            font-size: 1.5rem;
+            padding-bottom: 20px;
+        }
+    }
+}
