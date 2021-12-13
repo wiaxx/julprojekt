@@ -33,6 +33,13 @@ window.addEventListener('load', () => {
 });
 
 document.querySelector(".orderBtn").addEventListener('click', placeOrder);
+// pay button send to order conf page and reset shoppingcart
+document.querySelector("#pay").onclick = (e) => {
+    e.preventDefault();
+    window.location.href="./orderconf.html";
+    localStorage.setItem("shopCart", []);
+    // change localStorage to cart-item
+};
 
 // variable to store total amount of shop cart
 let totSum = 0;
