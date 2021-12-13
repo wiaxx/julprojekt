@@ -96,11 +96,23 @@
     }
 }
 
+// styling behind payment form
+.payment {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: $admin-green-opacity;
+}
+
 // styling for payment form
 #payment-form {
     display: none;
     flex-direction: column;
-    position: fixed;
     z-index: 1;
     background-color: $medium-green;
     width: 80vw;
@@ -108,6 +120,5 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: $dropshadow;
-    margin: 0 auto 0 auto;
     text-align: left;
 }

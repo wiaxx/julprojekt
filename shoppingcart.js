@@ -42,6 +42,7 @@ const totProdsDiv = document.querySelector(".inputTotProd");
 const totSumDiv = document.querySelector(".inputTotSum");
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 const orderBtn = document.querySelector(".orderBtn");
+const paymentBg = document.querySelector(".payment");
 
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
@@ -94,7 +95,7 @@ function showShopCart() {
         subBtn.classList.add("changeBtn");
 
         const priceSpan = document.createElement("span");
-        priceSpan.innerText = `${element.price}:-`;
+        priceSpan.innerText = `á ${element.price}:-`;
 
         qaDiv.append(subBtn, qaInput, plusBtn);
         div.append(rmBtn, img, prodName, qaDiv, priceSpan);
@@ -205,5 +206,13 @@ card.mount('#card');
 
 // function to place order, show card payment as method and send to order conf
 function placeOrder() {
+    document.querySelector("#payment-form").style.display = "flex";
+    paymentBg.style.display = "flex";
+};
 
-}
+// close payment form with click on window
+window.onclick = function(e) {
+    if (e.target === paymentBg) {
+        paymentBg.style.display = "none";
+    };
+  };
