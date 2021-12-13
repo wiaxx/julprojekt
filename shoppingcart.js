@@ -47,6 +47,8 @@ const paymentBg = document.querySelector(".payment");
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
+    //const shoppingCart = JSON.parse(localStorage.getItem('cart-item'));
+    console.log(shoppingCart)
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -83,7 +85,7 @@ function showShopCart() {
         plusBtn.classList.add("changeBtn");
 
         const qaInput = document.createElement("input");
-        qaInput.value = 1;
+        qaInput.value = 1; //chose qty from stored item
         qaInput.classList.add("quantity");
         qaInput.setAttribute("id", `qa${element.id}`);
         qaInput.setAttribute("type", "number");
@@ -160,10 +162,10 @@ function changeQuantity(e) {
     // variable to convert current quantity to number
     let quantity = Number(currentQuant);
     // variable to find id on parent div element for seach of index of product
-    const divId = e.path[2].id
+    const divId = e.path[2].id;
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
-    const priceToUse = shopCart[indexOfTarget].price
+    const priceToUse = shopCart[indexOfTarget].price;
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
@@ -180,7 +182,7 @@ function changeQuantity(e) {
             changedEl.value = quantity -= 1;
             totProdsDiv.innerText = `${shopCart.length -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
-        };
+        }; //update qty in localStorage after minus plus input
     };
 };
 
@@ -204,10 +206,12 @@ console.log(card)
 // add the card payment element to html element
 card.mount('#card');
 
-// function to place order, show card payment as method and send to order conf
+// function place order, show payment form for card
 function placeOrder() {
     document.querySelector("#payment-form").style.display = "flex";
     paymentBg.style.display = "flex";
+
+    // value in pay btn
 };
 
 // close payment form with click on window
@@ -215,4 +219,4 @@ window.onclick = function(e) {
     if (e.target === paymentBg) {
         paymentBg.style.display = "none";
     };
-  };
+};

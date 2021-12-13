@@ -117,10 +117,31 @@
     flex-direction: column;
     z-index: 1;
     background-color: $medium-green;
-    width: 80vw;
+    width: 60vw;
     min-height: 100px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: $dropshadow;
     text-align: left;
+    color: $primary-text-color;
+    
+    input, label {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+    }
+}
+
+#pay {
+    width: 100%;
+    background-color: $button-color;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: $white;
+    text-transform: uppercase;
+  
+      &:hover {
+          background-color: $button-hover-color;
+      }
 }
