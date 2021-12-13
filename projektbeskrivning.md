@@ -31,3 +31,15 @@ Vi delade upp det efter hur vi hade delat upp JavaScript-features. Vi har en des
 
 Vi har ännu inte stött på några problem som stoppar oss eller liknande utan det rullar på bra.
 </p>
+
+<h1>
+Projektvecka 3
+</h1>
+
+<p>
+AW:
+13 december.
+Vi utvärderar och funderar över om vi kommer hinna, men insåg att vi ligger bra i fas ändå. 
+Vi hade inte heller bestämt sedan tidigare hur många tickets vi fick ha som max i "in-review" och det hade samlats några där. Dessa ska vi gå igenom så vi inte bygger fler på hög.
+Reflekterade även kort över ifall vi skulle poängsätta våra tickets, vilket vi inte har gjort sedan tidigare, men valde nog att köra på som tidigare.
+</p>
