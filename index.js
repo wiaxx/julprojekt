@@ -16,7 +16,7 @@ const dummyProd = [{
     img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
     price: 699,
 }
-, {
+    , {
     id: 2,
     name: "Ficus Elastica",
     desc: "Broadleaf evergreen tree",
@@ -51,6 +51,12 @@ window.addEventListener('load', () => {
 
 function showIndexProd() {
     const shoppingCart = JSON.parse(localStorage.getItem("indexProd"))
+
+    // create allPlantsBtn, append one product only
+    let allPlantsBtn = document.createElement("button");
+    allPlantsBtn.classList.add("allPlantsBtn");
+    allPlantsBtn.textContent = "See all plants";
+
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
@@ -79,17 +85,23 @@ function showIndexProd() {
         prodPrice.classList.add("indexProductPrice");;
 
         const wishBtn = document.createElement("button");
-        wishBtn.innerText = "Wish";
+        wishBtn.innerHTML = '<i class="far fa-heart fa-lg">';
         wishBtn.classList.add("indexProductWishBtn");
 
         const cartBtn = document.createElement("button");
-        cartBtn.innerHTML = 'Add';
+        cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("indexProductCartBtn");
 
-        div.append(divImage, divContent);
-        divImage.append(img);
-        divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
+        // only append allPlantsBtn to product 3
+        if (i + 1 === 3) {
+            div.append(divImage, divContent);
+            divImage.append(img);
+            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn, allPlantsBtn);
+        } else {
+            div.append(divImage, divContent);
+            divImage.append(img);
+            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
+        };
         document.querySelector(".newestProducts").appendChild(div);
-
     });
 };
