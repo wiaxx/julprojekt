@@ -16,7 +16,7 @@ const dummyProd = [{
     img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
     price: 699,
 }
-, {
+    , {
     id: 2,
     name: "Ficus Elastica",
     desc: "Broadleaf evergreen tree",
@@ -27,7 +27,7 @@ const dummyProd = [{
     name: "Lorem ipsum",
     desc: "Dolor sit amet",
     img: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    price: 259, 
+    price: 259,
 },
 {
     id: 4,
@@ -51,12 +51,18 @@ window.addEventListener('load', () => {
 
 function showIndexProd() {
     const shoppingCart = JSON.parse(localStorage.getItem("indexProd"))
+
+    // create allPlantsBtn, append one product only
+    let allPlantsBtn = document.createElement("button");
+    allPlantsBtn.classList.add("allPlantsBtn");
+    allPlantsBtn.textContent = "See all plants";
+
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("product");
-        div.classList.add("product-" + (i+1));
-        
+        div.classList.add("product-" + (i + 1));
+
         const divImage = document.createElement("div");
         divImage.classList.add("image");
 
@@ -86,10 +92,16 @@ function showIndexProd() {
         cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("productCartBtn");
 
-        div.append(divImage, divContent);
-        divImage.append(img);
-        divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
+        // only append allPlantsBtn to product 3
+        if (i + 1 === 3) {
+            div.append(divImage, divContent);
+            divImage.append(img);
+            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn, allPlantsBtn);
+        } else {
+            div.append(divImage, divContent);
+            divImage.append(img);
+            divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
+        };
         document.querySelector(".newestProducts").appendChild(div);
-
     });
 };
