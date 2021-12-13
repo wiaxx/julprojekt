@@ -1,3 +1,6 @@
+// create a stripe client, use to show card payment
+const stripe = Stripe('pk_test_51K2zTpD3GBWLS7iLLPtd48ZhQIIr0mPsszx3VB6ALeTAmY3ROomN4C1feYx1xXntPj0BQ58rjC6OKdjDLTaz8bLo00x7Wim6Ff');
+
 // put "dummy"-product data in localStorage to fix feature and design
 const dummyProd = [{
     id: 100,
@@ -29,6 +32,15 @@ window.addEventListener('load', () => {
     showShopCart();
 });
 
+document.querySelector(".orderBtn").addEventListener('click', placeOrder);
+// pay button send to order conf page and reset shoppingcart
+document.querySelector("#pay").onclick = (e) => {
+    e.preventDefault();
+    window.location.href="./orderconf.html";
+    localStorage.setItem("shopCart", []);
+    // change localStorage to cart-item
+};
+
 // variable to store total amount of shop cart
 let totSum = 0;
 
@@ -37,10 +49,13 @@ const totProdsDiv = document.querySelector(".inputTotProd");
 const totSumDiv = document.querySelector(".inputTotSum");
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 const orderBtn = document.querySelector(".orderBtn");
+const paymentBg = document.querySelector(".payment");
 
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
+    //const shoppingCart = JSON.parse(localStorage.getItem('cart-item'));
+    console.log(shoppingCart)
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -77,7 +92,7 @@ function showShopCart() {
         plusBtn.classList.add("changeBtn");
 
         const qaInput = document.createElement("input");
-        qaInput.value = 1;
+        qaInput.value = 1; //chose qty from stored item
         qaInput.classList.add("quantity");
         qaInput.setAttribute("id", `qa${element.id}`);
         qaInput.setAttribute("type", "number");
@@ -89,7 +104,7 @@ function showShopCart() {
         subBtn.classList.add("changeBtn");
 
         const priceSpan = document.createElement("span");
-        priceSpan.innerText = `${element.price}:-`;
+        priceSpan.innerText = `á ${element.price}:-`;
 
         qaDiv.append(subBtn, qaInput, plusBtn);
         div.append(rmBtn, img, prodName, qaDiv, priceSpan);
@@ -130,10 +145,18 @@ function removeItem(e) {
     localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
     element.remove();
 
+    const quantOfProd = e.target.parentElement.children[3].children[1].value
+    const numberOfProd = Number(quantOfProd);
+
     // update total products in cart
     totProdsDiv.innerText = `${shopCartItems.length} PCS`
-    // update total sum in cart
-    totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`
+    // update total sum in cart when removing product
+    if (numberOfProd > 1) {
+        let minusPrice = removedItem[0].price * numberOfProd;
+        totSumDiv.innerHTML = `${totSum -= Number(minusPrice)}:-`;
+    } else {
+        totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`;
+    };
 };
 
 // function to change quantity in shopping cart
@@ -146,11 +169,10 @@ function changeQuantity(e) {
     // variable to convert current quantity to number
     let quantity = Number(currentQuant);
     // variable to find id on parent div element for seach of index of product
-    const divId = e.path[2].id
+    const divId = e.path[2].id;
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
-    const priceToUse = shopCart[indexOfTarget].price
-    console.log(priceToUse);
+    const priceToUse = shopCart[indexOfTarget].price;
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
@@ -167,6 +189,41 @@ function changeQuantity(e) {
             changedEl.value = quantity -= 1;
             totProdsDiv.innerText = `${shopCart.length -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
-        };
+        }; //update qty in localStorage after minus plus input
+    };
+};
+
+// create a stripe (payment) element
+const element = stripe.elements();
+// create custom styling for stripe element
+let style = {
+    base: {
+        color: '#3d3d3d',
+        fontFamily: '"Montserrat", sans-serif',
+        fontSize: '22px'
+    },
+    invalid: {
+        color: 'red',
+        iconColor: '#a23c3c'
+    }
+};
+// create a card payment element
+let card = element.create('card', { style: style });
+console.log(card)
+// add the card payment element to html element
+card.mount('#card');
+
+// function place order, show payment form for card
+function placeOrder() {
+    document.querySelector("#payment-form").style.display = "flex";
+    paymentBg.style.display = "flex";
+
+    // value in pay btn
+};
+
+// close payment form with click on window
+window.onclick = function(e) {
+    if (e.target === paymentBg) {
+        paymentBg.style.display = "none";
     };
 };
