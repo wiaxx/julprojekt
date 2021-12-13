@@ -1,24 +1,31 @@
 //Media queries
-@mixin phone {
-	@media (max-width: map-get($breakpoints, "phone")) {
+@mixin phoneS {
+	@media (min-width: map-get($breakpoints, "phoneS")) {
+		@content;
+	}
+}
+
+@mixin phoneL {
+	@media (min-width: map-get($breakpoints, "phoneL")) {
 		@content;
 	}
 }
 
 @mixin tablet {
-	@media (max-width: map-get($breakpoints, "tablet")) {
+	@media (min-width: map-get($breakpoints, "tablet")) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media (min-width: map-get($breakpoints, "laptop")) {
 		@content;
 	}
 }
 
 @mixin desktop {
-	@media (max-width: map-get($breakpoints, "desktop")) {
+	@media (min-width: map-get($breakpoints, "desktop")) {
 		@content;
 	}
 }
 
-@mixin LGdesktop {
-	@media (max-width: map-get($breakpoints, "LGdesktop")) {
-		@content;
-	}
-}
