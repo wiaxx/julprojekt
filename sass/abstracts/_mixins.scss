@@ -1,0 +1,24 @@
+//Media queries
+@mixin phone {
+	@media (max-width: map-get($breakpoints, "phone")) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: map-get($breakpoints, "tablet")) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (max-width: map-get($breakpoints, "desktop")) {
+		@content;
+	}
+}
+
+@mixin LGdesktop {
+	@media (max-width: map-get($breakpoints, "LGdesktop")) {
+		@content;
+	}
+}

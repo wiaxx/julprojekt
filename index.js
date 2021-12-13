@@ -51,7 +51,6 @@ window.addEventListener('load', () => {
 
 function showIndexProd() {
     const shoppingCart = JSON.parse(localStorage.getItem("indexProd"))
-
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
