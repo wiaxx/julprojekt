@@ -12,8 +12,8 @@
 		opacity: 0.8;
 		width: 100vw;
 		height: 40vh;
-		filter: blur(2px);
-		transform: scale(1.1);
+		// filter: blur(2px);
+		// transform: scale(1.1);
 	}
 	h1 {
 		/*All products*/
@@ -37,11 +37,11 @@
 
 .productPageMain {
 	margin: auto; // centers container
-	background-color: blanchedalmond; //delete
 	width: 90vw;
 	height: fit-content;
 	padding-bottom: 20px;
 	.miniNav {
+		//"Home » All products"
         margin: auto;
         width: 80vw;
         font-weight: $bold;
@@ -69,10 +69,148 @@
     }
 }
 
-.productWrapper{
-background-color: rosybrown;
-overflow: hidden;
-width: 80vw;
-margin: auto;
+.products {
+	text-align: center;
+	width: 90vw;
+	height: 100%;
+	margin: 50px auto;
+	@include laptop {
+		overflow: hidden;
+		width: 90vw;
+		display: flex;
+		// justify-content: space-between;
+		margin-bottom: 20px;
+	}
+
+	.grid {
+		@include laptop {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			width: 80%;
+			margin: auto;
+		}
+	}
+
+	.product {
+		position: relative;
+		width: 90%;
+		height: 50vh;
+		margin-bottom: 20px;
+		margin: 20px auto;
+		@include tablet {
+			width: 60%;
+			height: 60vh;
+		}
+		@include laptop {
+			width: 30%;
+			height: 55vh;
+			margin: 20px 0;
+
+		}
+	}
+	.image {
+		height: 65%;
+		background-size: cover;
+		background-position: center center;
+	}
+
+	.content {
+		height: 35%;
+		background: $white;
+		padding-top: 35px;
+
+		h3,
+		p,
+		span {
+			padding: 3px;
+		}
+		h3 {
+			font-size: 1.3rem;
+			color: $primary-text-color;
+		}
+		p {
+			font-size: 0.95rem;
+			color: $accent-text-color;
+		}
+		span {
+			font-weight: $bold;
+			color: $green;
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// .products {
+	// 	width: 70vw;
+	// 	height: 100%;
+	// 	margin: auto;
+	// 	overflow: hidden;
+	// 	padding-top: 20px;
+	// 	// @include laptop {
+	// 	// 	overflow: hidden;
+	// 	// 	width: 90vw;
+	// 	// 	display: flex;
+	// 	// 	justify-content: space-between;
+	// 	// 	margin-bottom: 20px;
+	// }	
+	// 	.product {
+	// 		position: relative;
+	// 		width: 100%;
+	// 		height: 100%;
+	// 		padding-bottom: 20px;
+	// 		margin: auto;
+	// 		// @include tablet {
+	// 		// 	width: 70%;
+	// 		// }
+	// 		// @include laptop {
+	// 		// 	// width: 70%;
+	// 		// 	width: 48%;
+	// 		// }
+	// 	}
+	// 	.image {
+	// 		height: 30%;
+	// 		background-size: cover;
+	// 		background-position: center center;
+	// 		background-color: $white;
+
+	// 	}
+	
+	// 	.content {
+	// 		height: 20vh;
+	// 		background: $white;
+	// 		text-align: center;
+	// 		padding-top: 35px;
+
+	// 		h3,
+	// 		p,
+	// 		span {
+	// 			padding: 3px;
+	// 		}
+	// 		h3 {
+	// 			font-size: 1.3rem;
+	// 			color: $primary-text-color;
+	// 		}
+	// 		p {
+	// 			font-size: 0.95rem;
+	// 			color: $accent-text-color;
+	// 		}
+	// 		span {
+	// 			font-weight: $bold;
+	// 			color: $green;
+	// 		}
+	// 	}
 

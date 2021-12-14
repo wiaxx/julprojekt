@@ -1,7 +1,6 @@
 // Shopping Cart Button //
 
 // Copy code from shopping cart.js and continue ------> changing const to let instead
-
 let dummyProd = [{
     id: 1,
     name: "Monstera Deliciosa",
@@ -57,7 +56,14 @@ window.addEventListener('load', () => {
 });
 
 function showProd() {
-    const shoppingCart = JSON.parse(localStorage.getItem("products"))
+
+    const shoppingCart = JSON.parse(localStorage.getItem("products"));
+
+    let grid = document.createElement("div");
+    grid.className = 'grid';
+
+    document.querySelector(".products").prepend(grid);
+
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
@@ -66,9 +72,7 @@ function showProd() {
         
         const divImage = document.createElement("div");
         divImage.classList.add("image");
-
-        const img = document.createElement("img");
-        img.setAttribute("src", `${element.img}`);
+        divImage.style.backgroundImage = `url(${element.img})`;
 
         const divContent = document.createElement("div");
         divContent.classList.add("content");
@@ -86,18 +90,17 @@ function showProd() {
         prodPrice.classList.add("productPrice");;
 
         const wishBtn = document.createElement("button");
-        wishBtn.innerText = "Wish";
+        wishBtn.innerHTML = '<i class="far fa-heart fa-lg">';
         wishBtn.classList.add("productWishBtn");
 
         const cartBtn = document.createElement("button");
-        cartBtn.innerHTML = 'Add';
+        cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("productCartBtn");
 
         div.append(divImage, divContent);
-        divImage.append(img);
         divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
-        document.querySelector(".products").appendChild(div);
 
+        grid.appendChild(div);
     });
 };
 
