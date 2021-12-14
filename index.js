@@ -39,13 +39,13 @@ const dummyProd = [{
 ]
 
 window.addEventListener('load', () => {
-    localStorage.setItem("indexProd", JSON.stringify(dummyProd));
-    showIndexProd();
+    localStorage.setItem("products", JSON.stringify(dummyProd));
+    showProd();
 });
 
-function showIndexProd() {
+function showProd() {
 
-    const shoppingCart = JSON.parse(localStorage.getItem("indexProd"));
+    const shoppingCart = JSON.parse(localStorage.getItem("products"));
 
     let indexGrid = document.createElement("div");
     indexGrid.className = 'indexGrid';
