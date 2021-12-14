@@ -218,32 +218,7 @@
 	}
 }
 
-.productWishBtn {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 10px;
-	background: none;
-	border: none;
-	color: $red;
-	&:hover {
-		color: $red;
-		cursor: pointer;
-	}
-}
 
-.productCartBtn {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	margin: 20px;
-	background: none;
-	border: none;
-	&:hover {
-		color: $green;
-		cursor: pointer;
-	}
-}
 
 //ABOUT
 .about-container {
