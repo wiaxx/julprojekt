@@ -1,14 +1,16 @@
 nav {
 	width: 100vw;
 	height: 50px;
-	background: $navbar-color;
+	background: $navbar-color;	
 }
 
 .logo {
 	float: left;
 	margin: 2px 20px;
 	cursor: default;
-
+	a{
+		text-decoration: none;
+	}
 	p {
 		font-size: 2.3rem;
 		font-weight: $bold;
@@ -34,7 +36,6 @@ nav {
 .nav-btns li i:hover,
 i:active {
 	color: $icon-hover-color;
-	font-size: 1.4rem;
 }
 .nav-btns li a:link,
 a:visited {

@@ -18,3 +18,33 @@
 		top: 1px;
 	}
 }
+
+.productWishBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+	background: none;
+	border: none;
+	color: $red;
+	transform: scale(1.2);
+	&:hover {
+		// background-image: url(../../images/);
+		// background-position: center;
+		// background-repeat: no-repeat;
+		cursor: pointer;
+	}
+}
+
+.productCartBtn {
+	position: absolute;
+	right: 0;
+	margin: 20px;
+	bottom: 15px;
+	background: none;
+	border: none;
+	&:hover {
+		color: $green;
+		cursor: pointer;
+	}
+}
