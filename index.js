@@ -89,4 +89,11 @@ function showProd() {
 
         indexGrid.appendChild(div);
     });
+    document.querySelector(".indexGrid").addEventListener('click', fullHeart);
 };
+
+// function for heart button
+function fullHeart(e) {
+    const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
+    wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
+}

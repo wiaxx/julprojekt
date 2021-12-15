@@ -77,7 +77,7 @@ function saveProduct(e) {
     // check already stored product IDs, prevent duplicates
     let id;
     if (localStorage.getItem("prodID") === null) {
-        id = 6;
+        id = 8;
     } else {
         id = JSON.parse(localStorage.getItem("prodID"));
     }
@@ -89,19 +89,19 @@ function saveProduct(e) {
             desc: prodDesc,
             img: prodImg,
             price: prodPrice,
-            inv: prodInv
+            // inv: prodInv
         };
         console.log(product)
 
         // check already stored products and push new product to existing
         let products;
-        if (localStorage.getItem("products") === null) {
+        if (localStorage.getItem("newProducts") === null) {
             products = [];
         } else {
-            products = JSON.parse(localStorage.getItem("products"));
+            products = JSON.parse(localStorage.getItem("newProducts"));
         }
         products.push(product)
-        localStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("newProducts", JSON.stringify(products));
 
         // increase productID and store in localStorage for next product created
         id++;
@@ -114,7 +114,7 @@ function saveProduct(e) {
 //function to fetch image and save url to inputfield
 async function getImg(e) {
     e.preventDefault();
-    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528&orientation=portrait')
+    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=hIO6DzjOSxo&orientation=portrait')
     response.json()
         .then(res => {
             imgHolder.style.backgroundImage = `url(${res.urls.small})`;
