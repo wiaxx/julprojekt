@@ -39,6 +39,8 @@ function updateCart(){
 updateCart();
 
 
+ // Being to set the item(s) to localStorage
+
 for(var i = 0; i < btn.length; i++){
     let cartBtn = btn[i]
     cartBtn.addEventListener('click', () => {
@@ -55,6 +57,7 @@ for(var i = 0; i < btn.length; i++){
         addItemToLocalStorage(dummyProd)
     })
 }
+// Add item(s) to localStorage
 
 function addItemToLocalStorage(dummyProd){
     let cartItem = JSON.parse(localStorage.getItem('prdInCart'))

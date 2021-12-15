@@ -9,7 +9,9 @@ $regular: 500;
 $bold: 600;
 
 //Colors
+$black: #000000;
 $white: #ffffff;
+$brightred: #ff0000;
 $green: #5a674d;
 $light-green: #e1e4e1;
 $medium-green: #c9cec3;
@@ -24,8 +26,9 @@ $navbar-color: $medium-green;
 $footer-color: $medium-green;
 $logo-color: $darkgrey;
 $icon-color: $darkgrey;
-$primary-text-color: $darkgrey;
-$accent-text-color: $mediumgrey;
+$primary-text-color: $black;
+$accent-text-color: $darkgrey;
+$desc-text-color: $mediumgrey;
 $product-card-color: $white;
 $heart-hover-color: $red;
 $icon-hover-color: $green;
@@ -37,3 +40,8 @@ $dropshadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
 //Opacity
 $white-opacity: rgba(255, 255, 255, 0.5); //for product cards info
 $admin-green-opacity: rgba(90, 103, 77, 0.7); //for admin login page img
+
+
+//H1 Gradient 
+$logoGradient: $darkgrey 30%,$green 100%; 
+

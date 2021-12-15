@@ -1,0 +1,17 @@
+Agenda
+
+- Daily standup
+
+Hjälplista:
+
+* style:a knappar på indexsida/ska ha iconer (buy & wish btn) - Amanda
+* lägg till knapp till produktsidan på sista artikeln indexsida - Amanda
+
+Gå igenom korten i "in-review"
+Planera för merge av brancher?
+Hjälp för att komma framåt?
+
+"Knyta ihop säcken"
+Planera veckans sprint & poängsätta?
+
+Nästa vecka, planera för att skriva projektbeskrivning

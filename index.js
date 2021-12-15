@@ -12,45 +12,44 @@ window.addEventListener('load', () => {
 const dummyProd = [{
     id: 1,
     name: "Monstera Deliciosa",
-    desc: "Split-leaf philodendron",
-    img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    desc: "The Swiss Cheese Plant",
+    img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
     price: 699,
 }
 , {
     id: 2,
-    name: "Ficus Elastica",
-    desc: "Broadleaf evergreen tree",
-    img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
+    name: "Musa acuminata",
+    desc: "The Dwarf Cavendish Banana",
+    img: "https://images.unsplash.com/photo-1638824097313-8a42fef7c87c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 799,
 }, {
     id: 3,
-    name: "Lorem ipsum",
-    desc: "Dolor sit amet",
-    img: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    price: 259, 
-},
-{
-    id: 4,
-    name: "Eucalyptus Globulus",
-    desc: "Aromatic tree",
-    img: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
+    name: "Zamioculcas Zamiifolia",
+    desc: "Zanzibar Gem",
+    img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 299,
-}, {
-    id: 5,
-    name: "Ficus Lyrata",
-    desc: "Fiddle Leaf Fig Tree ",
-    img: "https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHBsYW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
-    price: 899,
+},{
+    id: 4,
+    name: "Dracaena trifasciata",
+    desc: "Snake Plant",
+    img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    price: 259, 
 },
 ]
 
 window.addEventListener('load', () => {
-    localStorage.setItem("indexProd", JSON.stringify(dummyProd));
-    showIndexProd();
+    localStorage.setItem("products", JSON.stringify(dummyProd));
+    showProd();
 });
 
-function showIndexProd() {
-    const shoppingCart = JSON.parse(localStorage.getItem("indexProd"))
+function showProd() {
+
+    const shoppingCart = JSON.parse(localStorage.getItem("products"));
+
+    let indexGrid = document.createElement("div");
+    indexGrid.className = 'indexGrid';
+
+    document.querySelector(".newestProducts").prepend(indexGrid);
 
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
@@ -60,9 +59,7 @@ function showIndexProd() {
         
         const divImage = document.createElement("div");
         divImage.classList.add("image");
-
-        const img = document.createElement("img");
-        img.setAttribute("src", `${element.img}`);
+        divImage.style.backgroundImage = `url(${element.img})`;
 
         const divContent = document.createElement("div");
         divContent.classList.add("content");
@@ -80,17 +77,16 @@ function showIndexProd() {
         prodPrice.classList.add("productPrice");;
 
         const wishBtn = document.createElement("button");
-        wishBtn.innerText = "Wish";
+        wishBtn.innerHTML = '<i class="far fa-heart fa-lg">';
         wishBtn.classList.add("productWishBtn");
 
         const cartBtn = document.createElement("button");
-        cartBtn.innerHTML = 'Add';
+        cartBtn.innerHTML = '<i class="fas fa-shopping-basket fa-lg">';
         cartBtn.classList.add("productCartBtn");
 
         div.append(divImage, divContent);
-        divImage.append(img);
         divContent.append(prodTitle, prodDesc, prodPrice, wishBtn, cartBtn);
-        document.querySelector(".newestProducts").appendChild(div);
 
+        indexGrid.appendChild(div);
     });
 };

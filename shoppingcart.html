@@ -13,6 +13,26 @@
 </head>
 
 <body>
+
+	<!-- payment form, after pressing place order -->
+	<div class="payment">
+		<form id="payment-form">
+			<label for="name">Name</label>
+			<input type="text" id="name" placeholder="Name" required>
+			<label for="email">Email</label>
+			<input type="email" id="email" placeholder="Email" required>
+			<label for="address">Address</label>
+			<input type="text" id="address" placeholder="Address" required>
+			<label for="card">Card</label>
+			<div id="card"></div>
+			<!-- <label for="payment">Confirm payment</label>
+			<div id="payment"></div> -->
+			<div id="messages" role="alert"></div>
+			<div id="error"></div>
+			<button id="pay">Pay</button>
+		</form>
+	</div>
+
 	<nav>
 		<a href="./index.html">
 			<div class="logo">
@@ -34,21 +54,6 @@
 
 	<main class="cart-main">
 
-		<!-- payment form, after pressing place order -->
-		<form id="payment-form">
-			<label for="name">Name</label>
-			<input type="text" id="name" placeholder="Name">
-			<label for="email">Email</label>
-			<input type="email" id="email" placeholder="Email">
-			<label for="card">Card</label>
-			<div id="card"></div>
-			<label for="payment">Confirm payment</label>
-			<div id="payment"></div>
-			<button id="pay">Pay</button>
-		</form>
-		<div id="messages" role="alert"></div>
-		<div id="error"></div>
-
 		<div class="shopCart">
 			<h1 class="cart-h1">Shopping cart</h1>
 			<div class="product-holder">
@@ -65,9 +70,6 @@
 				</div>
 				<button class="orderBtn">Place order</button>
 			</div>
-
-
-
 		</div>
 	</main>
 

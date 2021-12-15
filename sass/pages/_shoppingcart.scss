@@ -98,18 +98,51 @@
     }
 }
 
+// styling behind payment form
+.payment {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: $admin-green-opacity;
+}
+
 // styling for payment form
 #payment-form {
     display: none;
     flex-direction: column;
-    position: fixed;
     z-index: 1;
     background-color: $medium-green;
-    width: 80vw;
-    min-height: 100px;
+    width: 60vw;
+    min-height: 150px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: $dropshadow;
-    margin: 0 auto 0 auto;
     text-align: left;
+    color: $primary-text-color;
+    
+    input, label {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+    }
+}
+
+#pay {
+    width: 100%;
+    background-color: $button-color;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: $white;
+    text-transform: uppercase;
+    margin-top: 5px;
+  
+      &:hover {
+          background-color: $button-hover-color;
+      }
 }

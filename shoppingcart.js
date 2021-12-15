@@ -32,8 +32,6 @@ window.addEventListener('load', () => {
     showShopCart();
 });
 
-document.querySelector(".orderBtn").addEventListener('click', placeOrder);
-
 // variable to store total amount of shop cart
 let totSum = 0;
 
@@ -42,10 +40,17 @@ const totProdsDiv = document.querySelector(".inputTotProd");
 const totSumDiv = document.querySelector(".inputTotSum");
 const shopCart = JSON.parse(localStorage.getItem('shopCart'));
 const orderBtn = document.querySelector(".orderBtn");
+const paymentBg = document.querySelector(".payment");
+const payBtn = document.querySelector("#pay");
+const paymentForm = document.querySelector("#payment-form");
+
+// global eventListener
+document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
+    //const shoppingCart = JSON.parse(localStorage.getItem('cart-item'));
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -82,7 +87,7 @@ function showShopCart() {
         plusBtn.classList.add("changeBtn");
 
         const qaInput = document.createElement("input");
-        qaInput.value = 1;
+        qaInput.value = 1; //chose qty from stored item
         qaInput.classList.add("quantity");
         qaInput.setAttribute("id", `qa${element.id}`);
         qaInput.setAttribute("type", "number");
@@ -94,7 +99,7 @@ function showShopCart() {
         subBtn.classList.add("changeBtn");
 
         const priceSpan = document.createElement("span");
-        priceSpan.innerText = `${element.price}:-`;
+        priceSpan.innerText = `á ${element.price}:-`;
 
         qaDiv.append(subBtn, qaInput, plusBtn);
         div.append(rmBtn, img, prodName, qaDiv, priceSpan);
@@ -135,7 +140,7 @@ function removeItem(e) {
     localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
     element.remove();
 
-    const quantOfProd = e.target.parentElement.children[3].children[1].value
+    const quantOfProd = e.target.parentElement.children[3].children[1].value;
     const numberOfProd = Number(quantOfProd);
 
     // update total products in cart
@@ -159,10 +164,10 @@ function changeQuantity(e) {
     // variable to convert current quantity to number
     let quantity = Number(currentQuant);
     // variable to find id on parent div element for seach of index of product
-    const divId = e.path[2].id
+    const divId = e.path[2].id;
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
-    const priceToUse = shopCart[indexOfTarget].price
+    const priceToUse = shopCart[indexOfTarget].price;
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
@@ -179,7 +184,7 @@ function changeQuantity(e) {
             changedEl.value = quantity -= 1;
             totProdsDiv.innerText = `${shopCart.length -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
-        };
+        }; //update qty in localStorage after minus plus input
     };
 };
 
@@ -199,11 +204,85 @@ let style = {
 };
 // create a card payment element
 let card = element.create('card', { style: style });
-console.log(card)
 // add the card payment element to html element
 card.mount('#card');
 
-// function to place order, show card payment as method and send to order conf
-function placeOrder() {
+// check if card info is correct
+card.on('change', (event) => {
+    let message = document.querySelector("#messages");
+    if (event.error) {
+        message.textContent = event.error.message;
+    } else {
+        message.textContent = "";
+    };
 
-}
+    if (event.complete) {
+        // payBtn.disabled = false;
+    };
+});
+
+// handle submit payment and get token
+paymentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const customName = document.querySelector("#name").value;
+    const customEmail = document.querySelector("#email").value;
+    const customAddress = document.querySelector("#address").value;
+    
+    if (customName == "" || customEmail == "" || customAddress == "") {
+        alert("please fill in your info")
+        return
+    };
+
+    // customer info for display on order confirmation
+    const customInfo = {
+        name: customName,
+        email: customEmail,
+        address: customAddress
+    };
+    // save cutomer info to localStorage
+    localStorage.setItem("customInfo", JSON.stringify(customInfo));
+
+    // get products in shopCart to save to order confirmation page
+    let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
+    localStorage.setItem("ordered", JSON.stringify(orderedProducts));
+    localStorage.setItem("shopCart", []); // change this to cart-item later
+    
+    stripe.createToken(card).then( (result) => {
+        if (result.error) {
+            let errorElement = document.querySelector("#error")
+            errorElement.textContent = result.error.message;
+            return;
+        } else {
+            console.log(result.token);
+            stripeTokenHandler(result.token);
+        };
+    });
+
+});
+
+// handle token and submit form, send to order confirmation page
+const stripeTokenHandler = function(token) {
+    let hiddenInput = document.createElement("input");
+    hiddenInput.setAttribute("type", "hidden");
+    hiddenInput.setAttribute("name", "stripeToken");
+    hiddenInput.setAttribute("value", token.id);
+    paymentForm.appendChild(hiddenInput);
+  
+    paymentForm.submit();
+    window.location.href="./orderconf.html";
+};
+
+// function place order, show payment form for card
+function placeOrder() {
+    paymentForm.style.display = "flex";
+    paymentBg.style.display = "flex";
+    // value in pay btn
+};
+
+// close payment form with click on window
+window.onclick = function(e) {
+    if (e.target === paymentBg) {
+        paymentBg.style.display = "none";
+    };
+};

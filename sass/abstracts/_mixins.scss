@@ -1,0 +1,41 @@
+//Media queries
+@mixin phoneS {
+	@media (min-width: map-get($breakpoints, "phoneS")) {
+		@content;
+	}
+}
+
+@mixin phoneL {
+	@media (min-width: map-get($breakpoints, "phoneL")) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: map-get($breakpoints, "tablet")) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media (min-width: map-get($breakpoints, "laptop")) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: map-get($breakpoints, "desktop")) {
+		@content;
+	}
+}
+
+
+//Gradient 
+@mixin gradient($direction, $logoGradient) { 
+	background: -webkit-linear-gradient($direction, $logoGradient);
+	background: -moz-linear-gradient($direction, $logoGradient);
+	background: -o-linear-gradient($direction, $logoGradient);
+	background: linear-gradient($direction, $logoGradient);  
+  }
+  
+  
