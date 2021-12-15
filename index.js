@@ -12,29 +12,28 @@ window.addEventListener('load', () => {
 const dummyProd = [{
     id: 1,
     name: "Monstera Deliciosa",
-    desc: "Split-leaf philodendron",
-    img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    desc: "The Swiss Cheese Plant",
+    img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
     price: 699,
 }
-    , {
+, {
     id: 2,
-    name: "Ficus Elastica",
-    desc: "Broadleaf evergreen tree",
-    img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
+    name: "Musa acuminata",
+    desc: "The Dwarf Cavendish Banana",
+    img: "https://images.unsplash.com/photo-1638824097313-8a42fef7c87c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 799,
-},
-{
-    id: 3,
-    name: "Eucalyptus Globulus",
-    desc: "Aromatic tree",
-    img: "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLWxpa2VkfDI0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
-    price: 299,
 }, {
+    id: 3,
+    name: "Zamioculcas Zamiifolia",
+    desc: "Zanzibar Gem",
+    img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    price: 299,
+},{
     id: 4,
-    name: "Ficus Lyrata",
-    desc: "Fiddle Leaf Fig Tree ",
-    img: "https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHBsYW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
-    price: 899,
+    name: "Dracaena trifasciata",
+    desc: "Snake Plant",
+    img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
+    price: 259, 
 },
 ]
 

@@ -29,3 +29,13 @@
 	}
 }
 
+
+//Gradient 
+@mixin gradient($direction, $logoGradient) { 
+	background: -webkit-linear-gradient($direction, $logoGradient);
+	background: -moz-linear-gradient($direction, $logoGradient);
+	background: -o-linear-gradient($direction, $logoGradient);
+	background: linear-gradient($direction, $logoGradient);  
+  }
+  
+  
