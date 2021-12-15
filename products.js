@@ -4,66 +4,46 @@
 ATT GÖRA
 
 - anpassa addEventListener classnamn för fungerande add-to-cart button
-- hämta products localstorage, pusha in tre nya "dummy-prod"
 - att-to-cart button måste hitta rätt product i localStorage array och lägga i localStorage prdInCart
-
+    *** HÄMTA PRODUKTERNA FRÅN LOCALSTORAGE.GETITEM('PRODUCTS') FÖR ATT LÄGGA IN VALD PRDUKT I SHOPCART
 */
 
+// window onload event for concat different products list to show all.
+window.addEventListener('load', () => {
 
+    let products = JSON.parse(localStorage.getItem("products"));
+    let newProducts = JSON.parse(localStorage.getItem("newProducts"));
 
-// Copy code from shopping cart.js and continue ------> changing const to let instead
+    if (products.length === 4) {
+        let newProductList = products.concat(dummyProd, newProducts);
+        localStorage.setItem('products', JSON.stringify(newProductList))
+    } else {
+        localStorage.setItem('products', JSON.stringify(products))
+    }
+    showProd();
+});
+
 let dummyProd = [{
-    id: 1,
-    name: "Monstera Deliciosa",
-    desc: "The Swiss Cheese Plant",
-    img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
-    price: 699,
-}
-    , {
-    id: 2,
-    name: "Musa acuminata",
-    desc: "The Dwarf Cavendish Banana",
-    img: "https://images.unsplash.com/photo-1638824097313-8a42fef7c87c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 799,
-}, {
-    id: 3,
-    name: "Zamioculcas Zamiifolia",
-    desc: "Zanzibar Gem",
-    img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 299,
-}, {
-    id: 4,
-    name: "Dracaena trifasciata",
-    desc: "Snake Plant",
-    img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 259,
-}, {
     id: 5,
     name: "Pilea Peperomioides",
     desc: "The Chinese Money Plant ",
     img: "https://images.unsplash.com/photo-1614594805320-e6a5549d7f95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 199,
+    price: 199
 },
 {
     id: 6,
     name: "Asplenium Nidus",
     desc: "The Bird's-Nest Fern",
     img: "https://images.unsplash.com/photo-1636901942318-972ea62b4d5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 599,
+    price: 599
 },
 {
     id: 7,
     name: "Pachira Aquatica",
     desc: "The Guiana Chestnut",
     img: "https://images.unsplash.com/photo-1633789242668-886f4098ea1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
-    price: 399,
-},
-]
-
-window.addEventListener('load', () => {
-    localStorage.setItem("products", JSON.stringify(dummyProd));
-    showProd();
-});
+    price: 399
+}]
 
 function showProd() {
 
@@ -120,7 +100,6 @@ function fullHeart(e) {
     const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
     wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
 }
-
 
 let cartNumbers = document.querySelectorAll('.productCartBtn');
 
