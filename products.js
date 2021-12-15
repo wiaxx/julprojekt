@@ -1,23 +1,14 @@
 // Shopping Cart Button //
 
 // Copy code from shopping cart.js and continue ------> changing const to let instead
-<<<<<<< HEAD
-
-
-const localStorageItem = localStorage.getItem('dummyProd');
-
-
-const dummyProd = [{
-=======
 let dummyProd = [{
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
     id: 1,
     name: "Monstera Deliciosa",
     desc: "The Swiss Cheese Plant",
     img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
     price: 699,
 }
-, {
+    , {
     id: 2,
     name: "Musa acuminata",
     desc: "The Dwarf Cavendish Banana",
@@ -29,12 +20,12 @@ let dummyProd = [{
     desc: "Zanzibar Gem",
     img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 299,
-},{
+}, {
     id: 4,
     name: "Dracaena trifasciata",
     desc: "Snake Plant",
     img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 259, 
+    price: 259,
 }, {
     id: 5,
     name: "Pilea Peperomioides",
@@ -58,9 +49,9 @@ let dummyProd = [{
 },
 ]
 if (localStorageItem === null) {
-        dummyProd = [];
+    dummyProd = [];
 } else {
-        dummyProd = JSON,parse(localStorageItem);
+    dummyProd = JSON, parse(localStorageItem);
 }
 
 window.addEventListener('load', () => {
@@ -68,10 +59,6 @@ window.addEventListener('load', () => {
     showProd();
 });
 
-<<<<<<< HEAD
-
-let cartBtn = document.querySelectorAll('.cart-btn');
-=======
 function showProd() {
 
     const shoppingCart = JSON.parse(localStorage.getItem("products"));
@@ -80,14 +67,13 @@ function showProd() {
     grid.className = 'grid';
 
     document.querySelector(".products").prepend(grid);
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
 
     shoppingCart.forEach(function (element, i) {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("product");
-        div.classList.add("product-" + (i+1));
-        
+        div.classList.add("product-" + (i + 1));
+
         const divImage = document.createElement("div");
         divImage.classList.add("image");
         divImage.style.backgroundImage = `url(${element.img})`;
@@ -129,12 +115,7 @@ cartBtn.forEach((c, i) => {
         addItem();  //Add Item(s) to LocalStorage
         updateCart(); //Update the cart amount 
         addCartItem(dummyProd[i]);
-<<<<<<< HEAD
-        
-    } );
-=======
     });
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
 });
 
 // Function add item(s) to LocalStorage
@@ -146,7 +127,7 @@ function addItem() {
     } else {
         localStorage.setItem('item', 1); // if not --> adding the item. //
     }
-    
+
 }
 
 // Update or show quantity in the shopping cart
@@ -164,13 +145,6 @@ updateCart();
 
 // Adding data to  localStorage //
 
-<<<<<<< HEAD
-function addCartItem(dummyProd){
-    
-    let cartItem = JSON.parse (localStorage.getItem('cart-item')); //converter string to arrays
-    
-    //check the value, has been placed or not? //
-=======
 function addCartItem(dummyProd) {
 
     let cartItem = JSON.parse(localStorage.getItem('cart-item')); //converter string to arrays
@@ -178,84 +152,40 @@ function addCartItem(dummyProd) {
     //check the value, has been placed or not? //
     console.log(cartItem)
     if (cartItem != null) {
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
 
-    if(cartItem != null) {  
-        // check if the value = undefined ? //
-<<<<<<< HEAD
-        if(cartItem[dummyProd.id] === undefined){       // if the value in cart item is undefined. //
-            dummyProd.qty = 1;                          // then assign by adding item + 1 (add more product++) //
-            cartItem = {
-                ...cartItem,                            // all items that has already been placed in cart item //
-                [dummyProd.id]:dummyProd                // and then add new more item(s)
-                                               
-=======
-        if (cartItem[dummyProd.id] === undefined) { // if the value in cart item is undefined. //
-            dummyProd.qty = 1;                    // then assign by adding item + 1 (add more product++) //
-            cartItem = {
-                ...cartItem,                     // all items that has already been placed in cart item //
-                [dummyProd.id]: dummyProd          // and add new item(s)
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
+        if (cartItem != null) {
+            // check if the value = undefined ? //
+            if (cartItem[dummyProd.id] === undefined) { // if the value in cart item is undefined. //
+                dummyProd.qty = 1;                    // then assign by adding item + 1 (add more product++) //
+                cartItem = {
+                    ...cartItem,                     // all items that has already been placed in cart item //
+                    [dummyProd.id]: dummyProd          // and add new item(s)
+                }
+                localStorage.setItem('prdInCart', JSON.stringify(productItem))
+
+            } else {
+                // value has already been placed then add more qty ++  //
+                cartItem[dummyProd.id].qty += 1;
             }
-            localStorage.setItem('prdInCart', JSON.stringify(productItem))
+
 
         } else {
-            // value has already been placed then add more qty ++  //
-            cartItem[dummyProd.id].qty += 1;
-        }
-<<<<<<< HEAD
-        
-    }else {
-=======
+            // if the shopping cart is empty the add new product item. //
+            dummyProd.qty = 1;
+            cartItem = {
+                [dummyProd.id]: dummyProd
+            }
+        };
 
+        localStorage.setItem("cart-item", JSON.stringify(cartItem));
 
-    } else {
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
-        // if the shopping cart is empty the add new product item. //
-        dummyProd.qty = 1;
-        cartItem = {
-            [dummyProd.id]: dummyProd
-        }
     };
-    
-    localStorage.setItem("cart-item", JSON.stringify(cartItem) ); 
-    
-};
 
-function loadCart(){
-    localStorage.setItem("cart-item", JSON.stringify(dummyProd));
-        if( cartItem == null ){
+    function loadCart() {
+        localStorage.setItem("cart-item", JSON.stringify(dummyProd));
+        if (cartItem == null) {
             return 0;
         }
 
-<<<<<<< HEAD
-}
-
-
-// Save data in localStorage ///
-   
-    /*const localStorageItem = localStorage.getItem('name');
-    
-
-    let productList; 
-    if(localStorageItem === null){
-        productList = [];
-    } 
-
-    productList.push('Monstera Deliciosa', 'desc: "Split-leaf philodendron"',
-    'img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"',
-    'price: 699,')
-    productList.push('Ficus Elastica')
-    productList.push('Lorem ipsum')
-    productList.push('Eucalyptus Globulus')
-    productList.push('Ficus Lyrata' )
-    localStorage.setItem('productList', JSON.stringify( productList ) ); */
-
-    
-
-    
-    
-=======
-    localStorage.setItem('cart-item', JSON.stringify(cartItem));
-};
->>>>>>> ab40a476faf5745170bd2578caed7f693928af82
+        localStorage.setItem('cart-item', JSON.stringify(cartItem));
+    }};
