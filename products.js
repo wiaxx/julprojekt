@@ -117,19 +117,8 @@ function showProd() {
 
 // function for heart button
 function fullHeart(e) {
-    console.log(e)
-    const heartBtn = document.querySelector(".productWishBtn");
-    console.log(e.target.parentElement.offsetParent.id);
-    const target = e.target.parentElement.offsetParent.id;
-
     const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
     wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
-    console.log(wishBtn)
-    //heartBtn.innerHTML = '<i class="fas fa-heart"></i>'
-    // if (e.target.classList === heartBtn) {
-    //     console.log(e)
-
-    // }
 }
 
 
