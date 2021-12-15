@@ -1,14 +1,14 @@
 nav {
 	width: 100vw;
 	height: 50px;
-	background: $navbar-color;	
+	background: $navbar-color;
 }
 
 .logo {
 	float: left;
 	margin: 2px 20px;
 	cursor: default;
-	a{
+	a {
 		text-decoration: none;
 	}
 	p {
@@ -16,6 +16,14 @@ nav {
 		font-weight: $bold;
 		color: $logo-color;
 		text-transform: uppercase;
+		@include phoneS {
+			font-size: 1.7rem;
+			margin-top: 7px;
+		}
+		@include phoneL {
+			font-size: 2.3rem;
+			margin-top: 0px;
+		}
 	}
 }
 
