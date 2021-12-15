@@ -114,7 +114,7 @@ function saveProduct(e) {
 //function to fetch image and save url to inputfield
 async function getImg(e) {
     e.preventDefault();
-    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=10165528&orientation=portrait')
+    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&collections=hIO6DzjOSxo&orientation=portrait')
     response.json()
         .then(res => {
             imgHolder.style.backgroundImage = `url(${res.urls.small})`;
