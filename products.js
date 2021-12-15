@@ -2,7 +2,11 @@
 
 // Copy code from shopping cart.js and continue ------> changing const to let instead
 
-let dummyProd = [{  
+
+const localStorageItem = localStorage.getItem('dummyProd');
+
+
+const dummyProd = [{
     id: 1,
     name: "Monstera Deliciosa",
     desc: "Split-leaf philodendron",
@@ -36,8 +40,14 @@ let dummyProd = [{
     price: 899,
 },
 ]
+if (localStorageItem === null) {
+        dummyProd = [];
+} else {
+        dummyProd = JSON,parse(localStorageItem);
+}
 
 // Add data to Cart Button //
+
 
 let cartBtn = document.querySelectorAll('.cart-btn');
 
@@ -46,6 +56,7 @@ cartBtn.forEach( (c, i) => {
         addItem();  //Add Item(s) to LocalStorage
         updateCart(); //Update the cart amount 
         addCartItem(dummyProd[i]);
+        
     } );
 });
 
@@ -58,6 +69,7 @@ function addItem() {
     }else{
         localStorage.setItem( 'item', 1 ); // if not --> adding the item. //
     }
+    
 }
 
 // Update or show quantity in the shopping cart
@@ -76,25 +88,26 @@ updateCart();
 // Adding data to  localStorage //
 
 function addCartItem(dummyProd){
-
+    
     let cartItem = JSON.parse (localStorage.getItem('cart-item')); //converter string to arrays
-
+    
     //check the value, has been placed or not? //
-console.log(cartItem)
-    if(cartItem != null){  
 
+    if(cartItem != null) {  
         // check if the value = undefined ? //
-        if(cartItem[dummyProd.id] === undefined){ // if the value in cart item is undefined. //
-            dummyProd.qty = 1;                    // then assign by adding item + 1 (add more product++) //
+        if(cartItem[dummyProd.id] === undefined){       // if the value in cart item is undefined. //
+            dummyProd.qty = 1;                          // then assign by adding item + 1 (add more product++) //
             cartItem = {
-                ...cartItem,                     // all items that has already been placed in cart item //
-                [dummyProd.id]:dummyProd          // and add new item(s)
+                ...cartItem,                            // all items that has already been placed in cart item //
+                [dummyProd.id]:dummyProd                // and then add new more item(s)
+                                               
             }
+            localStorage.setItem('prdInCart', JSON.stringify(productItem))
+
         } else {
             // value has already been placed then add more qty ++  //
             cartItem[dummyProd.id].qty += 1;
         }
-
         
     }else {
         // if the shopping cart is empty the add new product item. //
@@ -103,6 +116,40 @@ console.log(cartItem)
             [dummyProd.id]:dummyProd
         }
     };
-
-    localStorage.setItem('cart-item', JSON.stringify(cartItem) ); 
+    
+    localStorage.setItem("cart-item", JSON.stringify(cartItem) ); 
+    
 };
+
+function loadCart(){
+    localStorage.setItem("cart-item", JSON.stringify(dummyProd));
+        if( cartItem == null ){
+            return 0;
+        }
+
+}
+
+
+// Save data in localStorage ///
+   
+    /*const localStorageItem = localStorage.getItem('name');
+    
+
+    let productList; 
+    if(localStorageItem === null){
+        productList = [];
+    } 
+
+    productList.push('Monstera Deliciosa', 'desc: "Split-leaf philodendron"',
+    'img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"',
+    'price: 699,')
+    productList.push('Ficus Elastica')
+    productList.push('Lorem ipsum')
+    productList.push('Eucalyptus Globulus')
+    productList.push('Ficus Lyrata' )
+    localStorage.setItem('productList', JSON.stringify( productList ) ); */
+
+    
+
+    
+    
