@@ -8,6 +8,9 @@ ATT GÖRA
     *** HÄMTA PRODUKTERNA FRÅN LOCALSTORAGE.GETITEM('PRODUCTS') FÖR ATT LÄGGA IN VALD PRDUKT I SHOPCART
 */
 
+<<<<<<< HEAD
+// Copy code from shopping cart.js and continue ------> changing const to let instead
+=======
 // window onload event for concat different products list to show all.
 window.addEventListener('load', () => {
 
@@ -23,6 +26,7 @@ window.addEventListener('load', () => {
     showProd();
 });
 
+>>>>>>> e4ae01a26d43be0d4eda909b371375252f7602c9
 let dummyProd = [{
     id: 5,
     name: "Pilea Peperomioides",
@@ -105,9 +109,7 @@ function fullHeart(e) {
 
 let cartNumbers = document.querySelectorAll('.productCartBtn');
 
-const btn = document.getElementsByClassName('productCartBtn');
 
-const productItem = [];
 
 cartNumbers.forEach((c, i) => {
     c.addEventListener('click', () => {
@@ -145,7 +147,7 @@ updateCart();
 
 /*
 
-// hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
+hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
 let products = JSON.parse(localStorage(getItem('products')))
 
 baserat på "add-to-cart"-button, findIndex(av target-knapp) i products (localStorage) för att 
@@ -156,13 +158,19 @@ localStorage(setItem(prdInCart, JSON.stringify(product)))
 
 
 // Being to set the item(s) to localStorage
+const attToCartBtn = document.getElementsByClassName('productCartBtn');
 
-for (var i = 0; i < btn.length; i++) {
-    let cartBtn = btn[i]
+const productItem = [];
+
+for (var i = 0; i < attToCartBtn.length; i++) {
+    attToCartBtn[i].addEventListener ('click', function(e){
+        if(typeof(StaticRange))
+
+    })
     cartBtn.addEventListener('click', () => {
 
         let dummyProd = {
-
+            id: i+1,
             image: event.target.parentElement.children[0].src,
             name: event.target.parentElement.children[1].textContent,
             price: event.target.parentElement.children[2].textContent,
