@@ -16,7 +16,7 @@ const dummyProd = [{
     img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
     price: 699,
 }
-, {
+    , {
     id: 2,
     name: "Musa acuminata",
     desc: "The Dwarf Cavendish Banana",
@@ -28,12 +28,12 @@ const dummyProd = [{
     desc: "Zanzibar Gem",
     img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 299,
-},{
+}, {
     id: 4,
     name: "Dracaena trifasciata",
     desc: "Snake Plant",
     img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 259, 
+    price: 259,
 },
 ]
 
@@ -55,8 +55,8 @@ function showProd() {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("product");
-        div.classList.add("product-" + (i+1));
-        
+        div.classList.add("product-" + (i + 1));
+
         const divImage = document.createElement("div");
         divImage.classList.add("image");
         divImage.style.backgroundImage = `url(${element.img})`;
@@ -95,5 +95,7 @@ function showProd() {
 // function for heart button
 function fullHeart(e) {
     const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
-    wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
-}
+    if (e.target.className === "far fa-heart fa-lg") {
+        wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
+    }
+};

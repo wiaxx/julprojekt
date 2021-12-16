@@ -98,8 +98,10 @@ function showProd() {
 // function for heart button
 function fullHeart(e) {
     const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
-    wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
-}
+    if (e.target.className === "far fa-heart fa-lg") {
+        wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
+    }
+};
 
 let cartNumbers = document.querySelectorAll('.productCartBtn');
 
