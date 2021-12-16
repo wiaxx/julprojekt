@@ -8,9 +8,6 @@ ATT GÖRA
     *** HÄMTA PRODUKTERNA FRÅN LOCALSTORAGE.GETITEM('PRODUCTS') FÖR ATT LÄGGA IN VALD PRDUKT I SHOPCART
 */
 
-<<<<<<< HEAD
-// Copy code from shopping cart.js and continue ------> changing const to let instead
-=======
 // window onload event for concat different products list to show all.
 window.addEventListener('load', () => {
 
@@ -26,7 +23,6 @@ window.addEventListener('load', () => {
     showProd();
 });
 
->>>>>>> e4ae01a26d43be0d4eda909b371375252f7602c9
 let dummyProd = [{
     id: 5,
     name: "Pilea Peperomioides",
