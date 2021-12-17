@@ -4,15 +4,14 @@
 ATT GÖRA
 
 - anpassa addEventListener classnamn för fungerande add-to-cart button
+- hämta products localstorage, pusha in tre nya "dummy-prod"
 - att-to-cart button måste hitta rätt product i localStorage array och lägga i localStorage prdInCart
-    *** HÄMTA PRODUKTERNA FRÅN LOCALSTORAGE.GETITEM('PRODUCTS') FÖR ATT LÄGGA IN VALD PRDUKT I SHOPCART
 */
 
 // window onload event for concat different products list to show all.
 window.addEventListener('load', () => {
 
-    let products = JSON.parse(localStorage.getItem("products"));
-    let newProducts = JSON.parse(localStorage.getItem("newProducts"));
+const productList = [];
 
     if (products.length === 4) {
         let newProductList = products.concat(dummyProd, newProducts);
@@ -28,22 +27,28 @@ let dummyProd = [{
     name: "Pilea Peperomioides",
     desc: "The Chinese Money Plant ",
     img: "https://images.unsplash.com/photo-1614594805320-e6a5549d7f95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 199
+    price: 199,
 },
 {
     id: 6,
     name: "Asplenium Nidus",
     desc: "The Bird's-Nest Fern",
     img: "https://images.unsplash.com/photo-1636901942318-972ea62b4d5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 599
+    price: 599,
 },
 {
     id: 7,
     name: "Pachira Aquatica",
     desc: "The Guiana Chestnut",
     img: "https://images.unsplash.com/photo-1633789242668-886f4098ea1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
-    price: 399
-}]
+    price: 399,
+},
+]
+
+window.addEventListener('load', () => {
+    localStorage.setItem("products", JSON.stringify(dummyProd));
+    showProd();
+});
 
 function showProd() {
 
@@ -58,8 +63,8 @@ function showProd() {
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("product");
-        div.classList.add("product-" + (i + 1));
-
+        div.classList.add("product-" + (i+1));
+        
         const divImage = document.createElement("div");
         divImage.classList.add("image");
         divImage.style.backgroundImage = `url(${element.img})`;
@@ -92,8 +97,7 @@ function showProd() {
 
         grid.appendChild(div);
     });
-    document.querySelector(".grid").addEventListener('click', fullHeart);
-};
+    
 
 // function for heart button
 function fullHeart(e) {
@@ -103,44 +107,98 @@ function fullHeart(e) {
     }
 };
 
-let cartNumbers = document.querySelectorAll('.productCartBtn');
+    let addToCartBtn = document.querySelectorAll('.productCartBtn');
+    
+    
+    addToCartBtn.forEach( (c, i ) => {
 
-
-
-cartNumbers.forEach((c, i) => {
-    c.addEventListener('click', () => {
-        addItem();  //Add Item(s) to LocalStorage
-        updateCart(); //Update the cart amount 
+        c.addEventListener( 'click', () => {
+            addItem();  // Add item(s) to localStorage
+            showCartBtn(); // Update cart btn amount
+            addItemToLocalStorage(dummyProd[i]);
+        });
     });
-});
 
-// Function add item(s) to LocalStorage
 
-function addItem() {
-    let item = parseInt(localStorage.getItem('item'));
+    // Add item(s) to localStorage //
+    function addItem() {
+        let item = JSON.parse(localStorage.getItem('itemInCart'));
 
-    if (item) {
-        localStorage.setItem('item', item + 1); // if the item has already been placed then keep on adding. //
-    } else {
-        localStorage.setItem('item', 1); // if not --> adding the item. //
-    }
-}
-
-// Show item-qty in localStorage
-
-function updateCart() {
-    let item = parseInt(localStorage.getItem('item'));
-
-    if (item) {
-        document.querySelector('.count').innerHTML = item; // if the item has already been placed then update the amount cart. //
-    } else {
-        document.querySelector('.count').innerHTML = 0; //if not setting to 0. //
+        if(item){
+            localStorage.setItem( 'itemInCart', item + 1);
+        }else{
+            localStorage.setItem('itemInCart', 1);
+        }
     }
 
-}
-updateCart();
+    // Show cart button amount //
+
+    function showCartBtn() {
+        let item = JSON.parse(localStorage.getItem('itemInCart'));
+
+        if (item) {
+            document.getElementById('shopping-cart').innerText = item;
+        } else {
+            document.getElementById('shopping-cart').innerText = 0;
+        }
+    }
+    showCartBtn();
+
+    // Function add item(s) to shopping-cart
+
+    function addItemToLocalStorage(dummyProd) {
+
+        let itemInCart = JSON.parse(localStorage.getItem('prdInCart'))
+        
+        // check the value
+
+        if (itemInCart != null) {
+        
+        // check value undefined?? //
+            if (itemInCart[dummyProd.id] == undefined) {
+
+                // Add more item(s)
+                dummyProd.qty = 1;
+                itemInCart = {
+
+                    ...itemInCart,
+                    [dummyProd.id]:dummyProd
+                }
+            }else{
+                // if the item has already placed then add more qty+++
+                itemInCart[dummyProd.id].qty += 1;
+            }
+            
+        } else {
+                // if the cart is empty then add one more and continue++
+
+            dummyProd.qty = 1;
+            itemInCart = {
+                [dummyProd.id]:dummyProd
+            }
+        }
+
+        localStorage.setItem('prdInCart', JSON.stringify(itemInCart))
+
+    }
+    
+    function loadCart(){
+        let itemInCart = JSON.parse(localStorage.getItem('prdInCart'));
+
+        if (itemInCart == null) {
+            return 0;
+        }
+        // Convert object to array so continue with loop..... //
+
+        Object.entries(itemInCart).map(item => { 
+            console.log(item); 
+        });
+    }
+    loadCart();
+};
 
 
+   
 /*
 
 hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
@@ -153,21 +211,16 @@ localStorage(setItem(prdInCart, JSON.stringify(product)))
 */
 
 
-// Being to set the item(s) to localStorage
-const attToCartBtn = document.getElementsByClassName('productCartBtn');
 
+/*
 const productItem = [];
 
-for (var i = 0; i < attToCartBtn.length; i++) {
-    attToCartBtn[i].addEventListener ('click', function(e){
-        //if(typeof(StaticRange))
-
-    });
-
+for (var i = 0; i < btn.length; i++) {
+    let cartBtn = btn[i]
     cartBtn.addEventListener('click', () => {
-
+        
         let dummyProd = {
-            id: i+1,
+            id: i +1,
             image: event.target.parentElement.children[0].src,
             name: event.target.parentElement.children[1].textContent,
             price: event.target.parentElement.children[2].textContent,
@@ -201,4 +254,6 @@ function addItemToLocalStorage(dummyProd) {
     window.location.reload();
 }
 
-//localStorage.setItem("cart-item", JSON.stringify(cartItem));
+//localStorage.setItem("cart-item", JSON.stringify(cartItem)); 
+
+} */ 
