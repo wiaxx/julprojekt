@@ -8,6 +8,7 @@ const dummyProd = [{
     desc: "Green big plant",
     img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
     price: 499,
+    qty: 1,
     inv: 5
 }, {
     id: 101,
@@ -15,6 +16,7 @@ const dummyProd = [{
     desc: "Exotic tree",
     img: "https://images.unsplash.com/photo-1574173011032-7b713139ea86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=442&q=80",
     price: 4499,
+    qty: 4,
     inv: 3
 }, {
     id: 102,
@@ -22,6 +24,7 @@ const dummyProd = [{
     desc: "Sticky bush",
     img: "https://images.unsplash.com/photo-1589944908960-f6c10e05e4b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
     price: 259,
+    qty: 1,
     inv: 12
 }
 ];
@@ -34,6 +37,7 @@ window.addEventListener('load', () => {
 
 // variable to store total amount of shop cart
 let totSum = 0;
+let totQty = 0;
 
 // global variables used in multiple function
 const totProdsDiv = document.querySelector(".inputTotProd");
@@ -87,7 +91,7 @@ function showShopCart() {
         plusBtn.classList.add("changeBtn");
 
         const qaInput = document.createElement("input");
-        qaInput.value = 1; //chose qty from stored item
+        qaInput.value = element.qty;
         qaInput.classList.add("quantity");
         qaInput.setAttribute("id", `qa${element.id}`);
         qaInput.setAttribute("type", "number");
@@ -105,11 +109,12 @@ function showShopCart() {
         div.append(rmBtn, img, prodName, qaDiv, priceSpan);
         document.querySelector(".product-holder").appendChild(div);
 
-        totSum += Number(element.price)
+        totSum += Number(element.price * element.qty);
         totSumDiv.innerHTML = `${totSum}:-`;
+        totQty += Number(element.qty);
+        totProdsDiv.innerText = `${totQty} PCS`;
     });
 
-    totProdsDiv.innerText = `${shoppingCart.length} PCS`
     document.querySelector(".product-holder").addEventListener('click', removeOrChange);
 };
 
@@ -144,7 +149,7 @@ function removeItem(e) {
     const numberOfProd = Number(quantOfProd);
 
     // update total products in cart
-    totProdsDiv.innerText = `${shopCartItems.length} PCS`
+    totProdsDiv.innerText = `${totQty -= quantOfProd} PCS`
     // update total sum in cart when removing product
     if (numberOfProd > 1) {
         let minusPrice = removedItem[0].price * numberOfProd;
@@ -175,14 +180,14 @@ function changeQuantity(e) {
     // change total products and total sum
     if (e.target.innerText === '+') {
         changedEl.value = quantity += 1;
-        totProdsDiv.innerText = `${shopCart.length += 1} PCS`;
+        totProdsDiv.innerText = `${totQty += 1} PCS`;
         totSumDiv.innerHTML = `${totSum += Number(priceToUse)}:-`;
     } else if (e.target.innerText === '-') {
         if (changedEl.value == 0) {
             return;
         } else {
             changedEl.value = quantity -= 1;
-            totProdsDiv.innerText = `${shopCart.length -= 1} PCS`
+            totProdsDiv.innerText = `${totQty -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
         }; //update qty in localStorage after minus plus input
     };
@@ -238,12 +243,13 @@ paymentForm.addEventListener('submit', (event) => {
     const customInfo = {
         name: customName,
         email: customEmail,
-        address: customAddress
+        address: customAddress,
+        total: totSumDiv.innerText
     };
     // save cutomer info to localStorage
     localStorage.setItem("customInfo", JSON.stringify(customInfo));
 
-    // get products in shopCart to save to order confirmation page
+    // get products in shopCart, save to order confirmation page
     let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
     localStorage.setItem("ordered", JSON.stringify(orderedProducts));
     localStorage.setItem("shopCart", []); // change this to cart-item later
@@ -277,7 +283,8 @@ const stripeTokenHandler = function(token) {
 function placeOrder() {
     paymentForm.style.display = "flex";
     paymentBg.style.display = "flex";
-    // value in pay btn
+
+    payBtn.innerText += ` ${totSumDiv.innerText}`;
 };
 
 // close payment form with click on window
