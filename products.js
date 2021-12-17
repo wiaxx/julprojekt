@@ -172,12 +172,10 @@ function loadCart() {
     Object.entries(itemInCart).map(item => {
         console.log(item);
     });
-    
+
     localStorage.setItem('prdInCart', JSON.stringify(itemInCart))
     loadCart();
 }
-
-
 
 
 /*
