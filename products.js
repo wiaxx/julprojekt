@@ -7,45 +7,14 @@ ATT GÖRA
 - hämta products localstorage, pusha in tre nya "dummy-prod"
 - att-to-cart button måste hitta rätt product i localStorage array och lägga i localStorage prdInCart
 
-<<<<<<< HEAD
+
 */
-// Copy code from shopping cart.js and continue ------> changing const to let instead
-=======
+
 // window onload event for concat different products list to show all.
 window.addEventListener('load', () => {
->>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
 
 const productList = [];
 
-<<<<<<< HEAD
-const dummyProd = [
-{
-    id: 1,
-    name: "Monstera Deliciosa",
-    desc: "The Swiss Cheese Plant",
-    img: "https://images.unsplash.com/photo-1637967885705-a60e3fea266d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2564&q=80",
-    price: 699,
-}
-, {
-    id: 2,
-    name: "Musa acuminata",
-    desc: "The Dwarf Cavendish Banana",
-    img: "https://images.unsplash.com/photo-1638824097313-8a42fef7c87c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 799,
-}, {
-    id: 3,
-    name: "Zamioculcas Zamiifolia",
-    desc: "Zanzibar Gem",
-    img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 299,
-},{
-    id: 4,
-    name: "Dracaena trifasciata",
-    desc: "Snake Plant",
-    img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
-    price: 259, 
-}, {
-=======
     if (products.length === 4) {
         let newProductList = products.concat(dummyProd, newProducts);
         localStorage.setItem('products', JSON.stringify(newProductList))
@@ -56,7 +25,6 @@ const dummyProd = [
 });
 
 let dummyProd = [{
->>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
     id: 5,
     name: "Pilea Peperomioides",
     desc: "The Chinese Money Plant ",
@@ -133,9 +101,6 @@ function showProd() {
     });
     
 
-<<<<<<< HEAD
-    // Add to cart button  //
-=======
 // function for heart button
 function fullHeart(e) {
     const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
@@ -143,7 +108,6 @@ function fullHeart(e) {
         wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
     }
 };
->>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
 
     let addToCartBtn = document.querySelectorAll('.productCartBtn');
     
@@ -229,16 +193,18 @@ function fullHeart(e) {
         // Convert object to array so continue with loop..... //
 
         Object.entries(itemInCart).map(item => { 
-            console.log(item); 
+           
         });
     }
+   
+    localStorage.setItem('prdInCart', JSON.stringify(dummyProd));
     loadCart();
 };
 
 
    
-/*
 
+/*
 hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
 let products = JSON.parse(localStorage(getItem('products')))
 
