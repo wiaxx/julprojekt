@@ -172,13 +172,17 @@ function loadCart() {
     Object.entries(itemInCart).map(item => {
         console.log(item);
     });
+    
+    localStorage.setItem('prdInCart', JSON.stringify(itemInCart))
+    loadCart();
 }
-loadCart();
+
 
 
 
 /*
 
+/*
 hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
 let products = JSON.parse(localStorage(getItem('products')))
 
