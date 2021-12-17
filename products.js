@@ -160,9 +160,10 @@ const productItem = [];
 
 for (var i = 0; i < attToCartBtn.length; i++) {
     attToCartBtn[i].addEventListener ('click', function(e){
-        if(typeof(StaticRange))
+        //if(typeof(StaticRange))
 
-    })
+    });
+
     cartBtn.addEventListener('click', () => {
 
         let dummyProd = {
