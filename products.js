@@ -7,11 +7,17 @@ ATT GÖRA
 - hämta products localstorage, pusha in tre nya "dummy-prod"
 - att-to-cart button måste hitta rätt product i localStorage array och lägga i localStorage prdInCart
 
+<<<<<<< HEAD
 */
 // Copy code from shopping cart.js and continue ------> changing const to let instead
+=======
+// window onload event for concat different products list to show all.
+window.addEventListener('load', () => {
+>>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
 
 const productList = [];
 
+<<<<<<< HEAD
 const dummyProd = [
 {
     id: 1,
@@ -39,6 +45,18 @@ const dummyProd = [
     img: "https://images.unsplash.com/photo-1638824096986-5c5ed96d118a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
     price: 259, 
 }, {
+=======
+    if (products.length === 4) {
+        let newProductList = products.concat(dummyProd, newProducts);
+        localStorage.setItem('products', JSON.stringify(newProductList))
+    } else {
+        localStorage.setItem('products', JSON.stringify(products))
+    }
+    showProd();
+});
+
+let dummyProd = [{
+>>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
     id: 5,
     name: "Pilea Peperomioides",
     desc: "The Chinese Money Plant ",
@@ -115,7 +133,17 @@ function showProd() {
     });
     
 
+<<<<<<< HEAD
     // Add to cart button  //
+=======
+// function for heart button
+function fullHeart(e) {
+    const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
+    if (e.target.className === "far fa-heart fa-lg") {
+        wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
+    }
+};
+>>>>>>> 86adf6659296a8537ede98319fd10e0ce48f4f2d
 
     let addToCartBtn = document.querySelectorAll('.productCartBtn');
     
