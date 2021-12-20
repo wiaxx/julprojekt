@@ -121,7 +121,7 @@ function addItem() {
     } else {
         localStorage.setItem('itemInCart', 1);
     };
-    localStorage.setItem('itemInCart', JSON.stringify(item))
+    
 };
 
 // Show cart button amount //
