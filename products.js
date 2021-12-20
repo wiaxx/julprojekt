@@ -16,7 +16,8 @@ window.addEventListener('load', () => {
             let newProductList = products.concat(dummyProd, newProducts);
             localStorage.setItem('products', JSON.stringify(newProductList))
         } else {
-            localStorage.setItem('products', JSON.stringify(products))
+            let productList = products.concat(dummyProd);
+            localStorage.setItem('products', JSON.stringify(productList));
         };
     };
     showProd();
