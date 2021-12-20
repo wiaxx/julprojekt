@@ -1,7 +1,7 @@
 <!-- Grupp 8 -->
 
 <h1>
-    Uppstart
+    Uppstart, v.48 - sprint 1
 </h1>
 <p>
 AW:
@@ -20,7 +20,7 @@ Vi bestämmer även vad vi anser är definition of done samt hur vi ska arbete m
 </p>
 
 <h1>
- Projektvecka 2
+ Projektvecka 2, v.49 - sprint 2
 </h1>
 
 <p>
@@ -33,7 +33,7 @@ Vi har ännu inte stött på några problem som stoppar oss eller liknande utan 
 </p>
 
 <h1>
-Projektvecka 3
+Projektvecka 3, v.50 - sprint 3
 </h1>
 
 <p>
@@ -42,4 +42,12 @@ AW:
 Vi utvärderar och funderar över om vi kommer hinna, men insåg att vi ligger bra i fas ändå.
 Vi hade inte heller bestämt sedan tidigare hur många tickets vi fick ha som max i "in-review" och det hade samlats några där. Dessa ska vi gå igenom så vi inte bygger fler på hög.
 Reflekterade även kort över ifall vi skulle poängsätta våra tickets, vilket vi inte har gjort sedan tidigare, men valde nog att köra på som tidigare.
+</p>
+
+<h1>
+Projektvecka 4, v.51 - sprint 4
+</h1>
+
+<p>
+
 </p>
