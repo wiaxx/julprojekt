@@ -12,11 +12,13 @@ window.addEventListener('load', () => {
     let newProducts = JSON.parse(localStorage.getItem("newProducts"));
 
     if (products.length === 4) {
-        let newProductList = products.concat(dummyProd, newProducts);
-        localStorage.setItem('products', JSON.stringify(newProductList))
-    } else {
-        localStorage.setItem('products', JSON.stringify(products))
-    }
+        if (newProducts !== null) {
+            let newProductList = products.concat(dummyProd, newProducts);
+            localStorage.setItem('products', JSON.stringify(newProductList))
+        } else {
+            localStorage.setItem('products', JSON.stringify(products))
+        };
+    };
     showProd();
 });
 
@@ -172,7 +174,7 @@ function loadCart() {
     Object.entries(itemInCart).map(item => {
         console.log(item);
     });
-    
+
     localStorage.setItem('prdInCart', JSON.stringify(itemInCart))
     loadCart();
 }
