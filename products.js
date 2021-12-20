@@ -143,7 +143,7 @@ function addItemToLocalStorage(dummyProd) {
     // check the value
     if (itemInCart != null) {
         // check value undefined?? //
-        if (itemInCart[dummyProd.id] == undefined) {
+        if (itemInCart[dummyProd.id] === undefined) {
             // Add more item(s)
             dummyProd.qty = 1;
             itemInCart = {
