@@ -107,9 +107,12 @@ function showProd() {
 
 // function for heart button
 function fullHeart(e) {
-    const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3];
+    const wishBtn = e.target.parentElement.offsetParent.childNodes[1].childNodes[3]
     if (e.target.className === "far fa-heart fa-lg") {
         wishBtn.innerHTML = '<i class="fas fa-heart"></i>'
+    };
+    if (e.target.className === "fas fa-heart") {
+        wishBtn.innerHTML = '<i class="far fa-heart fa-lg"></i>'
     };
 };
 
