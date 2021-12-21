@@ -284,7 +284,7 @@ function placeOrder() {
     paymentForm.style.display = "flex";
     paymentBg.style.display = "flex";
 
-    payBtn.innerText += ` ${totSumDiv.innerText}`;
+    payBtn.innerText = `PAY ${totSumDiv.innerText}`;
 };
 
 // close payment form with click on window
