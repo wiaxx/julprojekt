@@ -108,7 +108,7 @@ function fullHeart(e) {
 
 
 
-/*
+
 
 /*
 hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js

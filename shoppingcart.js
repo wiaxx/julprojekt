@@ -30,7 +30,7 @@ const dummyProd = [{
 ];
 
 // set dummy-products in localStorage after page load, call function to show products on page
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem("shopCart", JSON.stringify(dummyProd));
     showShopCart();
 });
@@ -54,67 +54,62 @@ document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
-    //const shoppingCart = JSON.parse(localStorage.getItem('cart-item'));
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
         document.querySelector(".cart-h1").textContent = "Your shopping cart is empty :("
-        orderBtn.style.display = "none";
         document.querySelector(".total").style.display = "none";
     } else {
-        orderBtn.style.display = "block";
+        // loop through saved products/array to create seperate html for each product
+        shoppingCart.forEach(element => {
+            const div = document.createElement("div");
+            div.setAttribute("id", `${element.id}`);
+            div.classList.add("prodCard");
+
+            const rmBtn = document.createElement("button");
+            rmBtn.innerHTML = 'X';
+            rmBtn.classList.add("rmBtn");
+
+            const img = document.createElement("img");
+            img.setAttribute("src", `${element.img}`);
+            img.setAttribute("id", "shopImg");
+
+            const prodName = document.createElement("p");
+            prodName.innerText = `${element.name}`
+            prodName.classList.add("prodName");
+
+            const qaDiv = document.createElement("div");
+            qaDiv.classList.add("qaDiv");
+
+            const plusBtn = document.createElement("button");
+            plusBtn.innerText = "+";
+            plusBtn.classList.add("changeBtn");
+
+            const qaInput = document.createElement("input");
+            qaInput.value = element.qty;
+            qaInput.classList.add("quantity");
+            qaInput.setAttribute("id", `qa${element.id}`);
+            qaInput.setAttribute("type", "number");
+            qaInput.setAttribute("min", "0");
+            qaInput.readOnly = true;
+
+            const subBtn = document.createElement("button");
+            subBtn.innerText = "-";
+            subBtn.classList.add("changeBtn");
+
+            const priceSpan = document.createElement("span");
+            priceSpan.innerText = `á ${element.price}:-`;
+
+            qaDiv.append(subBtn, qaInput, plusBtn);
+            div.append(rmBtn, img, prodName, qaDiv, priceSpan);
+            document.querySelector(".product-holder").appendChild(div);
+
+            totSum += Number(element.price * element.qty);
+            totSumDiv.innerHTML = `${totSum}:-`;
+            totQty += Number(element.qty);
+            totProdsDiv.innerText = `${totQty} PCS`;
+        });
     };
-
-    // loop through saved products/array to create seperate html for each product
-    shoppingCart.forEach(element => {
-        const div = document.createElement("div");
-        div.setAttribute("id", `${element.id}`);
-        div.classList.add("prodCard");
-
-        const rmBtn = document.createElement("button");
-        rmBtn.innerHTML = 'X';
-        rmBtn.classList.add("rmBtn");
-
-        const img = document.createElement("img");
-        img.setAttribute("src", `${element.img}`);
-        img.setAttribute("id", "shopImg");
-
-        const prodName = document.createElement("p");
-        prodName.innerText = `${element.name}`
-        prodName.classList.add("prodName");
-
-        const qaDiv = document.createElement("div");
-        qaDiv.classList.add("qaDiv");
-
-        const plusBtn = document.createElement("button");
-        plusBtn.innerText = "+";
-        plusBtn.classList.add("changeBtn");
-
-        const qaInput = document.createElement("input");
-        qaInput.value = element.qty;
-        qaInput.classList.add("quantity");
-        qaInput.setAttribute("id", `qa${element.id}`);
-        qaInput.setAttribute("type", "number");
-        qaInput.setAttribute("min", "0");
-        qaInput.readOnly = true;
-
-        const subBtn = document.createElement("button");
-        subBtn.innerText = "-";
-        subBtn.classList.add("changeBtn");
-
-        const priceSpan = document.createElement("span");
-        priceSpan.innerText = `á ${element.price}:-`;
-
-        qaDiv.append(subBtn, qaInput, plusBtn);
-        div.append(rmBtn, img, prodName, qaDiv, priceSpan);
-        document.querySelector(".product-holder").appendChild(div);
-
-        totSum += Number(element.price * element.qty);
-        totSumDiv.innerHTML = `${totSum}:-`;
-        totQty += Number(element.qty);
-        totProdsDiv.innerText = `${totQty} PCS`;
-    });
-
     document.querySelector(".product-holder").addEventListener('click', removeOrChange);
 };
 
@@ -189,7 +184,8 @@ function changeQuantity(e) {
             changedEl.value = quantity -= 1;
             totProdsDiv.innerText = `${totQty -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
-        }; //update qty in localStorage after minus plus input
+        };
+        //update qty in localStorage after minus plus input
     };
 };
 
@@ -219,10 +215,7 @@ card.on('change', (event) => {
         message.textContent = event.error.message;
     } else {
         message.textContent = "";
-    };
-
-    if (event.complete) {
-        // payBtn.disabled = false;
+        payBtn.disabled = false;
     };
 });
 
@@ -233,62 +226,61 @@ paymentForm.addEventListener('submit', (event) => {
     const customName = document.querySelector("#name").value;
     const customEmail = document.querySelector("#email").value;
     const customAddress = document.querySelector("#address").value;
-    
+
     if (customName == "" || customEmail == "" || customAddress == "") {
         alert("please fill in your info")
         return
-    };
+    } else {
 
-    // customer info for display on order confirmation
-    const customInfo = {
-        name: customName,
-        email: customEmail,
-        address: customAddress,
-        total: totSumDiv.innerText
-    };
-    // save cutomer info to localStorage
-    localStorage.setItem("customInfo", JSON.stringify(customInfo));
-
-    // get products in shopCart, save to order confirmation page
-    let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
-    localStorage.setItem("ordered", JSON.stringify(orderedProducts));
-    localStorage.setItem("shopCart", []); // change this to cart-item later
-    
-    stripe.createToken(card).then( (result) => {
-        if (result.error) {
-            let errorElement = document.querySelector("#error")
-            errorElement.textContent = result.error.message;
-            return;
-        } else {
-            console.log(result.token);
-            stripeTokenHandler(result.token);
+        // customer info for display on order confirmation
+        const customInfo = {
+            name: customName,
+            email: customEmail,
+            address: customAddress,
+            total: totSumDiv.innerText
         };
-    });
+        // save cutomer info to localStorage
+        localStorage.setItem("customInfo", JSON.stringify(customInfo));
 
+        // get products in shopCart, save to order confirmation page
+        let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
+        localStorage.setItem("ordered", JSON.stringify(orderedProducts));
+
+        stripe.createToken(card).then((result) => {
+            if (result.error) {
+                let errorElement = document.querySelector("#error")
+                errorElement.textContent = result.error.message;
+                return;
+            } else {
+                stripeTokenHandler(result.token);
+            };
+        });
+    };
 });
 
 // handle token and submit form, send to order confirmation page
-const stripeTokenHandler = function(token) {
+const stripeTokenHandler = function (token) {
     let hiddenInput = document.createElement("input");
     hiddenInput.setAttribute("type", "hidden");
     hiddenInput.setAttribute("name", "stripeToken");
     hiddenInput.setAttribute("value", token.id);
     paymentForm.appendChild(hiddenInput);
-  
+
+    localStorage.setItem("shopCart", []); // change this to cart-item later
     paymentForm.submit();
-    window.location.href="./orderconf.html";
+    window.location.href = "./orderconf.html";
 };
 
 // function place order, show payment form for card
 function placeOrder() {
     paymentForm.style.display = "flex";
     paymentBg.style.display = "flex";
-
-    payBtn.innerText += ` ${totSumDiv.innerText}`;
+    payBtn.disabled = true;
+    payBtn.innerText = `PAY ${totSumDiv.innerText}`;
 };
 
 // close payment form with click on window
-window.onclick = function(e) {
+window.onclick = function (e) {
     if (e.target === paymentBg) {
         paymentBg.style.display = "none";
     };
