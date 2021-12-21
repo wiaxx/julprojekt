@@ -1,12 +1,4 @@
-/*
-ATT GÖRA
-
-- anpassa addEventListener classnamn för fungerande add-to-cart button
-- att-to-cart button måste hitta rätt product i localStorage array och lägga i localStorage prdInCart
-*/
-
 // window onload event for concat different products list to show all.
-
 window.addEventListener('load', () => {
 
     let products = JSON.parse(localStorage.getItem("products")) || [];
@@ -108,20 +100,3 @@ function fullHeart(e) {
         wishBtn.innerHTML = '<i class="far fa-heart fa-lg"></i>'
     };
 };
-
-
-
-
-
-/*
-hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
-let products = JSON.parse(localStorage(getItem('products')))
-
-baserat på "add-to-cart"-button, findIndex(av target-knapp) i products (localStorage) för att 
-hitta vilken artikel från products-arrayen som ska pushas in i 
-localStorage(setItem(prdInCart, JSON.stringify(product)))
-
-*/
-
-
-
