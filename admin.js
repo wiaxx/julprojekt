@@ -91,7 +91,6 @@ function saveProduct(e) {
             price: prodPrice,
             // inv: prodInv
         };
-        console.log(product)
 
         // check already stored products and push new product to existing
         let products;
