@@ -1,37 +1,8 @@
 // create a stripe client, use to show card payment
 const stripe = Stripe('pk_test_51K2zTpD3GBWLS7iLLPtd48ZhQIIr0mPsszx3VB6ALeTAmY3ROomN4C1feYx1xXntPj0BQ58rjC6OKdjDLTaz8bLo00x7Wim6Ff');
 
-// put "dummy"-product data in localStorage to fix feature and design
-const dummyProd = [{
-    id: 100,
-    name: "Monstera",
-    desc: "Green big plant",
-    img: "https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-    price: 499,
-    qty: 1,
-    inv: 5
-}, {
-    id: 101,
-    name: "Palm Tree",
-    desc: "Exotic tree",
-    img: "https://images.unsplash.com/photo-1574173011032-7b713139ea86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=442&q=80",
-    price: 4499,
-    qty: 4,
-    inv: 3
-}, {
-    id: 102,
-    name: "Cactus",
-    desc: "Sticky bush",
-    img: "https://images.unsplash.com/photo-1589944908960-f6c10e05e4b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
-    price: 259,
-    qty: 1,
-    inv: 12
-}
-];
-
-// set dummy-products in localStorage after page load, call function to show products on page
+// call function to show products on page
 window.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem("shopCart", JSON.stringify(dummyProd));
     showShopCart();
 });
 
@@ -42,7 +13,7 @@ let totQty = 0;
 // global variables used in multiple function
 const totProdsDiv = document.querySelector(".inputTotProd");
 const totSumDiv = document.querySelector(".inputTotSum");
-const shopCart = JSON.parse(localStorage.getItem('shopCart'));
+const shopCart = JSON.parse(localStorage.getItem('prdInCart'));
 const orderBtn = document.querySelector(".orderBtn");
 const paymentBg = document.querySelector(".payment");
 const payBtn = document.querySelector("#pay");
@@ -53,7 +24,7 @@ document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
-    const shoppingCart = JSON.parse(localStorage.getItem("shopCart"))
+    const shoppingCart = JSON.parse(localStorage.getItem('prdInCart'));
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -243,7 +214,7 @@ paymentForm.addEventListener('submit', (event) => {
         localStorage.setItem("customInfo", JSON.stringify(customInfo));
 
         // get products in shopCart, save to order confirmation page
-        let orderedProducts = JSON.parse(localStorage.getItem("shopCart")); //change this to cart-item later
+        let orderedProducts = JSON.parse(localStorage.getItem("prdInCart"));
         localStorage.setItem("ordered", JSON.stringify(orderedProducts));
 
         stripe.createToken(card).then((result) => {
@@ -266,7 +237,7 @@ const stripeTokenHandler = function (token) {
     hiddenInput.setAttribute("value", token.id);
     paymentForm.appendChild(hiddenInput);
 
-    localStorage.setItem("shopCart", []); // change this to cart-item later
+    localStorage.setItem("prdInCart", []);
     paymentForm.submit();
     window.location.href = "./orderconf.html";
 };
