@@ -2,17 +2,13 @@
 
 // Hämtar produkterna från localStorage o måste bli rätt produkt-item(s) som sätt i localStorage shopping-cart
 window.localStorage.getItem('products');
-JSON.parse(window.localStorage.getItem('products'));
-
-
+JSON.parse(window.localStorage.getItem('products'))|| [];
 
 // Load Cart From LocalStorage 
 window.addEventListener('load', () => {
-
+    localStorage.getItem('products', JSON.stringify)
     let products = JSON.parse(localStorage.getItem("products")) || [];
     
-    
-
     let addToCartBtn = document.querySelectorAll('.productCartBtn');
     addToCartBtn.forEach((c, i) => {
         c.addEventListener('click', () => {
@@ -78,9 +74,25 @@ window.addEventListener('load', () => {
         }
         
         localStorage.setItem('cart-item', JSON.stringify(cartItem));
+    
+
+        getTotalCost(products.price);
+    
     }
-   
-   
+
+    function getTotalCost(price) {
+
+        let totalCost = localStorage.getItem('costTotal');
+
+        if( totalCost != null){
+            totalCost = parseInt(totalCost);
+            totalCost += price;
+        }else{
+            totalCost = price;
+        }
+    
+        localStorage.setItem('costTotal', totalCost);
+    }
     
 });
 
