@@ -1,5 +1,6 @@
 
 
+
 // Hämtar produkterna från localStorage o måste bli rätt produkt-item(s) som sätt i localStorage shopping-cart
 window.localStorage.getItem('products');
 JSON.parse(window.localStorage.getItem('products'))|| [];
@@ -72,8 +73,12 @@ window.addEventListener('load', () => {
                 [products.id]:products
             }
         }
+        // Convert object to an array //
+        let prdInCart = Object.values(cartItem);
         
-        localStorage.setItem('cart-item', JSON.stringify(cartItem));
+        localStorage.setItem('prdInCart', JSON.stringify(prdInCart) );
+
+        localStorage.setItem('cart-item', JSON.stringify(cartItem) );
     
 
         getTotalCost(products.price);
