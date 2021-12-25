@@ -2,12 +2,14 @@ nav {
 	width: 100vw;
 	height: 50px;
 	background: $navbar-color;
+	position: fixed;
+	z-index: 10;
 }
 
 .logo {
 	float: left;
 	margin: 2px 20px;
-	cursor: default;
+	cursor: pointer;
 	a {
 		text-decoration: none;
 	}

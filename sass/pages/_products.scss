@@ -79,14 +79,11 @@
 		overflow: hidden;
 		width: 90vw;
 		display: flex;
-		// justify-content: space-between;
 		margin-bottom: 20px;
 	}
-
 	.grid {
 		@include laptop {
 			display: flex;
-			justify-content: space-between;
 			flex-wrap: wrap;
 			width: 80%;
 			margin: auto;
@@ -106,7 +103,7 @@
 		@include laptop {
 			width: 30%;
 			height: 55vh;
-			margin: 20px 0;
+			margin: 10px 10px;
 		}
 	}
 	.image {
