@@ -36,6 +36,16 @@
 	}
 }
 
+.productWishBtn > .fas{
+	transform: scale(1.3);
+	@include laptop{
+		top: 10px;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
+
 .productCartBtn {
 	position: absolute;
 	right: 0;
