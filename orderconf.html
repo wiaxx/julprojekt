@@ -21,11 +21,17 @@
             <img src="/images/Lotus-logo.png" alt="" >
           </div>
       </div>
+
+    
     
     <div class="banner-area">
-        <h1 class="text-thx">Your order is confirmed!</h1>
-        <p>Hi! we've received your order and are working on it now.</p>
-        <p>We'll email you an update when we've shipped it.</p>
+        <h1>Your order is confirmed!</h1>
+        
+        <div class="text-area">
+            <p>Hi! we've received your order and are working on it now.</p>
+            <p>We'll email you an update when we've shipped it.</p>
+        </div>
+       
     </div>
     <div class="branner-item">
         <h2>Item Ordered</h2>
@@ -34,45 +40,24 @@
     
     <div class="item-order-area">
         
-        <table class="table-container" >
-            <hr>
+        <table class="table-section">
+            
             <thead>
-            <tr class="tr-container">
-               <th colspan="2">Product</th>
-               <th>Oty</th>
-               <th>Price</th>
-               <th>Amount</th>
-            </tr>
-             </thead>
+                <tr class="tr-container">
+                    <th colspan="2">Product</th>
+                    <th>Oty</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
 
-             <tbody class="cart-item-list">
-
-             </tbody>
-            <tr>
-                <td class="block-image"><a target="_blank"><img class="adapt-img" src="/images/plant2.png" alt></a></td>
-
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-            <td>1</td>
-            <td>$199</td>
-            </tr>
+                <tbody class="cart-item-list">
+                
+                </tbody>
             
-            <tr>
-                <td class="block-image"><a target="_blank"><img class="adapt-img" src="/images/plant2.png" alt></a></td>
-            
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-            <td>1</td>
-            <td>$199</td>
-            </tr>
-            <tr>
-                <td class="block-image"><a target="_blank"><img class="adapt-img" src="/images/plant2.png" alt></a></td>
-            
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-            <td>1</td>
-            <td>$199</td>
-            </tr>
         </table>
         
-        <div class="sum-area">
+        <!---<div class="sum-area">
             <table class="Sum_show_border" width="240" height="101" cellspacing="1" cellpadding="1" border="0">
                 <tbody>
                     <tr>
@@ -92,7 +77,7 @@
                         <td style="text-align: right; font-size: 18px; line-height: 200%;"><strong>$407.95</strong></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> ---->
         </div>
         <div class="text">
             <h3>We'll send you shipping confirmation when your item(s) are on the way! We appreciate your business, and hope you enjoy your purchase.</h3>
@@ -127,8 +112,40 @@
 </html>
 <script>
       function loadCart(){
-          let itemInCart = JSON.parse( localStorage.getItem('prdInCart'));
-          console.log(itemInCart);
+          let cartItem = JSON.parse( localStorage.getItem('cart-item'));
+          
+          if( cartItem == null){
+              return 0;
+          }
+
+          Object.values(cartItem).map(item => {
+            let amount = item.price * item.qty;
+
+            let row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td><img src= "${item.img}" width="150" /></td>
+
+                <td>${item.name}</td>
+                <td>${item.qty}</td>
+                <td>${item.price}</td>
+                <td>${amount}</td>
+            `;
+
+            document.querySelector('.cart-item-list').appendChild( row );
+          });
+
+          let totalCost = localStorage.getItem('costTotal');
+
+          let totalRow = document.createElement('tr');
+
+          totalRow.innerHTML = `
+                
+                    <td colspan='4' align="right"><h2>Subtotal</h2></td>
+                    <td>${totalCost}</td>
+                
+          `;
+            document.querySelector('.cart-item-list').appendChild(totalRow);    
       }
-      loadCart
+      loadCart();
 </script>

@@ -12,6 +12,8 @@
 
 <body>
     <main class="adminMain">
+
+        <!-- font page div when not logged in -->
         <div class="adminPage">
             <button class="backInd" onclick="window.location.href='./index.html'">BACK</button>
             <div class="checkIn">
@@ -39,10 +41,11 @@
             </div>
         </div>
 
-        <!-- flex this create div -->
+        <!-- div for page when logged in -->
         <div class="adminPage-2">
             <div class="create-div">
 
+                <!-- show fetch image -->
                 <div class="img-div">
                     <button class="logOut">LOG OUT</button>
                     <div class="imgHold"></div>
@@ -50,17 +53,18 @@
 
                 <div class="createProd">
                     <p class="addProd">Add product</p>
+                    <!-- Create image form -->
                     <form class="prodInfo">
                         <label for="prodName">Product name:</label>
-                        <input type="text" class="prodName">
+                        <input type="text" id="prodName">
                         <label for="prodPrice">Sales price:</label>
-                        <input type="number" name="" id="prodPrice">
+                        <input type="number" id="prodPrice">
                         <label for="prodDesc">Product description: </label>
-                        <input type="text" class="prodDesc">
+                        <input type="text" id="prodDesc">
                         <label for="prodInv">Inventory: </label>
-                        <input type="number" name="" id="prodInv">
+                        <input type="number" id="prodInv">
                         <label for="prodImg">Image url: </label>
-                        <input type="text" name="" id="prodImg">
+                        <input type="text" id="prodImg">
                         <div class="admin-buttons">
                             <button class="getImg">GET IMAGE</button>
                             <button class="saveProd">SAVE</button>
@@ -70,6 +74,7 @@
                 </div>
             </div>
         </div>
+
     </main>
 </body>
 

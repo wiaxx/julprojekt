@@ -68,9 +68,9 @@ function logOut() {
 function saveProduct(e) {
     e.preventDefault();
     // variables for input value
-    const prodName = document.querySelector(".prodName").value;
+    const prodName = document.querySelector("#prodName").value;
     const prodPrice = document.querySelector("#prodPrice").value;
-    const prodDesc = document.querySelector(".prodDesc").value;
+    const prodDesc = document.querySelector("#prodDesc").value;
     const prodInv = document.querySelector("#prodInv").value;
     const prodImg = document.querySelector("#prodImg").value;
 
@@ -91,7 +91,6 @@ function saveProduct(e) {
             price: prodPrice,
             // inv: prodInv
         };
-        console.log(product)
 
         // check already stored products and push new product to existing
         let products;
