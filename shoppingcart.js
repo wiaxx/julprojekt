@@ -139,6 +139,7 @@ function changeQuantity(e) {
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
     const priceToUse = shopCart[indexOfTarget].price;
+    const qtyToUse = shopCart[indexOfTarget].qty;
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
