@@ -12,81 +12,55 @@
 
 
 </head>
-<body>
+<body class="body">
 
   <div class="main-containner">
       
-      <div class="inner-header">
-          <div class="logo-title">
-            <img src="/images/Lotus-logo.png" alt="" >
-          </div>
-      </div>
-
-    
-    
-    <div class="banner-area">
-        <h1>Your order is confirmed!</h1>
-        
-        <div class="text-area">
-            <p>Hi! we've received your order and are working on it now.</p>
-            <p>We'll email you an update when we've shipped it.</p>
+        <div class="inner-header">
+            <a class="logo" href="index.html"> <img src="/images/Lotus-logo.png" alt="logo"/></a>
         </div>
-       
-    </div>
-    <div class="branner-item">
-        <h2>Item Ordered</h2>
+
+        <div class="banner-area">
+
+            <h1>Your order is confirmed!</h1>
         
-    </div>
+            <div class="text-area">
+                <p>Hi! we've received your order and are working on it now.</p>
+                <p>We'll email you an update when we've shipped it.</p>
+            </div>
+        </div>
+
+
     
     <div class="item-order-area">
         
         <table class="table-section">
-            
+
             <thead>
                 <tr class="tr-container">
                     <th colspan="2">Product</th>
-                    <th>Oty</th>
-                    <th>Price</th>
-                    <th>Amount</th>
+                    <th class="th">Oty</th>
+                    <th class="th">Price</th>
+                    <th class="th">Amount</th>
                 </tr>
             </thead>
 
                 <tbody class="cart-item-list">
                 
                 </tbody>
-            
         </table>
-        
-        <!---<div class="sum-area">
-            <table class="Sum_show_border" width="240" height="101" cellspacing="1" cellpadding="1" border="0">
-                <tbody>
-                    <tr>
-                        <td><strong>Subtotal:</strong></td>
-                        <td style="text-align: right;">$398.00</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Shipping:</strong></td>
-                        <td style="text-align: right;">$4.95</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Sales Tax:</strong></td>
-                        <td style="text-align: right;">$5.00</td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 18px; line-height: 200%;"><strong>Order Total:</strong></td>
-                        <td style="text-align: right; font-size: 18px; line-height: 200%;"><strong>$407.95</strong></td>
-                    </tr>
-                </tbody>
-            </table> ---->
-        </div>
-        <div class="text">
-            <h3>We'll send you shipping confirmation when your item(s) are on the way! We appreciate your business, and hope you enjoy your purchase.</h3>
-        </div>
+
     </div>
-    <footer>
+        <div class="text">
+            <h3>We'll send you shipping confirmation when your item(s) are on the way! 
+               <br> We appreciate your business, and hope you enjoy your purchase.</h3>
+                <p> <span>Thank You!</span> </p>
+            </div>
+    </div>
+    <footer class="footer-section">
 		<div class="footer-content">
 			<div class="footer-logo">
-				<h3>Zosa</h3>
+                <a href="index.html"><h3>Zosa</h3></a>
 				<h4>Where Quality Counts</h4>
 			</div>
 			<ul class="socials">
@@ -124,12 +98,12 @@
             let row = document.createElement('tr');
 
             row.innerHTML = `
-                <td><img src= "${item.img}" width="150" /></td>
+                <td><img src= "${item.img}" width="150"/></td>
 
-                <td>${item.name}</td>
-                <td>${item.qty}</td>
-                <td>${item.price}</td>
-                <td>${amount}</td>
+                <td width="20%">${item.name}</td>
+                <td width="20%">${item.qty}</td>
+                <td width="20%">${item.price}</td>
+                <td width="20%">${amount}</td>
             `;
 
             document.querySelector('.cart-item-list').appendChild( row );
@@ -141,9 +115,9 @@
 
           totalRow.innerHTML = `
                 
-                    <td colspan='4' align="right"><h2>Subtotal</h2></td>
-                    <td>${totalCost}</td>
-                
+                    <td class="tfoot" colspan='4' align="left"><h2>Total</h2></td>
+                    <td class="tfoot">${totalCost}</td>
+                   
           `;
             document.querySelector('.cart-item-list').appendChild(totalRow);    
       }

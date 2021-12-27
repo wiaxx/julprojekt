@@ -102,13 +102,13 @@ function removeItem(e) {
     // targetItem id for seach index in localStorage array
     const targetItem = e.target.parentElement.id;
     // get localStorage to search for item to remove
-    const shopCartItems = JSON.parse(localStorage.getItem("shopCart"));
+    const shopCartItems = JSON.parse(localStorage.getItem("prdInCart"));
     // find index in array for item to remove
     const indexOfTarget = shopCartItems.findIndex(x => x.id == targetItem);
     // remove target item from localStorage array
     const removedItem = shopCartItems.splice(indexOfTarget, 1);
     // push updated array to localStorage
-    localStorage.setItem("shopCart", JSON.stringify(shopCartItems));
+    localStorage.setItem("prdInCart", JSON.stringify(shopCartItems));
     element.remove();
 
     const quantOfProd = e.target.parentElement.children[3].children[1].value;
