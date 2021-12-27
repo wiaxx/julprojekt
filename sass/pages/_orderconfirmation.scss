@@ -68,8 +68,10 @@
   margin-top: 30px;
   margin-bottom: 30px;
   display: flex;
-  align-content: center;
   flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .text p {
   margin-top: 20px;

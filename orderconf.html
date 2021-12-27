@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="/css/main.css">
 
+    <script src="confir.js" defer></script>
 
 </head>
 <body class="body">
@@ -25,7 +24,7 @@
             <h1>Your order is confirmed!</h1>
         
             <div class="text-area">
-                <p>Hi! we've received your order and are working on it now.</p>
+                <p><span>Hi!</span><br> We've received your order and are working on it now.</p>
                 <p>We'll email you an update when we've shipped it.</p>
             </div>
         </div>
@@ -38,10 +37,12 @@
 
             <thead>
                 <tr class="tr-container">
+
                     <th colspan="2">Product</th>
                     <th class="th">Oty</th>
                     <th class="th">Price</th>
                     <th class="th">Amount</th>
+                    
                 </tr>
             </thead>
 
@@ -55,7 +56,7 @@
             <h3>We'll send you shipping confirmation when your item(s) are on the way! 
                <br> We appreciate your business, and hope you enjoy your purchase.</h3>
                 <p> <span>Thank You!</span> </p>
-            </div>
+        </div>
     </div>
     <footer class="footer-section">
 		<div class="footer-content">
@@ -79,47 +80,6 @@
 			</ul>
 		</div>
 	</footer>
-  </div>
 
-  
 </body>
 </html>
-<script>
-      function loadCart(){
-          let cartItem = JSON.parse( localStorage.getItem('cart-item'));
-          
-          if( cartItem == null){
-              return 0;
-          }
-
-          Object.values(cartItem).map(item => {
-            let amount = item.price * item.qty;
-
-            let row = document.createElement('tr');
-
-            row.innerHTML = `
-                <td><img src= "${item.img}" width="150"/></td>
-
-                <td width="20%">${item.name}</td>
-                <td width="20%">${item.qty}</td>
-                <td width="20%">${item.price}</td>
-                <td width="20%">${amount}</td>
-            `;
-
-            document.querySelector('.cart-item-list').appendChild( row );
-          });
-
-          let totalCost = localStorage.getItem('costTotal');
-
-          let totalRow = document.createElement('tr');
-
-          totalRow.innerHTML = `
-                
-                    <td class="tfoot" colspan='4' align="left"><h2>Total</h2></td>
-                    <td class="tfoot">${totalCost}</td>
-                   
-          `;
-            document.querySelector('.cart-item-list').appendChild(totalRow);    
-      }
-      loadCart();
-</script>
