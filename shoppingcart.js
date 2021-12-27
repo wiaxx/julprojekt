@@ -203,7 +203,6 @@ paymentForm.addEventListener('submit', (event) => {
         alert("please fill in your info")
         return
     } else {
-
         // customer info for display on order confirmation
         const customInfo = {
             name: customName,
@@ -231,13 +230,14 @@ paymentForm.addEventListener('submit', (event) => {
 });
 
 // handle token and submit form, send to order confirmation page
-const stripeTokenHandler = function (token) {
+const stripeTokenHandler = (token) => {
+    /*
     let hiddenInput = document.createElement("input");
     hiddenInput.setAttribute("type", "hidden");
     hiddenInput.setAttribute("name", "stripeToken");
     hiddenInput.setAttribute("value", token.id);
     paymentForm.appendChild(hiddenInput);
-
+    */
     localStorage.setItem("prdInCart", []);
     paymentForm.submit();
     window.location.href = "./orderconf.html";
@@ -252,7 +252,7 @@ function placeOrder() {
 };
 
 // close payment form with click on window
-window.onclick = function (e) {
+window.onclick = (e) => {
     if (e.target === paymentBg) {
         paymentBg.style.display = "none";
     };

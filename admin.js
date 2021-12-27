@@ -75,12 +75,7 @@ function saveProduct(e) {
     const prodImg = document.querySelector("#prodImg").value;
 
     // check already stored product IDs, prevent duplicates
-    let id;
-    if (localStorage.getItem("prodID") === null) {
-        id = 8;
-    } else {
-        id = JSON.parse(localStorage.getItem("prodID"));
-    }
+    let id = JSON.parse(localStorage.getItem('prodID')) || 8;
 
         // object with all productinformation
         const product = {
@@ -93,16 +88,11 @@ function saveProduct(e) {
         };
 
         // check already stored products and push new product to existing
-        let products;
-        if (localStorage.getItem("newProducts") === null) {
-            products = [];
-        } else {
-            products = JSON.parse(localStorage.getItem("newProducts"));
-        }
+        let products = JSON.parse(localStorage.getItem("newProducts")) || [];
         products.push(product)
         localStorage.setItem("newProducts", JSON.stringify(products));
 
-        // increase productID and store in localStorage for next product created
+        // increase productID and store in localStorage for next product
         id++;
         localStorage.setItem("prodID", JSON.stringify(id));
 
