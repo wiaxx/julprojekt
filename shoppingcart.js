@@ -6,6 +6,14 @@ window.addEventListener('DOMContentLoaded', () => {
     showShopCart();
 });
 
+// function to find index and update localStorage
+const updateLS = (array, key, value, storage) => {
+    const index = array.findIndex( x => x[key] == value);
+    const removedObj = array.splice(index, 1);
+    localStorage.setItem(`${storage}`, JSON.stringify(array));
+   return removedObj;
+};
+
 // variable to store total amount of shop cart
 let totSum = 0;
 let totQty = 0;
@@ -25,6 +33,7 @@ document.querySelector(".orderBtn").addEventListener('click', placeOrder);
 // function to show all products from localStorage shopCart on site
 function showShopCart() {
     const shoppingCart = JSON.parse(localStorage.getItem('prdInCart'));
+    document.querySelector('.product-holder').innerHTML = '';
 
     // if shopping cart is empty, dont show order button and totals
     if (shoppingCart === null) {
@@ -99,22 +108,21 @@ function removeItem(e) {
     const element = e.target.parentElement; // element to remove
     const targetItem = e.target.parentElement.id; // targetItem id for seach index in localStorage array
     const shopCartItems = JSON.parse(localStorage.getItem("prdInCart")); // get localStorage to search for item to remove
-    const indexOfTarget = shopCartItems.findIndex(x => x.id == targetItem); // find index in array for item to remove
-    const removedItem = shopCartItems.splice(indexOfTarget, 1); // remove target item from localStorage array
-    localStorage.setItem("prdInCart", JSON.stringify(shopCartItems)); // push updated array to localStorage
-    element.remove();
 
+    const removed = updateLS(shopCartItems, "id", targetItem, "prdInCart")
+    
     const quantOfProd = e.target.parentElement.children[3].children[1].value;
     const numberOfProd = Number(quantOfProd);
-
+    
+    element.remove();
     // update total products in cart
-    totProdsDiv.innerText = `${totQty -= quantOfProd} PCS`
+    totProdsDiv.innerText = `${totQty -= quantOfProd} PCS`;
     // update total sum in cart when removing product
     if (numberOfProd > 1) {
-        let minusPrice = removedItem[0].price * numberOfProd;
+        let minusPrice = removed[0].price * numberOfProd;
         totSumDiv.innerHTML = `${totSum -= Number(minusPrice)}:-`;
     } else {
-        totSumDiv.innerHTML = `${totSum -= Number(removedItem[0].price)}:-`;
+        totSumDiv.innerHTML = `${totSum -= Number(removed[0].price)}:-`;
     };
 };
 
@@ -132,7 +140,7 @@ function changeQuantity(e) {
     // variable to find index of products for update total sum
     const indexOfTarget = shopCart.findIndex(x => x.id == divId);
     const priceToUse = shopCart[indexOfTarget].price;
-    const qtyToUse = shopCart[indexOfTarget].qty;
+    let qtyToUse = shopCart[indexOfTarget].qty;
 
     let changedEl = document.querySelector(`#${changeProd.id}`);
 
@@ -142,6 +150,8 @@ function changeQuantity(e) {
         changedEl.value = quantity += 1;
         totProdsDiv.innerText = `${totQty += 1} PCS`;
         totSumDiv.innerHTML = `${totSum += Number(priceToUse)}:-`;
+        shopCart[indexOfTarget].qty += 1;
+        localStorage.setItem('prdInCart', JSON.stringify(shopCart));
     } else if (e.target.innerText === '-') {
         if (changedEl.value == 0) {
             return;
@@ -149,8 +159,9 @@ function changeQuantity(e) {
             changedEl.value = quantity -= 1;
             totProdsDiv.innerText = `${totQty -= 1} PCS`
             totSumDiv.innerHTML = `${totSum -= Number(priceToUse)}:-`;
+            shopCart[indexOfTarget].qty -= 1;
+            localStorage.setItem('prdInCart', JSON.stringify(shopCart));
         };
-        //update qty in localStorage after minus plus input
     };
 };
 
@@ -249,15 +260,4 @@ window.onclick = (e) => {
     if (e.target === paymentBg) {
         paymentBg.style.display = "none";
     };
-};
-
-const updateLS = (ls, id, del) => {
-
-    /*
-    const element = e.target.parentElement; // element to remove
-    const targetItem = e.target.parentElement.id; // targetItem id for seach index in localStorage array
-    const shopCartItems = JSON.parse(localStorage.getItem("prdInCart")); // get localStorage to search for item to remove
-    const indexOfTarget = shopCartItems.findIndex(x => x.id == targetItem); // find index in array for item to remove
-    const removedItem = shopCartItems.splice(indexOfTarget, 1); // remove target item from localStorage array
-    */
 };
