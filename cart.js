@@ -2,8 +2,10 @@
 
 
 // Hämtar produkterna från localStorage o måste bli rätt produkt-item(s) som sätt i localStorage shopping-cart
-window.localStorage.getItem('products');
-JSON.parse(window.localStorage.getItem('products'))|| [];
+
+//window.localStorage.getItem('products');//
+
+JSON.parse(window.localStorage.getItem('products')) || [];
 
 // Load Cart From LocalStorage 
 window.addEventListener('load', () => {
@@ -102,13 +104,4 @@ window.addEventListener('load', () => {
 });
 
 
-
-/*
-hämta produkter från localStorage satt av index.js med tillägg från products.js & admin.js
-let products = JSON.parse(localStorage(getItem('products')))
-
-baserat på "add-to-cart"-button, findIndex(av target-knapp) i products (localStorage) för att 
-hitta vilken artikel från products-arrayen som ska pushas in i 
-localStorage(setItem(prdInCart, JSON.stringify(product)))
-
-*/
+ bb
