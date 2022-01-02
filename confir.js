@@ -1,3 +1,5 @@
+
+
 function loadCart(){
     let cartItem = JSON.parse( localStorage.getItem('cart-item'));
     
@@ -12,7 +14,6 @@ function loadCart(){
 
       row.innerHTML = `
           <td><img src= "${item.img}" width="150"/></td>
-
           <td width="20%">${item.name}</td>
           <td width="20%">${item.qty}</td>
           <td width="20%">${item.price}</td>

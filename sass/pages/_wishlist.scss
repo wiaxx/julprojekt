@@ -1,0 +1,46 @@
+.wish-main {
+  background-image: url("https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  background-size: cover;
+  padding: 15px;
+}
+
+.wishList {
+  justify-content: space-between;
+  background-color: $light-green;
+  min-height: 750px;
+  width: 60vw;
+  margin: 0 auto 0 auto;
+  padding: 20px;
+  text-align: left;
+  margin-top: 50px;
+  border-color: $darkgrey;
+  border-bottom: 1px solid $line-color;  
+}
+
+.wish-h1 {
+  font-size: 2.5rem;
+  font-family: $montserrat;
+  color: $darkgrey;
+  font-weight: $regular;
+  text-align: center;
+}
+
+.wish-hr {
+  border-bottom: 5px solid $line-color;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  width: 110px;
+  margin: auto;
+}
+
+
+.wishCard {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+margin: 15px;
+border-bottom: 1px solid $line-color;
+padding: 15px;
+}
