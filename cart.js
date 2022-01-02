@@ -1,11 +1,7 @@
 // Hämtar produkterna från localStorage o måste bli rätt produkt-item(s) som sätt i localStorage shopping-cart
-<<<<<<< HEAD
-window.localStorage.getItem('products');
-=======
 
 //window.localStorage.getItem('products');//
 
->>>>>>> ac0265d9c89bd7478b1c5e14b49a337926cc00c9
 JSON.parse(window.localStorage.getItem('products')) || [];
 
 // Load Cart From LocalStorage 
